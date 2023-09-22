@@ -1,6 +1,6 @@
 NAME = cube
 
-SRCS = cube.c so_map.c parser.c free.c init.c
+SRCS = cube.c args_checker.c init.c parser.c free.c 
 
 LIBFT_A = libft.a
 LIBFT_DIR = utils/libft/

@@ -32,9 +32,9 @@ typedef struct s_base {
 
 int		main(int ac, char *av[]);
 void	check_arg(int ac, char *av[]);
+void 	init_all();
+t_base *getb(void);
 void 	parse(char *map_name);
 void 	free_all();
-t_base *getb(void);
-void 	init();
 
 #endif
