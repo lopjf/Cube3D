@@ -1,16 +1,16 @@
 #include "cube.h"
 
-void init(t_base *base)
+void init()
 {
-    get_base()->img.NO = "\0";
-    base->img.SO = "\0";
-    base->img.WE = "\0";
-    base->img.EA = "\0";
-    base->img.F = "\0";
-    base->img.C = "\0";
+    getb()->img.NO = "\0";
+    getb()->img.SO = "\0";
+    getb()->img.WE = "\0";
+    getb()->img.EA = "\0";
+    getb()->img.F = "\0";
+    getb()->img.C = "\0";
 }
 
-t_base *get_base(void)
+t_base *getb(void)
 {
     static t_base base;
 

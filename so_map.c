@@ -1,39 +1,6 @@
 #include "cube.h"
 
-int	win_size(char *map, char c)
-{
-	int	i;
-	int	ret;
-
-	i = 0;
-	ret = 0;
-	if (c == 'x')
-	{
-		ret = 1;
-		while (map[i] != '\0')
-			if (map[i++] == '\n')
-				ret++;
-	}
-	else if (c == 'y')
-		while (map[ret] != '\n' && map[ret] != '\0')
-			ret++;
-	return (ret);
-}
-
-char	*get_map(char *map_name)
-{
-	int		fd;
-	char	*map;
-
-	fd = open(map_name, O_RDONLY);
-	if (fd == -1)
-		return (NULL);
-	map = get_file(fd);
-	close(fd);
-	return (map);
-}
-
-int	check_ext(char *s1)
+static int	check_ext(char *s1)
 {
 	char	*s2;
 	char	*s3;

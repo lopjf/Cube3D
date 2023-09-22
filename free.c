@@ -1,13 +1,12 @@
 #include "cube.h"
 
-void free_all(t_base *base)
+void free_all()
 {
-    free(base->map);
-    free(base->img.NO);
-    free(base->img.SO);
-    free(base->img.WE);
-    free(base->img.EA);
-    free(base->img.F);
-    free(base->img.C);
-    free(base);
+    free(getb()->map);
+    free(getb()->img.NO);
+    free(getb()->img.SO);
+    free(getb()->img.WE);
+    free(getb()->img.EA);
+    free(getb()->img.F);
+    free(getb()->img.C);
 }
