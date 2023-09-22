@@ -27,18 +27,19 @@ static void get_elements(char *buf)
 {
   int i;
 
+  // the || matters here to get a more precise error message when NO is input/ maybe not important
   i = skip_spaces(buf, 0);
-  if (ft_strncmp((buf + i), "NO ", 3) == 0) // || ft_strncmp((buf + i), "NO\0", 3)
+  if (ft_strncmp((buf + i), "NO ", 3) == 0 || ft_strncmp((buf + i), "NO\n", 3) == 0)
     insert(&getb()->data.NO, buf, i, 2);
-  else if (ft_strncmp((buf + i), "SO ", 3) == 0)
+  else if (ft_strncmp((buf + i), "SO ", 3) == 0 || ft_strncmp((buf + i), "SO\n", 3) == 0)
     insert(&getb()->data.SO, buf, i, 2);
-  else if (ft_strncmp((buf + i), "WE ", 3) == 0)
+  else if (ft_strncmp((buf + i), "WE ", 3) == 0 || ft_strncmp((buf + i), "WE\n", 3) == 0)
     insert(&getb()->data.WE, buf, i, 2);
-  else if (ft_strncmp((buf + i), "EA ", 3) == 0)
+  else if (ft_strncmp((buf + i), "EA ", 3) == 0 || ft_strncmp((buf + i), "EA\n", 3) == 0)
     insert(&getb()->data.EA, buf, i, 2);
-  else if (ft_strncmp((buf + i), "F ", 2) == 0)
+  else if (ft_strncmp((buf + i), "F ", 2) == 0 || ft_strncmp((buf + i), "F\n", 3) == 0)
     insert(&getb()->data.F, buf, i, 1);
-  else if (ft_strncmp((buf + i), "C ", 2) == 0)
+  else if (ft_strncmp((buf + i), "C ", 2) == 0 || ft_strncmp((buf + i), "C\n", 3) == 0)
     insert(&getb()->data.C, buf, i, 1);
   else if (ft_strncmp((buf + i), "\n\0", 2) == 0)
   {
@@ -68,4 +69,6 @@ void parse(char *map_name)
       free(buf);
     }
     close(fd);
+    if (ft_strncmp(getb()->map, "\0", 1) == 0)
+      exit(printf("Error: There is no map\n"));
 }
