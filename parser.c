@@ -44,6 +44,7 @@ static void analize(t_base *base, char *buf)
     insert(&base->img.F, buf, i, 1);
   else if (ft_strncmp((buf + i), "C ", 2) == 0)
     insert(&base->img.C, buf, i, 1);
+  // else if any other characters than newline. Say wrong config file
   // else if (map_bool == 0)
   //   printf("map_bool = 0\n");
   // else if all the elements are not NULL
