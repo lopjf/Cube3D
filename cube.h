@@ -27,7 +27,7 @@ typedef struct s_data {
 
 typedef struct s_base {
 	char	*map;
-	t_data	img;
+	t_data	data;
 }				t_base;
 
 int		main(int ac, char *av[]);
@@ -36,5 +36,6 @@ void 	init_all();
 t_base *getb(void);
 void 	parse(char *map_name);
 void 	free_all();
+char	*get_whole_map(char *s1, int fd);
 
 #endif

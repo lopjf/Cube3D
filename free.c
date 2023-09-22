@@ -2,11 +2,18 @@
 
 void free_all()
 {
-    free(getb()->map);
-    free(getb()->img.NO);
-    free(getb()->img.SO);
-    free(getb()->img.WE);
-    free(getb()->img.EA);
-    free(getb()->img.F);
-    free(getb()->img.C);
+    if (getb()->map != NULL)
+        free(getb()->map);
+    if (getb()->data.NO != NULL)
+        free(getb()->data.NO);
+    if (getb()->data.SO != NULL)
+        free(getb()->data.SO);
+    if (getb()->data.WE != NULL)
+        free(getb()->data.WE);
+    if (getb()->data.EA != NULL)
+        free(getb()->data.EA);
+    if (getb()->data.F != NULL)
+        free(getb()->data.F);
+    if (getb()->data.C != NULL)
+        free(getb()->data.C);
 }

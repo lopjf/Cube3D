@@ -10,10 +10,11 @@ t_base *getb(void)
 void init_all()
 {
     getb();
-    getb()->img.NO = "\0";
-    getb()->img.SO = "\0";
-    getb()->img.WE = "\0";
-    getb()->img.EA = "\0";
-    getb()->img.F = "\0";
-    getb()->img.C = "\0";
+    getb()->map = "\0";
+    getb()->data.NO = "\0";
+    getb()->data.SO = "\0";
+    getb()->data.WE = "\0";
+    getb()->data.EA = "\0";
+    getb()->data.F = "\0";
+    getb()->data.C = "\0";
 }

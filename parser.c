@@ -15,40 +15,36 @@ static void insert(char **str, char *buf, int i, int skip)
     exit (printf("Error: An element is defined more than once.\n"));
 }
 
-// static int map_bool()
-// {
-  
-// }
+static int map_bool(char *buf)
+{
+  if (ft_strncmp(getb()->data.NO, "\0", 1) != 0 && ft_strncmp(getb()->data.SO, "\0", 1) != 0 && ft_strncmp(getb()->data.WE, "\0", 1) != 0 && ft_strncmp(getb()->data.EA, "\0", 1) != 0 && ft_strncmp(getb()->data.F, "\0", 1) != 0 && ft_strncmp(getb()->data.C, "\0", 1) != 0)
+    if (buf[0] == ' ' || buf[0] == '1')
+      return 0;
+  return 1;
+}
 
-static void analize(char *buf)
+static void get_elements(char *buf)
 {
   int i;
 
-  // problem with this implementation:
-  // NO
-  // NO assets/textures/walls/stone_bricks/3.xpm
-  // will still work.
-  // solution:
-  // add bools to the struct and set them to 1 when an element has been found once
-
   i = skip_spaces(buf, 0);
-  if (ft_strncmp((buf + i), "NO ", 3) == 0)
-    insert(&getb()->img.NO, buf, i, 2);
+  if (ft_strncmp((buf + i), "NO ", 3) == 0) // || ft_strncmp((buf + i), "NO\0", 3)
+    insert(&getb()->data.NO, buf, i, 2);
   else if (ft_strncmp((buf + i), "SO ", 3) == 0)
-    insert(&getb()->img.SO, buf, i, 2);
+    insert(&getb()->data.SO, buf, i, 2);
   else if (ft_strncmp((buf + i), "WE ", 3) == 0)
-    insert(&getb()->img.WE, buf, i, 2);
+    insert(&getb()->data.WE, buf, i, 2);
   else if (ft_strncmp((buf + i), "EA ", 3) == 0)
-    insert(&getb()->img.EA, buf, i, 2);
+    insert(&getb()->data.EA, buf, i, 2);
   else if (ft_strncmp((buf + i), "F ", 2) == 0)
-    insert(&getb()->img.F, buf, i, 1);
+    insert(&getb()->data.F, buf, i, 1);
   else if (ft_strncmp((buf + i), "C ", 2) == 0)
-    insert(&getb()->img.C, buf, i, 1);
-  // else if any other characters than newline. Say wrong config file
-  // else if (map_bool == 0)
-  //   printf("map_bool = 0\n");
-  // else if all the elements are not NULL
-  // then get the map
+    insert(&getb()->data.C, buf, i, 1);
+  else if (ft_strncmp((buf + i), "\n\0", 2) == 0)
+  {
+  }
+  else
+    exit (printf("Error: Invalid element\n"));
 }
 
 void parse(char *map_name)
@@ -65,9 +61,11 @@ void parse(char *map_name)
       buf = get_next_line(fd);
       if (buf == NULL)
         break;
-      analize(buf);
+      if (map_bool(buf) != 0)
+        get_elements(buf);
+      else
+        getb()->map = get_whole_map(buf, fd);
       free(buf);
     }
     close(fd);
-    getb()->map = ft_strdup("ok");
 }
