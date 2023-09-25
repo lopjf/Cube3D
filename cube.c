@@ -12,8 +12,14 @@ int	main(int ac, char *av[])
 	printf("\nEA:\n%s\n", getb()->data.EA);
 	printf("\nF:\n%s\n", getb()->data.F);
 	printf("\nC:\n%s\n", getb()->data.C);
-	printf("\nmap:\n%s\n", getb()->map);
-
+	printf("\nmap:\n");
+	int i = 0;
+	while (getb()->map[i] != NULL)
+	{
+		printf("%s", getb()->map[i]);
+		i++;
+	}
+	printf("\n");
 	free_all();
 	return (0);
 }

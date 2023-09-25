@@ -2,6 +2,14 @@
 
 void free_all()
 {
+    int i;
+
+    i = 0;
+    while (getb()->map[i] != NULL)
+    {
+        free(getb()->map[i]);
+        i++;
+    }
     if (getb()->map != NULL)
         free(getb()->map);
     if (getb()->data.NO != NULL)
