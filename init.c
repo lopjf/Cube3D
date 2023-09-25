@@ -12,6 +12,7 @@ void init_all()
     getb();
     getb()->map = (char **)malloc(sizeof(char *) * 40);
     getb()->map[0] = "\0";
+    getb()->map_depth = 39;
     getb()->data.NO = "\0";
     getb()->data.SO = "\0";
     getb()->data.WE = "\0";

@@ -27,6 +27,7 @@ typedef struct s_data {
 
 typedef struct s_base {
 	char	**map;
+	int		map_depth;
 	t_data	data;
 }				t_base;
 

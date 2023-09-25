@@ -1,11 +1,7 @@
 #include "cube.h"
 
-int	main(int ac, char *av[])
+static void print_map()
 {
-	check_arg(ac, av);
-	init_all();
-	parse(av[1]);
-
 	printf("\nNO:\n%s\n", getb()->data.NO);
 	printf("\nSO:\n%s\n", getb()->data.SO);
 	printf("\nWE:\n%s\n", getb()->data.WE);
@@ -20,6 +16,16 @@ int	main(int ac, char *av[])
 		i++;
 	}
 	printf("\n");
+
+}
+
+int	main(int ac, char *av[])
+{
+	check_arg(ac, av);
+	init_all();
+	parse(av[1]);
+
+	print_map();
 
 	check_map();
 

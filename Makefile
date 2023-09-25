@@ -12,7 +12,7 @@ OBJS = $(SRCS:.c=.o)
 	
 RM				= rm -f
 FLAGS			= -Wall -Wextra -Werror -I.
-INCLUDE			= -Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz#-lmlx_Linux
+INCLUDE			= -Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz#-fsanitize=address
 
 %.o: %.c
 	gcc $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
@@ -21,7 +21,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(MAKE) -C $(LIBFT_DIR)
-	gcc $(FLAGS) -fsanitize=address $(OBJS) $(LIBFT) $(LIBX) $(INCLUDE) -o $(NAME)
+	gcc $(FLAGS) $(OBJS) $(LIBFT) $(LIBX) $(INCLUDE) -o $(NAME)
 
 $(OBJS): $(SRCS)
 	gcc $(FLAGS) -c $(SRCS)
@@ -35,5 +35,9 @@ fclean:
 	$(RM) $(NAME) $(OBJS)
 
 re: fclean all
+
+# Leak checker without leaks from readline :D
+l: $(NAME)
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file="valgrind.txt" ./cube maps/valid/map2.cub
 
 .PHONY: all clean fclean re

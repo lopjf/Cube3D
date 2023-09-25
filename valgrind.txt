@@ -1,0 +1,154 @@
+==48695== Memcheck, a memory error detector
+==48695== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==48695== Using Valgrind-3.20.0 and LibVEX; rerun with -h for copyright info
+==48695== Command: ./cube maps/valid/map2.cub
+==48695== Parent PID: 48694
+==48695== 
+==48695== Conditional jump or move depends on uninitialised value(s)
+==48695==    at 0x109BFD: parse (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x109408: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==  Uninitialised value was created by a stack allocation
+==48695==    at 0x109B52: parse (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695== 
+==48695== Invalid read of size 8
+==48695==    at 0x1093B3: print_map (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x109412: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==  Address 0x4a96220 is 0 bytes after a block of size 320 alloc'd
+==48695==    at 0x484884F: malloc (vg_replace_malloc.c:393)
+==48695==    by 0x109620: init_all (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x1093F5: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695== 
+==48695== Invalid read of size 8
+==48695==    at 0x109E87: check_wrong_char (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x10A30E: check_map (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x10941C: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==  Address 0x4a96220 is 0 bytes after a block of size 320 alloc'd
+==48695==    at 0x484884F: malloc (vg_replace_malloc.c:393)
+==48695==    by 0x109620: init_all (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x1093F5: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695== 
+==48695== Invalid read of size 8
+==48695==    at 0x10A14A: check_first_last_lines (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x10A208: check_walls (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x10A318: check_map (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x10941C: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==  Address 0x4a96220 is 0 bytes after a block of size 320 alloc'd
+==48695==    at 0x484884F: malloc (vg_replace_malloc.c:393)
+==48695==    by 0x109620: init_all (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x1093F5: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695== 
+==48695== Invalid read of size 8
+==48695==    at 0x10A1E1: check_first_last_lines (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x10A208: check_walls (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x10A318: check_map (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x10941C: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==  Address 0x4a96220 is 0 bytes after a block of size 320 alloc'd
+==48695==    at 0x484884F: malloc (vg_replace_malloc.c:393)
+==48695==    by 0x109620: init_all (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x1093F5: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695== 
+==48695== Invalid read of size 1
+==48695==    at 0x10A1E4: check_first_last_lines (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x10A208: check_walls (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x10A318: check_map (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x10941C: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+==48695== 
+==48695== 
+==48695== Process terminating with default action of signal 11 (SIGSEGV)
+==48695==  Access not within mapped region at address 0x0
+==48695==    at 0x10A1E4: check_first_last_lines (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x10A208: check_walls (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x10A318: check_map (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x10941C: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==  If you believe this happened as a result of a stack
+==48695==  overflow in your program's main thread (unlikely but
+==48695==  possible), you can try to increase the size of the
+==48695==  main thread stack using the --main-stacksize= flag.
+==48695==  The main thread stack size used in this run was 8388608.
+==48695== 
+==48695== HEAP SUMMARY:
+==48695==     in use at exit: 3,237 bytes in 48 blocks
+==48695==   total heap usage: 2,000 allocs, 1,952 frees, 48,784 bytes allocated
+==48695== 
+==48695== 32 bytes in 1 blocks are still reachable in loss record 1 of 9
+==48695==    at 0x484884F: malloc (vg_replace_malloc.c:393)
+==48695==    by 0x10A3EA: ft_strdup (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x109700: insert (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x109A97: get_elements (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x109BBF: parse (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x109408: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695== 
+==48695== 36 bytes in 1 blocks are still reachable in loss record 2 of 9
+==48695==    at 0x484884F: malloc (vg_replace_malloc.c:393)
+==48695==    by 0x10A3EA: ft_strdup (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x109700: insert (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x109B09: get_elements (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x109BBF: parse (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x109408: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695== 
+==48695== 42 bytes in 1 blocks are still reachable in loss record 3 of 9
+==48695==    at 0x484884F: malloc (vg_replace_malloc.c:393)
+==48695==    by 0x10A3EA: ft_strdup (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x109700: insert (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x109A25: get_elements (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x109BBF: parse (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x109408: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695== 
+==48695== 42 bytes in 1 blocks are still reachable in loss record 4 of 9
+==48695==    at 0x484884F: malloc (vg_replace_malloc.c:393)
+==48695==    by 0x10A3EA: ft_strdup (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x109700: insert (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x109941: get_elements (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x109BBF: parse (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x109408: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695== 
+==48695== 42 bytes in 1 blocks are still reachable in loss record 5 of 9
+==48695==    at 0x484884F: malloc (vg_replace_malloc.c:393)
+==48695==    by 0x10A3EA: ft_strdup (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x109700: insert (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x1098CF: get_elements (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x109BBF: parse (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x109408: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695== 
+==48695== 42 bytes in 1 blocks are still reachable in loss record 6 of 9
+==48695==    at 0x484884F: malloc (vg_replace_malloc.c:393)
+==48695==    by 0x10A3EA: ft_strdup (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x109700: insert (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x1099B3: get_elements (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x109BBF: parse (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x109408: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695== 
+==48695== 320 bytes in 1 blocks are still reachable in loss record 7 of 9
+==48695==    at 0x484884F: malloc (vg_replace_malloc.c:393)
+==48695==    by 0x109620: init_all (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x1093F5: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695== 
+==48695== 1,024 bytes in 1 blocks are still reachable in loss record 8 of 9
+==48695==    at 0x484884F: malloc (vg_replace_malloc.c:393)
+==48695==    by 0x48E9C23: _IO_file_doallocate (filedoalloc.c:101)
+==48695==    by 0x48F8D5F: _IO_doallocbuf (genops.c:347)
+==48695==    by 0x48F7FDF: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:744)
+==48695==    by 0x48F6754: _IO_new_file_xsputn (fileops.c:1243)
+==48695==    by 0x48F6754: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1196)
+==48695==    by 0x48E01CC: outstring_func (vfprintf-internal.c:239)
+==48695==    by 0x48E01CC: __vfprintf_internal (vfprintf-internal.c:1263)
+==48695==    by 0x48CB81E: printf (printf.c:33)
+==48695==    by 0x1092B4: print_map (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x109412: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695== 
+==48695== 1,657 bytes in 40 blocks are still reachable in loss record 9 of 9
+==48695==    at 0x484884F: malloc (vg_replace_malloc.c:393)
+==48695==    by 0x10A3EA: ft_strdup (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x109BE8: parse (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695==    by 0x109408: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==48695== 
+==48695== LEAK SUMMARY:
+==48695==    definitely lost: 0 bytes in 0 blocks
+==48695==    indirectly lost: 0 bytes in 0 blocks
+==48695==      possibly lost: 0 bytes in 0 blocks
+==48695==    still reachable: 3,237 bytes in 48 blocks
+==48695==         suppressed: 0 bytes in 0 blocks
+==48695== 
+==48695== For lists of detected and suppressed errors, rerun with: -s
+==48695== ERROR SUMMARY: 6 errors from 6 contexts (suppressed: 0 from 0)
