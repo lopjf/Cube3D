@@ -40,4 +40,7 @@ void 	free_all();
 // utils
 int skip_spaces(char *buf, int i);
 
+// check_map
+void check_map();
+
 #endif

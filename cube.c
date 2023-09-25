@@ -20,6 +20,10 @@ int	main(int ac, char *av[])
 		i++;
 	}
 	printf("\n");
+
+	check_map();
+
+	printf("\n");
 	free_all();
 	return (0);
 }
