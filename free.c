@@ -12,6 +12,8 @@ void free_all()
     }
     if (getb()->map != NULL)
         free(getb()->map);
+    if (getb()->map_string != NULL)
+        free(getb()->map_string);
     if (getb()->data.NO != NULL)
         free(getb()->data.NO);
     if (getb()->data.SO != NULL)

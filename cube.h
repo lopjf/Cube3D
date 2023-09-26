@@ -26,6 +26,7 @@ typedef struct s_data {
 }				t_data;
 
 typedef struct s_base {
+	char	*map_string;
 	char	**map;
 	int		map_depth;
 	t_data	data;
@@ -33,10 +34,15 @@ typedef struct s_base {
 
 int		main(int ac, char *av[]);
 void	check_arg(int ac, char *av[]);
-void 	init_all();
-t_base *getb(void);
 void 	parse(char *map_name);
+
+// free
 void 	free_all();
+
+// init
+t_base *getb(void);
+void init_all();
+void init_map_depth();
 
 // utils
 int skip_spaces(char *buf, int i);

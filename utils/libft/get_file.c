@@ -6,7 +6,7 @@
 /*   By: loris <loris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 14:08:51 by lpenelon          #+#    #+#             */
-/*   Updated: 2022/10/31 00:00:00 by loris            ###   ########.fr       */
+/*   Updated: 2023/09/26 11:37:12 by loris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,6 @@ char	*get_file(int fd)
 	}
 	store = read_file(fd, buff, store);
 	ret = ft_strdup(store);
+	free(store);
 	return (ret);
 }

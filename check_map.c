@@ -13,7 +13,7 @@ static void check_wrong_char()
         while (getb()->map[i][j] != '\0')
         {
             c = getb()->map[i][j];
-            if (c != '0' && c != '1' && c != 'N' && c != 'S' && c != 'E' && c != 'W' && c != ' '&& c != '\n')
+            if (c != '0' && c != '1' && c != 'N' && c != 'S' && c != 'E' && c != 'W' && c != ' ')
                 exit (printf("Error: Invalid character in map\n"));
             j++;
         }
@@ -44,14 +44,14 @@ void check_first_last_lines()
     j = getb()->map_depth;
     while (getb()->map[0][i] != '\0')
     {
-        if (getb()->map[0][i] != '1' && getb()->map[0][i] != ' '&& getb()->map[0][i] != '\n')
+        if (getb()->map[0][i] != '1' && getb()->map[0][i] != ' ')
             exit (printf("Error: Map is not closed/surrounded by walls.\n"));
         i++;
     }
     i = 0;
     while (getb()->map[j][i] != '\0')
     {
-        if (getb()->map[j][i] != '1' && getb()->map[j][i] != ' '&& getb()->map[j][i] != '\n')
+        if (getb()->map[j][i] != '1' && getb()->map[j][i] != ' ')
             exit (printf("Error: Map is not closed/surrounded by walls.\n"));
         i++;
     }

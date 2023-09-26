@@ -7,12 +7,27 @@ t_base *getb(void)
     return (&base);
 }
 
+void init_map_depth()
+{
+    int i;
+    int j;
+
+    i = 0;
+    j = 0;
+    while (getb()->map_string[i] != '\0')
+    {
+        if (getb()->map_string[i] == '\n')
+            j++;
+        i++;
+    }
+    getb()->map_depth = j;
+}
+
 void init_all()
 {
     getb();
-    getb()->map = (char **)malloc(sizeof(char *) * 40);
-    getb()->map[0] = "\0";
-    getb()->map_depth = 39;
+    getb()->map_string = "\0";
+    getb()->map_depth = 0;
     getb()->data.NO = "\0";
     getb()->data.SO = "\0";
     getb()->data.WE = "\0";

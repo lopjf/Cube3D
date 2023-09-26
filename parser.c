@@ -42,41 +42,39 @@ static void get_elements(char *buf)
     exit (printf("Error: Invalid element\n"));
 }
 
-// static char	*get_map(char *buf, int fd)
-// {
-// 	char	*ret;
-//   char  *map;
-// 	int		i;
-// 	int		j;
+char	*get_map_string(char *buf, int fd)
+{
+	char	*ret;
+  char    *map;
+	int		i;
+	int		j;
 
-//   map = get_file(fd);
-// 	ret = (char *)malloc(sizeof(char) * (ft_strlen(buf) + ft_strlen(map) + 1));
-// 	if (!ret)
-//     {
-//       free(map);
-// 		  return (NULL);
-//     }
-// 	i = cpy_ret(ret, buf);
-// 	j = 0;
-// 	while (map[j] != 0)
-// 	{
-// 		ret[i] = map[j];
-// 		j++;
-// 		i++;
-// 	}
-// 	ret[i] = '\0';
-//   free(map);
-// 	return (ret);
-// }
+  map = get_file(fd);
+	ret = (char *)malloc(sizeof(char) * (ft_strlen(buf) + ft_strlen(map) + 1));
+	if (!ret)
+    {
+      free(map);
+		  return (NULL);
+    }
+	i = cpy_ret(ret, buf);
+	j = 0;
+	while (map[j] != 0)
+	{
+		ret[i] = map[j];
+		j++;
+		i++;
+	}
+	ret[i] = '\0';
+  free(map);
+	return (ret);
+}
 
 void parse(char *map_name)
 {
     int fd;
-    int i;
     char *buf;
 
     fd = open(map_name, O_RDONLY);
-    i = 0;
     if (fd == -1)
 		  return ;
 
@@ -88,10 +86,14 @@ void parse(char *map_name)
       if (map_bool(buf) != 0)
         get_elements(buf);
       else
-        getb()->map[i++] = ft_strdup(buf);
+      {
+        getb()->map_string = get_map_string(buf, fd);
+        init_map_depth();
+        getb()->map = ft_split(getb()->map_string, '\n');
+      }
       free(buf);
     }
     close(fd);
-    if (ft_strncmp(getb()->map[0], "\0", 1) == 0)
+    if (ft_strncmp(getb()->map_string, "\0", 1) == 0)
       exit(printf("Error: There is no map\n"));
 }
