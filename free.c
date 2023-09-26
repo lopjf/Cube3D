@@ -1,5 +1,11 @@
 #include "cube.h"
 
+void free_and_exit(char *str)
+{
+    free_all();
+    exit (printf("%s\n", str));
+}
+
 void free_all()
 {
     int i;

@@ -1,21 +1,21 @@
-==28514== Memcheck, a memory error detector
-==28514== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
-==28514== Using Valgrind-3.20.0 and LibVEX; rerun with -h for copyright info
-==28514== Command: ./cube maps/valid/map2.cub
-==28514== Parent PID: 28513
-==28514== 
-==28514== Conditional jump or move depends on uninitialised value(s)
-==28514==    at 0x109D73: parse (in /home/loris/Documents/42_projects/Cube3D/cube)
-==28514==    by 0x10942E: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==28514==  Uninitialised value was created by a stack allocation
-==28514==    at 0x109CAD: parse (in /home/loris/Documents/42_projects/Cube3D/cube)
-==28514== 
-==28514== 
-==28514== HEAP SUMMARY:
-==28514==     in use at exit: 0 bytes in 0 blocks
-==28514==   total heap usage: 3,549 allocs, 3,549 frees, 2,522,429 bytes allocated
-==28514== 
-==28514== All heap blocks were freed -- no leaks are possible
-==28514== 
-==28514== For lists of detected and suppressed errors, rerun with: -s
-==28514== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==30015== Memcheck, a memory error detector
+==30015== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==30015== Using Valgrind-3.20.0 and LibVEX; rerun with -h for copyright info
+==30015== Command: ./cube maps/valid/map2.cub
+==30015== Parent PID: 30014
+==30015== 
+==30015== Conditional jump or move depends on uninitialised value(s)
+==30015==    at 0x109D5E: parse (in /home/loris/Documents/42_projects/Cube3D/cube)
+==30015==    by 0x10942E: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==30015==  Uninitialised value was created by a stack allocation
+==30015==    at 0x109C98: parse (in /home/loris/Documents/42_projects/Cube3D/cube)
+==30015== 
+==30015== 
+==30015== HEAP SUMMARY:
+==30015==     in use at exit: 0 bytes in 0 blocks
+==30015==   total heap usage: 3,549 allocs, 3,549 frees, 2,522,429 bytes allocated
+==30015== 
+==30015== All heap blocks were freed -- no leaks are possible
+==30015== 
+==30015== For lists of detected and suppressed errors, rerun with: -s
+==30015== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)

@@ -38,6 +38,7 @@ void 	parse(char *map_name);
 
 // free
 void 	free_all();
+void free_and_exit(char *str);
 
 // init
 t_base *getb(void);

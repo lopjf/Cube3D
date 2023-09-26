@@ -6,7 +6,7 @@ static void insert(char **str, char *buf, int i, int skip)
   if (ft_strncmp(*str, "\0", 1) == 0)
     *str = ft_strdup(buf + skip_spaces(buf, i + skip));
   else
-    exit (printf("Error: An element is defined more than once.\n"));
+    free_and_exit("Error: An element is defined more than once.");
 }
 
 static int map_bool(char *buf)
@@ -39,7 +39,7 @@ static void get_elements(char *buf)
   {
   }
   else
-    exit (printf("Error: Invalid element\n"));
+    free_and_exit("Error: Invalid element.");
 }
 
 char	*get_map_string(char *buf, int fd)

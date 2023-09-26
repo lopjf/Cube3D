@@ -14,7 +14,7 @@ static void check_wrong_char()
         {
             c = getb()->map[i][j];
             if (c != '0' && c != '1' && c != 'N' && c != 'S' && c != 'E' && c != 'W' && c != ' ')
-                exit (printf("Error: Invalid character in map\n"));
+                free_and_exit("Error: Invalid character in map.");
             j++;
         }
         i++;
@@ -45,14 +45,14 @@ void check_first_last_lines()
     while (getb()->map[0][i] != '\0')
     {
         if (getb()->map[0][i] != '1' && getb()->map[0][i] != ' ')
-            exit (printf("Error: Map is not closed/surrounded by walls.\n"));
+            free_and_exit("Error: Map is not closed/surrounded by walls.");
         i++;
     }
     i = 0;
     while (getb()->map[j][i] != '\0')
     {
         if (getb()->map[j][i] != '1' && getb()->map[j][i] != ' ')
-            exit (printf("Error: Map is not closed/surrounded by walls.\n"));
+            free_and_exit("Error: Map is not closed/surrounded by walls.");
         i++;
     }
 }
@@ -72,7 +72,7 @@ void check_walls()
         {
             if (is_player_or_zero(i, j) == 0)
                 if (v(i, j - 1) != 0 || v(i, j + 1) != 0 || v(i - 1, j) != 0 || v(i + 1, j) != 0)
-                    exit (printf("Error: Map is not closed/surrounded by walls.\n"));
+                    free_and_exit("Error: Map is not closed/surrounded by walls.");
             j++;
         }
         i++;
