@@ -23,28 +23,44 @@ void init_map_depth()
     getb()->map_depth = j;
 }
 
-void init_all()
+void init_data()
 {
-    // getb();
-    // getb()->map_string = "\0";
-    // getb()->map_depth = 0;
-    // getb()->data.NO = "\0";
-    // getb()->data.SO = "\0";
-    // getb()->data.WE = "\0";
-    // getb()->data.EA = "\0";
-    // getb()->data.F = "\0";
-    // getb()->data.C = "\0";
-    
-
-    getb();
-    getb()->map_string = ft_strdup("\0");
     getb()->map = malloc(sizeof(char *) * 1);
     getb()->map[0] = NULL;
+    getb()->map_string = ft_strdup("\0");
     getb()->map_depth = 0;
-    getb()->data.NO = ft_strdup("\0");
-    getb()->data.SO = ft_strdup("\0");
-    getb()->data.WE = ft_strdup("\0");
-    getb()->data.EA = ft_strdup("\0");
-    getb()->data.F = ft_strdup("\0");
-    getb()->data.C = ft_strdup("\0");
+    getb()->data.NOpath = ft_strdup("\0");
+    getb()->data.SOpath = ft_strdup("\0");
+    getb()->data.WEpath = ft_strdup("\0");
+    getb()->data.EApath = ft_strdup("\0");
+    getb()->data.Fpath = ft_strdup("\0");
+    getb()->data.Cpath = ft_strdup("\0");
+}
+
+void init_libx()
+{
+    getb()->libx.mlx = mlx_init();
+    getb()->libx.win = mlx_new_window(getb()->libx.mlx, 640, 480, "Cube 3d");
+    getb()->libx.NO = mlx_xpm_file_to_image(getb()->libx.mlx, getb()->data.NOpath, &getb()->libx.img_width, &getb()->libx.img_height);
+    // if (getb()->libx.NO == NULL)
+        // free_and_exit("Error: Invalid NO path.");
+    // getb()->libx.SO = mlx_xpm_file_to_image(getb()->libx.mlx, getb()->data.SOpath, &getb()->libx.img_width, &getb()->libx.img_height);
+    // if (getb()->libx.SO == NULL)
+        // free_and_exit("Error: Invalid SO path.");
+    // getb()->libx.WE = mlx_xpm_file_to_image(getb()->libx.mlx, getb()->data.WEpath, &getb()->libx.img_width, &getb()->libx.img_height);
+    // if (getb()->libx.WE == NULL)
+        // free_and_exit("Error: Invalid WE path.");
+    // getb()->libx.EA = mlx_xpm_file_to_image(getb()->libx.mlx, getb()->data.EApath, &getb()->libx.img_width, &getb()->libx.img_height);
+    // if (getb()->libx.EA == NULL)
+        // free_and_exit("Error: Invalid EA path.");
+    // getb()->libx.F = mlx_xpm_file_to_image(getb()->libx.mlx, getb()->data.Fpath, &getb()->libx.img_width, &getb()->libx.img_height);
+    // if (getb()->libx.F == NULL)
+        // free_and_exit("Error: Invalid F path.");
+    // getb()->libx.C = mlx_xpm_file_to_image(getb()->libx.mlx, getb()->data.Cpath, &getb()->libx.img_width, &getb()->libx.img_height);
+}
+
+void init_all()
+{
+    getb();
+    init_data();
 }

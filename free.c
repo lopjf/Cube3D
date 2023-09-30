@@ -21,17 +21,17 @@ void free_all()
     
     if (getb()->map_string != NULL)
         free(getb()->map_string);
-    if (getb()->data.NO != NULL)
-        free(getb()->data.NO);
-    if (getb()->data.SO != NULL)
-        free(getb()->data.SO);
-    if (getb()->data.WE != NULL)
-        free(getb()->data.WE);
-    if (getb()->data.EA != NULL)
-        free(getb()->data.EA);
-    if (getb()->data.F != NULL)
-        free(getb()->data.F);
-    if (getb()->data.C != NULL)
-        free(getb()->data.C);
+    if (getb()->data.NOpath != NULL)
+        free(getb()->data.NOpath);
+    if (getb()->data.SOpath != NULL)
+        free(getb()->data.SOpath);
+    if (getb()->data.WEpath != NULL)
+        free(getb()->data.WEpath);
+    if (getb()->data.EApath != NULL)
+        free(getb()->data.EApath);
+    if (getb()->data.Fpath != NULL)
+        free(getb()->data.Fpath);
+    if (getb()->data.Cpath != NULL)
+        free(getb()->data.Cpath);
     
 }

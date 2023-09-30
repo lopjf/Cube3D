@@ -17,19 +17,35 @@
 
 typedef struct s_data {
 	// map elements
-	char	*NO;
-	char	*SO;
-	char	*WE;
-	char	*EA;
-	char	*F;
-	char	*C;
+	char	*NOpath;
+	char	*SOpath;
+	char	*WEpath;
+	char	*EApath;
+	char	*Fpath;
+	char	*Cpath;
 }				t_data;
+
+typedef struct s_libx {
+	// libx management
+	void	*mlx;
+	void	*win;
+	// elements textures and colors
+	void	*NO;
+	void	*SO;
+	void	*WE;
+	void	*EA;
+	void	*F;
+	void 	*C;
+	int		img_width;
+	int		img_height;
+}				t_libx;
 
 typedef struct s_base {
 	char	*map_string;
 	char	**map;
 	int		map_depth;
 	t_data	data;
+	t_libx	libx;
 }				t_base;
 
 int		main(int ac, char *av[]);
@@ -44,11 +60,18 @@ void free_and_exit(char *str);
 t_base *getb(void);
 void init_all();
 void init_map_depth();
+void init_libx();
 
 // utils
 int skip_spaces(char *buf, int i);
 
 // check_map
 void check_map();
+
+// window.c
+void	display_win();
+int	close_win();
+int	fetch_key(int keycode);
+
 
 #endif

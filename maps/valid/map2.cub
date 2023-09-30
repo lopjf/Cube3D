@@ -1,15 +1,15 @@
-   EA    assets/textures/walls/stone_bricks/1.xpm
+   EA    assets/collectible.xpm
 
-SO        assets/textures/walls/stone_bricks/2.xpm
-
-
-NO assets/textures/walls/stone_bricks/3.xpm
+SO        assets/collectible.xpm
 
 
-   WE assets/textures/walls/stone_bricks/4.xpm
+NO assets/collectible.xpm
 
-C assets/sky/mountains/mountains.xpm
-F assets/textures/floor/sand.xpm
+
+   WE assets/collectible.xpm
+
+C assets/collectible.xpm
+F assets/collectible.xpm
 
 
                          111111111

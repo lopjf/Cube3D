@@ -1,6 +1,6 @@
 NAME = cube
 
-SRCS = cube.c args_checker.c init.c parser.c free.c utils.c check_map.c
+SRCS = cube.c args_checker.c init.c parser.c free.c utils.c check_map.c window.c
 
 LIBFT_A = libft.a
 LIBFT_DIR = utils/libft/
@@ -12,7 +12,7 @@ OBJS = $(SRCS:.c=.o)
 	
 RM				= rm -f
 FLAGS			= -Wall -Wextra -Werror -I.
-INCLUDE			= -Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz#-fsanitize=address
+INCLUDE			= -Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz #-fsanitize=address
 
 %.o: %.c
 	gcc $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
@@ -36,8 +36,11 @@ fclean:
 
 re: fclean all
 
-# Leak checker without leaks from readline :D
+# Leak checker without leaks from libx :D / not working
+VALGRIND_CMD = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes
+PROGRAM = ./cube maps/valid/map2.cub
+VALGRIND_LOG = valgrind.txt
 l: $(NAME)
-	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file="valgrind.txt" ./cube maps/valid/map2.cub
+	$(VALGRIND_CMD) --log-file=$(VALGRIND_LOG) $(PROGRAM) 2>&1 | grep -v 'libx'
 
 .PHONY: all clean fclean re

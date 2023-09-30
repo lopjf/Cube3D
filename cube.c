@@ -2,12 +2,12 @@
 
 static void print_map()
 {
-	printf("\nNO:\n%s\n", getb()->data.NO);
-	printf("\nSO:\n%s\n", getb()->data.SO);
-	printf("\nWE:\n%s\n", getb()->data.WE);
-	printf("\nEA:\n%s\n", getb()->data.EA);
-	printf("\nF:\n%s\n", getb()->data.F);
-	printf("\nC:\n%s\n", getb()->data.C);
+	printf("\nNOpath:\n%s\n", getb()->data.NOpath);
+	printf("\nSOpath:\n%s\n", getb()->data.SOpath);
+	printf("\nWEpath:\n%s\n", getb()->data.WEpath);
+	printf("\nEApath:\n%s\n", getb()->data.EApath);
+	printf("\nFpath:\n%s\n", getb()->data.Fpath);
+	printf("\nCpath:\n%s\n", getb()->data.Cpath);
 
 	printf("\nmap:\n%s\n", getb()->map_string);
 	
@@ -32,7 +32,12 @@ int	main(int ac, char *av[])
 
 	check_map();
 
-	printf("\n");
+	init_libx();
+	// display_win();
+	mlx_key_hook(getb()->libx.win, fetch_key, getb());
+	mlx_hook (getb()->libx.win, 17, (1L << 2), close_win, getb());
+	mlx_loop(getb()->libx.mlx);
+
 	free_all();
 	return (0);
 }
