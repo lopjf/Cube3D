@@ -5,11 +5,14 @@ static void insert(char **str, char *buf, int i, int skip)
 {
   if (ft_strncmp(*str, "\0", 1) == 0)
   {
-    // free(*str);
+    free(*str);
     *str = ft_strdup(buf + skip_spaces(buf, i + skip));
   }
   else
+  {
+    free(buf);
     free_and_exit("Error: An element is defined more than once.");
+  }
 }
 
 static int map_bool(char *buf)
@@ -42,7 +45,10 @@ static void get_elements(char *buf)
   {
   }
   else
+  {
+    free(buf);
     free_and_exit("Error: Invalid element.");
+  }
 }
 
 char	*get_map_string(char *buf, int fd)
@@ -90,6 +96,7 @@ void parse(char *map_name)
         get_elements(buf);
       else
       {
+        free(getb()->map_string);
         getb()->map_string = get_map_string(buf, fd);
         init_map_depth();
         free(getb()->map);
