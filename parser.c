@@ -86,7 +86,7 @@ void parse(char *map_name)
     fd = open(map_name, O_RDONLY);
     if (fd == -1)
 		  return ;
-
+    buf = "\0";
     while (buf != NULL)
     {
       buf = get_next_line(fd);
