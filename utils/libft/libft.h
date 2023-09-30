@@ -6,7 +6,7 @@
 /*   By: loris <loris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 14:35:48 by lpenelon          #+#    #+#             */
-/*   Updated: 2023/09/21 21:06:09 by loris            ###   ########.fr       */
+/*   Updated: 2023/09/30 15:01:16 by loris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,13 @@
 # include <errno.h>
 # include <stdbool.h>
 
-#define BUFFER_SIZE 1
+# define BUFFER_SIZE 1
 
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }					t_list;
-
 
 int			ft_isalpha(int c);
 int			ft_isdigit(int c);

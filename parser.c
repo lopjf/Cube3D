@@ -4,7 +4,10 @@
 static void insert(char **str, char *buf, int i, int skip)
 {
   if (ft_strncmp(*str, "\0", 1) == 0)
+  {
+    // free(*str);
     *str = ft_strdup(buf + skip_spaces(buf, i + skip));
+  }
   else
     free_and_exit("Error: An element is defined more than once.");
 }
@@ -89,11 +92,12 @@ void parse(char *map_name)
       {
         getb()->map_string = get_map_string(buf, fd);
         init_map_depth();
+        free(getb()->map);
         getb()->map = ft_split(getb()->map_string, '\n');
       }
       free(buf);
     }
     close(fd);
     if (ft_strncmp(getb()->map_string, "\0", 1) == 0)
-      exit(printf("Error: There is no map\n"));
+      free_and_exit("Error: There is no map.");
 }

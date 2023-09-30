@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpenelon <lpenelon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: loris <loris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 12:09:35 by lpenelon          #+#    #+#             */
-/*   Updated: 2022/03/21 12:51:58 by lpenelon         ###   ########.fr       */
+/*   Updated: 2023/09/30 14:58:58 by loris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,6 @@ char	**ft_split(char const *s, char c)
 		start = put_inside(s, start, c, ret[i]);
 		i++;
 	}
-	ret[i] = 0;
+	ret[i] = NULL;
 	return (ret);
 }

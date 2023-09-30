@@ -16,6 +16,7 @@ void free_all()
         free(getb()->map[i]);
         i++;
     }
+
     if (getb()->map != NULL)
         free(getb()->map);
     if (getb()->map_string != NULL)
@@ -32,4 +33,5 @@ void free_all()
         free(getb()->data.F);
     if (getb()->data.C != NULL)
         free(getb()->data.C);
+    
 }
