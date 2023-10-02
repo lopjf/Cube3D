@@ -1,6 +1,6 @@
 NAME = cube
 
-SRCS = cube.c args_checker.c init.c parser.c free.c utils.c check_map.c window.c
+SRCS = cube.c args_checker.c init.c parser.c free.c utils.c check_map.c window.c check_elements.c
 
 LIBFT_A = libft.a
 LIBFT_DIR = utils/libft/
@@ -47,7 +47,7 @@ invalid: $(NAME)
 	./cube maps/invalid/duplicate_player.cub || true
 	./cube maps/invalid/empty_line.cub || true
 	./cube maps/invalid/empty.cub || true
-	./cube maps/invalid/foo.cub || true
+	./cube maps/invalid/foo.txt || true
 	./cube maps/invalid/invalid_rgb.cub || true
 	./cube maps/invalid/invalid_rgb2.cub || true
 	./cube maps/invalid/invalid_textures.cub || true

@@ -76,5 +76,8 @@ void	display_win();
 int	close_win();
 int	fetch_key(int keycode);
 
+// check_elements.c
+void check_elements();
+
 
 #endif
