@@ -12,7 +12,7 @@ OBJS = $(SRCS:.c=.o)
 	
 RM				= rm -f
 FLAGS			= -Wall -Wextra -Werror -I.
-INCLUDE			= -Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz #-fsanitize=address
+INCLUDE			= -Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -fsanitize=address
 
 %.o: %.c
 	gcc $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
@@ -42,5 +42,24 @@ PROGRAM = ./cube maps/valid/map2.cub
 VALGRIND_LOG = valgrind.txt
 l: $(NAME)
 	$(VALGRIND_CMD) --log-file=$(VALGRIND_LOG) $(PROGRAM) 2>&1 | grep -v 'libx'
+
+invalid: $(NAME)
+	./cube maps/invalid/duplicate_player.cub || true
+	./cube maps/invalid/empty_line.cub || true
+	./cube maps/invalid/empty.cub || true
+	./cube maps/invalid/foo.cub || true
+	./cube maps/invalid/invalid_rgb.cub || true
+	./cube maps/invalid/invalid_rgb2.cub || true
+	./cube maps/invalid/invalid_textures.cub || true
+	./cube maps/invalid/missing_texture.cub || true
+	./cube maps/invalid/no_ceiling_rgb.cub || true
+	./cube maps/invalid/no_ceiling.cub || true
+	./cube maps/invalid/no_floor_rgb.cub || true
+	./cube maps/invalid/no_floor.cub || true
+	./cube maps/invalid/no_player.cub || true
+	./cube maps/invalid/out_of_map_elements.cub || true
+	./cube maps/invalid/player_on_borders.cub || true
+	./cube maps/invalid/unclosed_map.cub || true
+	./cube maps/invalid/unknown_char.cub || true
 
 .PHONY: all clean fclean re

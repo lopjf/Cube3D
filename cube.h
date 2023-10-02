@@ -9,6 +9,9 @@
 # include <fcntl.h>
 # include <errno.h>
 
+# define KEY_RA 65363
+# define KEY_LA 65361
+# define KEY_W 119
 # define KEY_W 119
 # define KEY_D 100
 # define KEY_S 115

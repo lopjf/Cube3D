@@ -25,7 +25,7 @@ int	fetch_key(int keycode)
 	if (keycode == KEY_ESC)
 		close_win();
 	if (keycode == KEY_W || keycode == KEY_D || \
-	keycode == KEY_S || keycode == KEY_A)
+	keycode == KEY_S || keycode == KEY_A || keycode == KEY_RA || keycode == KEY_LA)
 	{
         printf("key pressed\n");
 	}

@@ -9,7 +9,7 @@ static void print_map()
 	printf("\nFpath:\n%s\n", getb()->data.Fpath);
 	printf("\nCpath:\n%s\n", getb()->data.Cpath);
 
-	printf("\nmap:\n%s\n", getb()->map_string);
+	printf("\nmap_string:\n%s\n", getb()->map_string);
 	
 	printf("\nmap:\n");
 	int i = 0;
