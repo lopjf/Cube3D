@@ -1,614 +1,261 @@
-==19495== Memcheck, a memory error detector
-==19495== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
-==19495== Using Valgrind-3.20.0 and LibVEX; rerun with -h for copyright info
-==19495== Command: ./cube maps/valid/map2.cub
-==19495== Parent PID: 19494
-==19495== 
-==19495== Syscall param writev(vector[0]) points to uninitialised byte(s)
-==19495==    at 0x4ADAC07: writev (writev.c:26)
-==19495==    by 0x4BF4A52: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==19495==    by 0x4BF4B1F: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==19495==    by 0x4BF5D67: xcb_writev (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==19495==    by 0x48C161D: _XSend (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x48C5DBF: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x48C6165: XWindowEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x111D45: mlx_int_wait_first_expose (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x111A6E: mlx_new_window (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EEA8: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EAAD: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==  Address 0x4ef6ecc is 28 bytes inside a block of size 16,384 alloc'd
-==19495==    at 0x484D444: calloc (vg_replace_malloc.c:1340)
-==19495==    by 0x48AFE3E: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x1117F7: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EE77: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EAAD: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==  Uninitialised value was created by a stack allocation
-==19495==    at 0x111C60: mlx_int_anti_resize_win (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== Invalid read of size 4
-==19495==    at 0x113030: mlx_destroy_image (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10FD47: close_win (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10FD74: fetch_key (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x111BF5: mlx_loop (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EB14: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==  Address 0x28 is not stack'd, malloc'd or (recently) free'd
-==19495== 
-==19495== 
-==19495== Process terminating with default action of signal 11 (SIGSEGV)
-==19495==  Access not within mapped region at address 0x28
-==19495==    at 0x113030: mlx_destroy_image (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10FD47: close_win (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10FD74: fetch_key (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x111BF5: mlx_loop (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EB14: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==  If you believe this happened as a result of a stack
-==19495==  overflow in your program's main thread (unlikely but
-==19495==  possible), you can try to increase the size of the
-==19495==  main thread stack using the --main-stacksize= flag.
-==19495==  The main thread stack size used in this run was 8388608.
-==19495== 
-==19495== HEAP SUMMARY:
-==19495==     in use at exit: 90,433 bytes in 150 blocks
-==19495==   total heap usage: 3,682 allocs, 3,532 frees, 2,623,191 bytes allocated
-==19495== 
-==19495== 3 bytes in 1 blocks are still reachable in loss record 1 of 61
-==19495==    at 0x484884F: malloc (vg_replace_malloc.c:393)
-==19495==    by 0x4A6860E: strdup (strdup.c:42)
-==19495==    by 0x48AFAC5: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x1117F7: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EE77: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EAAD: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 8 bytes in 1 blocks are still reachable in loss record 2 of 61
-==19495==    at 0x484884F: malloc (vg_replace_malloc.c:393)
-==19495==    by 0x4A6860E: strdup (strdup.c:42)
-==19495==    by 0x48AC92E: XInitExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x4871820: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
-==19495==    by 0x48769E2: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
-==19495==    by 0x111623: mlx_int_deal_shm (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x1118B1: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EE77: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EAAD: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 8 bytes in 1 blocks are still reachable in loss record 3 of 61
-==19495==    at 0x484884F: malloc (vg_replace_malloc.c:393)
-==19495==    by 0x486FB34: ??? (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
-==19495==    by 0x48719DF: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
-==19495==    by 0x48769E2: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
-==19495==    by 0x111623: mlx_int_deal_shm (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x1118B1: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EE77: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EAAD: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 10 bytes in 1 blocks are still reachable in loss record 4 of 61
-==19495==    at 0x484884F: malloc (vg_replace_malloc.c:393)
-==19495==    by 0x4A6860E: strdup (strdup.c:42)
-==19495==    by 0x48AC92E: XInitExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x4916133: XkbUseExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x48B0628: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x1117F7: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EE77: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EAAD: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 16 bytes in 1 blocks are still reachable in loss record 5 of 61
-==19495==    at 0x484884F: malloc (vg_replace_malloc.c:393)
-==19495==    by 0x4BF72EE: xcb_connect_to_fd (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==19495==    by 0x4BF7E6B: xcb_connect_to_display_with_auth_info (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==19495==    by 0x48BFE49: _XConnectXCB (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x48AFAE8: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x1117F7: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EE77: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EAAD: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 21 bytes in 1 blocks are still reachable in loss record 6 of 61
-==19495==    at 0x484884F: malloc (vg_replace_malloc.c:393)
-==19495==    by 0x48AFFBE: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x1117F7: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EE77: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EAAD: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 24 bytes in 1 blocks are still reachable in loss record 7 of 61
-==19495==    at 0x484884F: malloc (vg_replace_malloc.c:393)
-==19495==    by 0x110161: ft_strdup (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EF90: insert (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10F2B6: get_elements (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10F549: parse (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EA8F: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 24 bytes in 1 blocks are still reachable in loss record 8 of 61
-==19495==    at 0x484884F: malloc (vg_replace_malloc.c:393)
-==19495==    by 0x110161: ft_strdup (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EF90: insert (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10F1D2: get_elements (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10F549: parse (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EA8F: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 24 bytes in 1 blocks are still reachable in loss record 9 of 61
-==19495==    at 0x484884F: malloc (vg_replace_malloc.c:393)
-==19495==    by 0x110161: ft_strdup (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EF90: insert (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10F160: get_elements (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10F549: parse (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EA8F: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 24 bytes in 1 blocks are still reachable in loss record 10 of 61
-==19495==    at 0x484884F: malloc (vg_replace_malloc.c:393)
-==19495==    by 0x110161: ft_strdup (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EF90: insert (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10F244: get_elements (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10F549: parse (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EA8F: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 24 bytes in 1 blocks are still reachable in loss record 11 of 61
-==19495==    at 0x484884F: malloc (vg_replace_malloc.c:393)
-==19495==    by 0x110161: ft_strdup (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EF90: insert (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10F39A: get_elements (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10F549: parse (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EA8F: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 24 bytes in 1 blocks are still reachable in loss record 12 of 61
-==19495==    at 0x484884F: malloc (vg_replace_malloc.c:393)
-==19495==    by 0x110161: ft_strdup (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EF90: insert (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10F328: get_elements (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10F549: parse (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EA8F: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 24 bytes in 1 blocks are still reachable in loss record 13 of 61
-==19495==    at 0x484884F: malloc (vg_replace_malloc.c:393)
-==19495==    by 0x4871041: XextCreateExtension (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
-==19495==    by 0x48714CC: ??? (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
-==19495==    by 0x48719C8: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
-==19495==    by 0x48769E2: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
-==19495==    by 0x111623: mlx_int_deal_shm (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x1118B1: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EE77: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EAAD: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 24 bytes in 1 blocks are still reachable in loss record 14 of 61
-==19495==    at 0x484884F: malloc (vg_replace_malloc.c:393)
-==19495==    by 0x4A6860E: strdup (strdup.c:42)
-==19495==    by 0x48AC92E: XInitExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x4871820: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
-==19495==    by 0x487150A: ??? (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
-==19495==    by 0x48719C8: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
-==19495==    by 0x48769E2: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
-==19495==    by 0x111623: mlx_int_deal_shm (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x1118B1: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EE77: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EAAD: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 24 bytes in 1 blocks are still reachable in loss record 15 of 61
-==19495==    at 0x484884F: malloc (vg_replace_malloc.c:393)
-==19495==    by 0x48719F5: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
-==19495==    by 0x48769E2: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
-==19495==    by 0x111623: mlx_int_deal_shm (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x1118B1: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EE77: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EAAD: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 29 bytes in 1 blocks are still reachable in loss record 16 of 61
-==19495==    at 0x484884F: malloc (vg_replace_malloc.c:393)
-==19495==    by 0x48A904D: _XUpdateAtomCache (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x48AB8A9: XInternAtom (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x1118A2: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EE77: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EAAD: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 32 bytes in 1 blocks are still reachable in loss record 17 of 61
-==19495==    at 0x484876A: malloc (vg_replace_malloc.c:392)
-==19495==    by 0x484D6EB: realloc (vg_replace_malloc.c:1451)
-==19495==    by 0x4BFB15E: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==19495==    by 0x4BFB237: xcb_get_extension_data (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==19495==    by 0x4BFB2EE: xcb_prefetch_maximum_request_length (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==19495==    by 0x4BFB364: xcb_get_maximum_request_length (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==19495==    by 0x48B04AB: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x1117F7: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EE77: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EAAD: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 32 bytes in 1 blocks are still reachable in loss record 18 of 61
-==19495==    at 0x484884F: malloc (vg_replace_malloc.c:393)
-==19495==    by 0x4BF41B7: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==19495==    by 0x4BF4A08: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==19495==    by 0x4BF4EB0: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==19495==    by 0x4BF5E44: xcb_wait_for_reply (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==19495==    by 0x4BFB292: xcb_get_extension_data (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==19495==    by 0x4BFB2EE: xcb_prefetch_maximum_request_length (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==19495==    by 0x4BFB364: xcb_get_maximum_request_length (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==19495==    by 0x48B04AB: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x1117F7: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EE77: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EAAD: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 32 bytes in 1 blocks are still reachable in loss record 19 of 61
-==19495==    at 0x484884F: malloc (vg_replace_malloc.c:393)
-==19495==    by 0x48717FF: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
-==19495==    by 0x48769E2: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
-==19495==    by 0x111623: mlx_int_deal_shm (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x1118B1: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EE77: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EAAD: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 32 bytes in 1 blocks are still reachable in loss record 20 of 61
-==19495==    at 0x484884F: malloc (vg_replace_malloc.c:393)
-==19495==    by 0x48717FF: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
-==19495==    by 0x487150A: ??? (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
-==19495==    by 0x48719C8: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
-==19495==    by 0x48769E2: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
-==19495==    by 0x111623: mlx_int_deal_shm (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x1118B1: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EE77: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EAAD: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 33 bytes in 1 blocks are still reachable in loss record 21 of 61
-==19495==    at 0x484884F: malloc (vg_replace_malloc.c:393)
-==19495==    by 0x48A904D: _XUpdateAtomCache (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x48AB8A9: XInternAtom (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x11188B: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EE77: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EAAD: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 40 bytes in 1 blocks are still reachable in loss record 22 of 61
-==19495==    at 0x484884F: malloc (vg_replace_malloc.c:393)
-==19495==    by 0x48C0151: _XPollfdCacheInit (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x48AFDF1: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x1117F7: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EE77: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EAAD: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 48 bytes in 1 blocks are still reachable in loss record 23 of 61
-==19495==    at 0x484884F: malloc (vg_replace_malloc.c:393)
-==19495==    by 0x48BFDD1: _XConnectXCB (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x48AFAE8: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x1117F7: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EE77: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EAAD: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 48 bytes in 1 blocks are still reachable in loss record 24 of 61
-==19495==    at 0x484884F: malloc (vg_replace_malloc.c:393)
-==19495==    by 0x48BFDE7: _XConnectXCB (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x48AFAE8: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x1117F7: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EE77: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EAAD: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 48 bytes in 1 blocks are still reachable in loss record 25 of 61
-==19495==    at 0x484D444: calloc (vg_replace_malloc.c:1340)
-==19495==    by 0x490E3E0: XkbGetMap (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x490E462: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x490E7CF: XkbKeycodeToKeysym (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x112EE7: mlx_int_param_KeyRelease (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x111BF5: mlx_loop (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EB14: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 72 bytes in 1 blocks are still reachable in loss record 26 of 61
-==19495==    at 0x484D444: calloc (vg_replace_malloc.c:1340)
-==19495==    by 0x48AFEA0: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x1117F7: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EE77: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EAAD: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 72 bytes in 1 blocks are still reachable in loss record 27 of 61
-==19495==    at 0x484D444: calloc (vg_replace_malloc.c:1340)
-==19495==    by 0x490E3C4: XkbGetMap (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x490E462: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x490E7CF: XkbKeycodeToKeysym (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x112EE7: mlx_int_param_KeyRelease (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x111BF5: mlx_loop (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EB14: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 112 bytes in 1 blocks are still reachable in loss record 28 of 61
-==19495==    at 0x484D444: calloc (vg_replace_malloc.c:1340)
-==19495==    by 0x48BFCD2: _XConnectXCB (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x48AFAE8: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x1117F7: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EE77: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EAAD: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 112 bytes in 1 blocks are still reachable in loss record 29 of 61
-==19495==    at 0x484D444: calloc (vg_replace_malloc.c:1340)
-==19495==    by 0x48B0180: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x1117F7: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EE77: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EAAD: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 128 bytes in 1 blocks are still reachable in loss record 30 of 61
-==19495==    at 0x484D444: calloc (vg_replace_malloc.c:1340)
-==19495==    by 0x48B00AE: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x1117F7: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EE77: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EAAD: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 128 bytes in 1 blocks are still reachable in loss record 31 of 61
-==19495==    at 0x484D444: calloc (vg_replace_malloc.c:1340)
-==19495==    by 0x48AC91E: XInitExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x4916133: XkbUseExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x48B0628: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x1117F7: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EE77: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EAAD: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 128 bytes in 1 blocks are still reachable in loss record 32 of 61
-==19495==    at 0x484D444: calloc (vg_replace_malloc.c:1340)
-==19495==    by 0x48AC91E: XInitExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x4871820: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
-==19495==    by 0x48769E2: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
-==19495==    by 0x111623: mlx_int_deal_shm (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x1118B1: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EE77: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EAAD: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 128 bytes in 1 blocks are still reachable in loss record 33 of 61
-==19495==    at 0x484D444: calloc (vg_replace_malloc.c:1340)
-==19495==    by 0x48AC91E: XInitExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x4871820: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
-==19495==    by 0x487150A: ??? (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
-==19495==    by 0x48719C8: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
-==19495==    by 0x48769E2: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
-==19495==    by 0x111623: mlx_int_deal_shm (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x1118B1: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EE77: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EAAD: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 136 bytes in 1 blocks are still reachable in loss record 34 of 61
-==19495==    at 0x484884F: malloc (vg_replace_malloc.c:393)
-==19495==    by 0x1117DF: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EE77: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EAAD: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 145 bytes in 1 blocks are still reachable in loss record 35 of 61
-==19495==    at 0x484884F: malloc (vg_replace_malloc.c:393)
-==19495==    by 0x48B0690: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x1117F7: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EE77: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EAAD: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 152 bytes in 1 blocks are still reachable in loss record 36 of 61
-==19495==    at 0x484D444: calloc (vg_replace_malloc.c:1340)
-==19495==    by 0x491632E: XkbUseExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x48B0628: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x1117F7: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EE77: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EAAD: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 160 bytes in 1 blocks are still reachable in loss record 37 of 61
-==19495==    at 0x484884F: malloc (vg_replace_malloc.c:393)
-==19495==    by 0x489E9AF: XCreateGC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x48B0524: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x1117F7: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EE77: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EAAD: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 160 bytes in 1 blocks are still reachable in loss record 38 of 61
-==19495==    at 0x484884F: malloc (vg_replace_malloc.c:393)
-==19495==    by 0x489E9AF: XCreateGC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x111A2E: mlx_new_window (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EEA8: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EAAD: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 168 bytes in 1 blocks are still reachable in loss record 39 of 61
-==19495==    at 0x484D444: calloc (vg_replace_malloc.c:1340)
-==19495==    by 0x48B0032: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x1117F7: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EE77: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EAAD: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 208 bytes in 1 blocks are still reachable in loss record 40 of 61
-==19495==    at 0x484884F: malloc (vg_replace_malloc.c:393)
-==19495==    by 0x486FAE9: ??? (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
-==19495==    by 0x48719DF: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
-==19495==    by 0x48769E2: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
-==19495==    by 0x111623: mlx_int_deal_shm (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x1118B1: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EE77: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EAAD: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 208 bytes in 1 blocks are still reachable in loss record 41 of 61
-==19495==    at 0x484884F: malloc (vg_replace_malloc.c:393)
-==19495==    by 0x48C1F0E: _XEnq (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x48C4B16: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x48C5E20: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x48C6165: XWindowEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x111D45: mlx_int_wait_first_expose (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x111A6E: mlx_new_window (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EEA8: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EAAD: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 256 bytes in 1 blocks are still reachable in loss record 42 of 61
-==19495==    at 0x484D444: calloc (vg_replace_malloc.c:1340)
-==19495==    by 0x491347D: XkbAllocClientMap (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x490DFD5: _XkbReadGetMapReply (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x490E33E: XkbGetUpdatedMap (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x490E414: XkbGetMap (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x490E462: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x490E7CF: XkbKeycodeToKeysym (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x112EE7: mlx_int_param_KeyRelease (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x111BF5: mlx_loop (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EB14: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 328 bytes in 1 blocks are still reachable in loss record 43 of 61
-==19495==    at 0x484884F: malloc (vg_replace_malloc.c:393)
-==19495==    by 0x10FF7F: ft_split (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10F5AF: parse (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EA8F: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 344 bytes in 6 blocks are still reachable in loss record 44 of 61
-==19495==    at 0x484D444: calloc (vg_replace_malloc.c:1340)
-==19495==    by 0x490D965: _XkbReadGetMapReply (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x490E33E: XkbGetUpdatedMap (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x490E414: XkbGetMap (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x490E462: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x490E7CF: XkbKeycodeToKeysym (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x112EE7: mlx_int_param_KeyRelease (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x111BF5: mlx_loop (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EB14: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 416 bytes in 2 blocks are still reachable in loss record 45 of 61
-==19495==    at 0x484884F: malloc (vg_replace_malloc.c:393)
-==19495==    by 0x48C1F0E: _XEnq (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x48C4B16: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x48C5E20: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x48C6130: XWindowEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x111D45: mlx_int_wait_first_expose (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x111A6E: mlx_new_window (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EEA8: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EAAD: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 512 bytes in 1 blocks are still reachable in loss record 46 of 61
-==19495==    at 0x484D444: calloc (vg_replace_malloc.c:1340)
-==19495==    by 0x48AB3EA: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x48AB7CE: XInternAtom (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x11188B: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EE77: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EAAD: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 936 bytes in 1 blocks are still reachable in loss record 47 of 61
-==19495==    at 0x484884F: malloc (vg_replace_malloc.c:393)
-==19495==    by 0x111990: mlx_new_window (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EEA8: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EAAD: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 1,120 bytes in 1 blocks are still reachable in loss record 48 of 61
-==19495==    at 0x484D444: calloc (vg_replace_malloc.c:1340)
-==19495==    by 0x4913539: XkbAllocClientMap (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x490DDEF: _XkbReadGetMapReply (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x490E33E: XkbGetUpdatedMap (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x490E414: XkbGetMap (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x490E462: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x490E7CF: XkbKeycodeToKeysym (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x112EE7: mlx_int_param_KeyRelease (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x111BF5: mlx_loop (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EB14: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 1,456 bytes in 7 blocks are still reachable in loss record 49 of 61
-==19495==    at 0x484884F: malloc (vg_replace_malloc.c:393)
-==19495==    by 0x48C1F0E: _XEnq (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x48C4B16: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x48C5E61: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x48C6130: XWindowEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x111D45: mlx_int_wait_first_expose (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x111A6E: mlx_new_window (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EEA8: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EAAD: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 1,618 bytes in 1 blocks are still reachable in loss record 50 of 61
-==19495==    at 0x484884F: malloc (vg_replace_malloc.c:393)
-==19495==    by 0x10F430: get_map_string (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10F574: parse (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EA8F: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 1,618 bytes in 40 blocks are still reachable in loss record 51 of 61
-==19495==    at 0x484884F: malloc (vg_replace_malloc.c:393)
-==19495==    by 0x10FFFA: ft_split (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10F5AF: parse (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EA8F: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 1,992 bytes in 27 blocks are still reachable in loss record 52 of 61
-==19495==    at 0x484D444: calloc (vg_replace_malloc.c:1340)
-==19495==    by 0x490D74D: _XkbReadGetMapReply (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x490E33E: XkbGetUpdatedMap (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x490E414: XkbGetMap (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x490E462: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x490E7CF: XkbKeycodeToKeysym (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x112EE7: mlx_int_param_KeyRelease (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x111BF5: mlx_loop (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EB14: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 2,048 bytes in 1 blocks are still reachable in loss record 53 of 61
-==19495==    at 0x484D444: calloc (vg_replace_malloc.c:1340)
-==19495==    by 0x490D984: _XkbReadGetMapReply (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x490E33E: XkbGetUpdatedMap (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x490E414: XkbGetMap (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x490E462: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x490E7CF: XkbKeycodeToKeysym (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x112EE7: mlx_int_param_KeyRelease (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x111BF5: mlx_loop (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EB14: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 2,496 bytes in 12 blocks are still reachable in loss record 54 of 61
-==19495==    at 0x484884F: malloc (vg_replace_malloc.c:393)
-==19495==    by 0x48C1F0E: _XEnq (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x48C4B16: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x48C5E61: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x48C6165: XWindowEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x111D45: mlx_int_wait_first_expose (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x111A6E: mlx_new_window (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EEA8: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EAAD: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 4,096 bytes in 1 blocks are still reachable in loss record 55 of 61
-==19495==    at 0x484884F: malloc (vg_replace_malloc.c:393)
-==19495==    by 0x4A3EC23: _IO_file_doallocate (filedoalloc.c:101)
-==19495==    by 0x4A4DD5F: _IO_doallocbuf (genops.c:347)
-==19495==    by 0x4A4CFDF: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:744)
-==19495==    by 0x4A4B754: _IO_new_file_xsputn (fileops.c:1243)
-==19495==    by 0x4A4B754: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1196)
-==19495==    by 0x4A351CC: outstring_func (vfprintf-internal.c:239)
-==19495==    by 0x4A351CC: __vfprintf_internal (vfprintf-internal.c:1263)
-==19495==    by 0x4A2081E: printf (printf.c:33)
-==19495==    by 0x10E914: print_map (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EA99: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 4,096 bytes in 1 blocks are still reachable in loss record 56 of 61
-==19495==    at 0x484D444: calloc (vg_replace_malloc.c:1340)
-==19495==    by 0x490E064: _XkbReadGetMapReply (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x490E33E: XkbGetUpdatedMap (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x490E414: XkbGetMap (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x490E462: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x490E7CF: XkbKeycodeToKeysym (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x112EE7: mlx_int_param_KeyRelease (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x111BF5: mlx_loop (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EB14: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 4,704 bytes in 1 blocks are still reachable in loss record 57 of 61
-==19495==    at 0x484D444: calloc (vg_replace_malloc.c:1340)
-==19495==    by 0x48AFAB1: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x1117F7: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EE77: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EAAD: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 6,740 bytes in 1 blocks are still reachable in loss record 58 of 61
-==19495==    at 0x484D68F: realloc (vg_replace_malloc.c:1451)
-==19495==    by 0x4BF74FB: xcb_connect_to_fd (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==19495==    by 0x4BF7E6B: xcb_connect_to_display_with_auth_info (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==19495==    by 0x48BFE49: _XConnectXCB (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x48AFAE8: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x1117F7: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EE77: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EAAD: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 15,232 bytes in 2 blocks are still reachable in loss record 59 of 61
-==19495==    at 0x484D444: calloc (vg_replace_malloc.c:1340)
-==19495==    by 0x48B0210: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x1117F7: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EE77: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EAAD: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 16,384 bytes in 1 blocks are still reachable in loss record 60 of 61
-==19495==    at 0x484D444: calloc (vg_replace_malloc.c:1340)
-==19495==    by 0x48AFE3E: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x1117F7: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EE77: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EAAD: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== 21,168 bytes in 1 blocks are still reachable in loss record 61 of 61
-==19495==    at 0x484D444: calloc (vg_replace_malloc.c:1340)
-==19495==    by 0x4BF7204: xcb_connect_to_fd (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==19495==    by 0x4BF7E6B: xcb_connect_to_display_with_auth_info (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
-==19495==    by 0x48BFE49: _XConnectXCB (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x48AFAE8: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
-==19495==    by 0x1117F7: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EE77: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495==    by 0x10EAAD: main (in /home/loris/Documents/42_projects/Cube3D/cube)
-==19495== 
-==19495== LEAK SUMMARY:
-==19495==    definitely lost: 0 bytes in 0 blocks
-==19495==    indirectly lost: 0 bytes in 0 blocks
-==19495==      possibly lost: 0 bytes in 0 blocks
-==19495==    still reachable: 90,433 bytes in 150 blocks
-==19495==         suppressed: 0 bytes in 0 blocks
-==19495== 
-==19495== For lists of detected and suppressed errors, rerun with: -s
-==19495== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
+==11266== Memcheck, a memory error detector
+==11266== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==11266== Using Valgrind-3.20.0 and LibVEX; rerun with -h for copyright info
+==11266== Command: ./cube maps/valid/map2.cub
+==11266== Parent PID: 11265
+==11266== 
+==11266== Syscall param writev(vector[0]) points to uninitialised byte(s)
+==11266==    at 0x4ADAC07: writev (writev.c:26)
+==11266==    by 0x4BF4A52: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==11266==    by 0x4BF4B1F: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==11266==    by 0x4BF5D67: xcb_writev (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==11266==    by 0x48C161D: _XSend (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==11266==    by 0x48C5DBF: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==11266==    by 0x48C6165: XWindowEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==11266==    by 0x112125: mlx_int_wait_first_expose (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x111E4E: mlx_new_window (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10EF33: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10EAED: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==  Address 0x4ef738c is 28 bytes inside a block of size 16,384 alloc'd
+==11266==    at 0x484D444: calloc (vg_replace_malloc.c:1340)
+==11266==    by 0x48AFE3E: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==11266==    by 0x111BD7: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10EF02: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10EAED: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==  Uninitialised value was created by a stack allocation
+==11266==    at 0x112040: mlx_int_anti_resize_win (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266== 
+==11266== Invalid read of size 8
+==11266==    at 0x48AEE41: XNextEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==11266==    by 0x111F22: mlx_loop (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10EB86: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==  Address 0x4eee108 is 2,408 bytes inside a block of size 4,704 free'd
+==11266==    at 0x484B0C4: free (vg_replace_malloc.c:884)
+==11266==    by 0x48A1880: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==11266==    by 0x11012A: close_win (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x110157: fetch_key (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x111FD5: mlx_loop (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10EB86: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==  Block was alloc'd at
+==11266==    at 0x484D444: calloc (vg_replace_malloc.c:1340)
+==11266==    by 0x48AFAB1: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==11266==    by 0x111BD7: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10EF02: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10EAED: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266== 
+==11266== Invalid read of size 8
+==11266==    at 0x48C2668: _XFreeEventCookies (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==11266==    by 0x48AEE56: XNextEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==11266==    by 0x111F22: mlx_loop (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10EB86: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==  Address 0x4eee9e0 is 4,672 bytes inside a block of size 4,704 free'd
+==11266==    at 0x484B0C4: free (vg_replace_malloc.c:884)
+==11266==    by 0x48A1880: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==11266==    by 0x11012A: close_win (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x110157: fetch_key (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x111FD5: mlx_loop (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10EB86: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==  Block was alloc'd at
+==11266==    at 0x484D444: calloc (vg_replace_malloc.c:1340)
+==11266==    by 0x48AFAB1: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==11266==    by 0x111BD7: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10EF02: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10EAED: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266== 
+==11266== Invalid read of size 8
+==11266==    at 0x48AEE57: XNextEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==11266==    by 0x111F22: mlx_loop (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10EB86: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==  Address 0x4eed818 is 120 bytes inside a block of size 4,704 free'd
+==11266==    at 0x484B0C4: free (vg_replace_malloc.c:884)
+==11266==    by 0x48A1880: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==11266==    by 0x11012A: close_win (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x110157: fetch_key (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x111FD5: mlx_loop (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10EB86: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==  Block was alloc'd at
+==11266==    at 0x484D444: calloc (vg_replace_malloc.c:1340)
+==11266==    by 0x48AFAB1: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==11266==    by 0x111BD7: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10EF02: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10EAED: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266== 
+==11266== Invalid read of size 8
+==11266==    at 0x48C5DA4: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==11266==    by 0x48AEF27: XNextEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==11266==    by 0x111F22: mlx_loop (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10EB86: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==  Address 0x4eed898 is 248 bytes inside a block of size 4,704 free'd
+==11266==    at 0x484B0C4: free (vg_replace_malloc.c:884)
+==11266==    by 0x48A1880: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==11266==    by 0x11012A: close_win (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x110157: fetch_key (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x111FD5: mlx_loop (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10EB86: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==  Block was alloc'd at
+==11266==    at 0x484D444: calloc (vg_replace_malloc.c:1340)
+==11266==    by 0x48AFAB1: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==11266==    by 0x111BD7: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10EF02: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10EAED: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266== 
+==11266== Invalid read of size 8
+==11266==    at 0x48C14E6: _XSend (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==11266==    by 0x48C5DBF: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==11266==    by 0x48AEF27: XNextEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==11266==    by 0x111F22: mlx_loop (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10EB86: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==  Address 0x4eee1d0 is 2,608 bytes inside a block of size 4,704 free'd
+==11266==    at 0x484B0C4: free (vg_replace_malloc.c:884)
+==11266==    by 0x48A1880: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==11266==    by 0x11012A: close_win (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x110157: fetch_key (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x111FD5: mlx_loop (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10EB86: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==  Block was alloc'd at
+==11266==    at 0x484D444: calloc (vg_replace_malloc.c:1340)
+==11266==    by 0x48AFAB1: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==11266==    by 0x111BD7: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10EF02: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10EAED: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266== 
+==11266== Invalid read of size 8
+==11266==    at 0x48C14ED: _XSend (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==11266==    by 0x48C5DBF: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==11266==    by 0x48AEF27: XNextEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==11266==    by 0x111F22: mlx_loop (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10EB86: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==  Address 0x4eed898 is 248 bytes inside a block of size 4,704 free'd
+==11266==    at 0x484B0C4: free (vg_replace_malloc.c:884)
+==11266==    by 0x48A1880: XCloseDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==11266==    by 0x11012A: close_win (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x110157: fetch_key (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x111FD5: mlx_loop (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10EB86: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==  Block was alloc'd at
+==11266==    at 0x484D444: calloc (vg_replace_malloc.c:1340)
+==11266==    by 0x48AFAB1: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==11266==    by 0x111BD7: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10EF02: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10EAED: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266== 
+==11266== Invalid read of size 8
+==11266==    at 0x48C14F7: _XSend (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==11266==    by 0x48C5DBF: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==11266==    by 0x48AEF27: XNextEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==11266==    by 0x111F22: mlx_loop (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10EB86: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==  Address 0x0 is not stack'd, malloc'd or (recently) free'd
+==11266== 
+==11266== 
+==11266== Process terminating with default action of signal 11 (SIGSEGV)
+==11266==  Access not within mapped region at address 0x0
+==11266==    at 0x48C14F7: _XSend (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==11266==    by 0x48C5DBF: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==11266==    by 0x48AEF27: XNextEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==11266==    by 0x111F22: mlx_loop (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10EB86: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==  If you believe this happened as a result of a stack
+==11266==  overflow in your program's main thread (unlikely but
+==11266==  possible), you can try to increase the size of the
+==11266==  main thread stack using the --main-stacksize= flag.
+==11266==  The main thread stack size used in this run was 8388608.
+==11266== 
+==11266== HEAP SUMMARY:
+==11266==     in use at exit: 7,952 bytes in 50 blocks
+==11266==   total heap usage: 3,769 allocs, 3,719 frees, 2,633,617 bytes allocated
+==11266== 
+==11266== 26 bytes in 1 blocks are still reachable in loss record 1 of 11
+==11266==    at 0x484884F: malloc (vg_replace_malloc.c:393)
+==11266==    by 0x110544: ft_strdup (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10F237: insert (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10F5A5: get_elements (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10F838: parse (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10EACF: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266== 
+==11266== 26 bytes in 1 blocks are still reachable in loss record 2 of 11
+==11266==    at 0x484884F: malloc (vg_replace_malloc.c:393)
+==11266==    by 0x110544: ft_strdup (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10F237: insert (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10F4C1: get_elements (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10F838: parse (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10EACF: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266== 
+==11266== 26 bytes in 1 blocks are still reachable in loss record 3 of 11
+==11266==    at 0x484884F: malloc (vg_replace_malloc.c:393)
+==11266==    by 0x110544: ft_strdup (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10F237: insert (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10F44F: get_elements (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10F838: parse (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10EACF: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266== 
+==11266== 26 bytes in 1 blocks are still reachable in loss record 4 of 11
+==11266==    at 0x484884F: malloc (vg_replace_malloc.c:393)
+==11266==    by 0x110544: ft_strdup (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10F237: insert (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10F533: get_elements (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10F838: parse (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10EACF: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266== 
+==11266== 26 bytes in 1 blocks are still reachable in loss record 5 of 11
+==11266==    at 0x484884F: malloc (vg_replace_malloc.c:393)
+==11266==    by 0x110544: ft_strdup (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10F237: insert (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10F689: get_elements (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10F838: parse (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10EACF: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266== 
+==11266== 26 bytes in 1 blocks are still reachable in loss record 6 of 11
+==11266==    at 0x484884F: malloc (vg_replace_malloc.c:393)
+==11266==    by 0x110544: ft_strdup (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10F237: insert (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10F617: get_elements (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10F838: parse (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10EACF: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266== 
+==11266== 136 bytes in 1 blocks are still reachable in loss record 7 of 11
+==11266==    at 0x484884F: malloc (vg_replace_malloc.c:393)
+==11266==    by 0x111BBF: mlx_init (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10EF02: init_libx (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10EAED: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266== 
+==11266== 328 bytes in 1 blocks are still reachable in loss record 8 of 11
+==11266==    at 0x484884F: malloc (vg_replace_malloc.c:393)
+==11266==    by 0x110362: ft_split (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10F89E: parse (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10EACF: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266== 
+==11266== 1,618 bytes in 1 blocks are still reachable in loss record 9 of 11
+==11266==    at 0x484884F: malloc (vg_replace_malloc.c:393)
+==11266==    by 0x10F71F: get_map_string (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10F863: parse (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10EACF: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266== 
+==11266== 1,618 bytes in 40 blocks are still reachable in loss record 10 of 11
+==11266==    at 0x484884F: malloc (vg_replace_malloc.c:393)
+==11266==    by 0x1103DD: ft_split (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10F89E: parse (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10EACF: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266== 
+==11266== 4,096 bytes in 1 blocks are still reachable in loss record 11 of 11
+==11266==    at 0x484884F: malloc (vg_replace_malloc.c:393)
+==11266==    by 0x4A3EC23: _IO_file_doallocate (filedoalloc.c:101)
+==11266==    by 0x4A4DD5F: _IO_doallocbuf (genops.c:347)
+==11266==    by 0x4A4CFDF: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:744)
+==11266==    by 0x4A4B754: _IO_new_file_xsputn (fileops.c:1243)
+==11266==    by 0x4A4B754: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1196)
+==11266==    by 0x4A351CC: outstring_func (vfprintf-internal.c:239)
+==11266==    by 0x4A351CC: __vfprintf_internal (vfprintf-internal.c:1263)
+==11266==    by 0x4A2081E: printf (printf.c:33)
+==11266==    by 0x10E954: print_map (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266==    by 0x10EAD9: main (in /home/loris/Documents/42_projects/Cube3D/cube)
+==11266== 
+==11266== LEAK SUMMARY:
+==11266==    definitely lost: 0 bytes in 0 blocks
+==11266==    indirectly lost: 0 bytes in 0 blocks
+==11266==      possibly lost: 0 bytes in 0 blocks
+==11266==    still reachable: 7,952 bytes in 50 blocks
+==11266==         suppressed: 0 bytes in 0 blocks
+==11266== 
+==11266== For lists of detected and suppressed errors, rerun with: -s
+==11266== ERROR SUMMARY: 8 errors from 8 contexts (suppressed: 0 from 0)

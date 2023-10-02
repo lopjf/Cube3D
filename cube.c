@@ -35,8 +35,11 @@ int	main(int ac, char *av[])
 	init_libx();
 	// display_win();
 	mlx_key_hook(getb()->libx.win, fetch_key, getb());
+	write(1, "HHERRREEE\n", 10);
 	mlx_hook (getb()->libx.win, 17, (1L << 2), close_win, getb());
+	write(1, "HHERRREEE\n", 10);
 	mlx_loop(getb()->libx.mlx);
+	write(1, "HHERRREEE\n", 10);
 
 	free_all();
 	return (0);

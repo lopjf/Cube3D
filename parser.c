@@ -7,6 +7,8 @@ static void insert(char **str, char *buf, int i, int skip)
   {
     free(*str);
     *str = ft_strdup(buf + skip_spaces(buf, i + skip));
+    if ((*str)[ft_strlen(*str) - 1] == '\n')
+      (*str)[ft_strlen(*str) - 1] = '\0';
   }
   else
   {

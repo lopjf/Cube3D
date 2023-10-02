@@ -41,22 +41,23 @@ void init_libx()
 {
     getb()->libx.mlx = mlx_init();
     getb()->libx.win = mlx_new_window(getb()->libx.mlx, 640, 480, "Cube 3d");
+    printf("NOpath:%s", getb()->data.NOpath);
     getb()->libx.NO = mlx_xpm_file_to_image(getb()->libx.mlx, getb()->data.NOpath, &getb()->libx.img_width, &getb()->libx.img_height);
-    // if (getb()->libx.NO == NULL)
-        // free_and_exit("Error: Invalid NO path.");
-    // getb()->libx.SO = mlx_xpm_file_to_image(getb()->libx.mlx, getb()->data.SOpath, &getb()->libx.img_width, &getb()->libx.img_height);
-    // if (getb()->libx.SO == NULL)
-        // free_and_exit("Error: Invalid SO path.");
-    // getb()->libx.WE = mlx_xpm_file_to_image(getb()->libx.mlx, getb()->data.WEpath, &getb()->libx.img_width, &getb()->libx.img_height);
-    // if (getb()->libx.WE == NULL)
-        // free_and_exit("Error: Invalid WE path.");
-    // getb()->libx.EA = mlx_xpm_file_to_image(getb()->libx.mlx, getb()->data.EApath, &getb()->libx.img_width, &getb()->libx.img_height);
-    // if (getb()->libx.EA == NULL)
-        // free_and_exit("Error: Invalid EA path.");
-    // getb()->libx.F = mlx_xpm_file_to_image(getb()->libx.mlx, getb()->data.Fpath, &getb()->libx.img_width, &getb()->libx.img_height);
-    // if (getb()->libx.F == NULL)
-        // free_and_exit("Error: Invalid F path.");
-    // getb()->libx.C = mlx_xpm_file_to_image(getb()->libx.mlx, getb()->data.Cpath, &getb()->libx.img_width, &getb()->libx.img_height);
+    if (getb()->libx.NO == NULL)
+        free_and_exit("Error: Invalid NO path.");
+    getb()->libx.SO = mlx_xpm_file_to_image(getb()->libx.mlx, getb()->data.SOpath, &getb()->libx.img_width, &getb()->libx.img_height);
+    if (getb()->libx.SO == NULL)
+        free_and_exit("Error: Invalid SO path.");
+    getb()->libx.WE = mlx_xpm_file_to_image(getb()->libx.mlx, getb()->data.WEpath, &getb()->libx.img_width, &getb()->libx.img_height);
+    if (getb()->libx.WE == NULL)
+        free_and_exit("Error: Invalid WE path.");
+    getb()->libx.EA = mlx_xpm_file_to_image(getb()->libx.mlx, getb()->data.EApath, &getb()->libx.img_width, &getb()->libx.img_height);
+    if (getb()->libx.EA == NULL)
+        free_and_exit("Error: Invalid EA path.");
+    getb()->libx.F = mlx_xpm_file_to_image(getb()->libx.mlx, getb()->data.Fpath, &getb()->libx.img_width, &getb()->libx.img_height);
+    if (getb()->libx.F == NULL)
+        free_and_exit("Error: Invalid F path.");
+    getb()->libx.C = mlx_xpm_file_to_image(getb()->libx.mlx, getb()->data.Cpath, &getb()->libx.img_width, &getb()->libx.img_height);
 }
 
 void init_all()
