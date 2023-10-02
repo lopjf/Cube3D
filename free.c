@@ -2,11 +2,11 @@
 
 void free_and_exit(char *str)
 {
-    free_all();
+    free_data();
     exit (printf("%s\n", str));
 }
 
-void free_all()
+void free_data()
 {
     int i;
 
@@ -32,6 +32,5 @@ void free_all()
     if (getb()->data.Fpath != NULL)
         free(getb()->data.Fpath);
     if (getb()->data.Cpath != NULL)
-        free(getb()->data.Cpath);
-    
+        free(getb()->data.Cpath);    
 }

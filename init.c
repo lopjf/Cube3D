@@ -41,7 +41,6 @@ void init_libx()
 {
     getb()->libx.mlx = mlx_init();
     getb()->libx.win = mlx_new_window(getb()->libx.mlx, 640, 480, "Cube 3d");
-    printf("NOpath:%s", getb()->data.NOpath);
     getb()->libx.NO = mlx_xpm_file_to_image(getb()->libx.mlx, getb()->data.NOpath, &getb()->libx.img_width, &getb()->libx.img_height);
     if (getb()->libx.NO == NULL)
         free_and_exit("Error: Invalid NO path.");

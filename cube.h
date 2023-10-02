@@ -53,7 +53,7 @@ void	check_arg(int ac, char *av[]);
 void 	parse(char *map_name);
 
 // free
-void 	free_all();
+void 	free_data();
 void free_and_exit(char *str);
 
 // init
