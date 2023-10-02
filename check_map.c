@@ -28,6 +28,7 @@ int is_player_or_zero(int i, int j)
     return (1);
 }
 
+// v for valid
 int v(int i, int j)
 {
     if (getb()->map[i][j] == '0' || getb()->map[i][j] == 'N' || getb()->map[i][j] == 'S' || getb()->map[i][j] == 'E' || getb()->map[i][j] == 'W' || getb()->map[i][j] == '1')
@@ -79,8 +80,22 @@ void check_walls()
     }
 }
 
+static void check_newlines()
+{
+    int i;
+
+    i = 0;
+    while (getb()->map_string[i + 1] != '\0')
+    {
+        if (getb()->map_string[i] == '\n' && getb()->map_string[i + 1] == '\n')
+            free_and_exit("Error: Map has too many newlines.");
+        i++;
+    }
+}
+
 void check_map()
 {
+    check_newlines();
     check_wrong_char();
     check_walls();
 }
