@@ -3,12 +3,23 @@
 
 static void insert(char **str, char *buf, int i, int skip)
 {
+  int j;
+  int k;
+
+  j = 0;
   if (ft_strncmp(*str, "\0", 1) == 0)
   {
     free(*str);
     *str = ft_strdup(buf + skip_spaces(buf, i + skip));
     if ((*str)[ft_strlen(*str) - 1] == '\n')
       (*str)[ft_strlen(*str) - 1] = '\0';
+    // printf ("str: %s\n", *str);
+    while ((*str)[j] != ' ' && (*str)[j] != '\0')
+      j++;
+    k = skip_spaces(*str, j);
+    if ((*str)[k] != '\0' && (*str)[k] != '\n')
+      free_and_exit("Error: Space can't compose an element value.");
+    (*str)[j] = '\0';
   }
   else
   {
@@ -29,7 +40,7 @@ static void get_elements(char *buf)
 {
   int i;
 
-  // the || matters here to get a more precise error message when NOpath is input/ maybe not important
+  // the || matters here to get a more precise error message when NOpath is input
   i = skip_spaces(buf, 0);
   if (ft_strncmp((buf + i), "NO ", 3) == 0 || ft_strncmp((buf + i), "NO\n", 3) == 0)
     insert(&getb()->data.NOpath, buf, i, 2);

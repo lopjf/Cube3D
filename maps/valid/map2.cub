@@ -8,10 +8,10 @@ NO ./assets/collectible.xpm
 
    WE ./assets/collectible.xpm
 
-C ./assets/collectible.xpm
-F ./assets/collectible.xpm
+C 0,25,30
+F 0,25,30
 
 
                          111111111
-                        10000000001
+                        1000000N001
                          111111111

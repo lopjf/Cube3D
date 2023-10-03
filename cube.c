@@ -30,7 +30,7 @@ int	main(int ac, char *av[])
 
 	// print_map();
 
-	check_elements();
+	check_rgb();
 	check_map();
 
 	init_libx();

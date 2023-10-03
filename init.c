@@ -17,7 +17,13 @@ void init_map_depth()
     while (getb()->map_string[i] != '\0')
     {
         if (getb()->map_string[i] == '\n')
+        {
+            while (getb()->map_string[i] == '\n')
+                i++;
+            if (getb()->map_string[i] != '\0')
+                break ;
             j++;
+        }
         i++;
     }
     getb()->map_depth = j;

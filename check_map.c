@@ -50,6 +50,9 @@ void check_first_last_lines()
         i++;
     }
     i = 0;
+    // if (getb()->map[j][i] == '\0')
+    //     j--;
+    // printf("j: %d\n", j);
     while (getb()->map[j][i] != '\0')
     {
         if (getb()->map[j][i] != '1' && getb()->map[j][i] != ' ')
@@ -88,9 +91,35 @@ static void check_newlines()
     while (getb()->map_string[i + 1] != '\0')
     {
         if (getb()->map_string[i] == '\n' && getb()->map_string[i + 1] == '\n')
-            free_and_exit("Error: Map has too many newlines.");
+        {
+            while (getb()->map_string[i] == '\n')
+                i++;
+            if (getb()->map_string[i] != '\0')
+                free_and_exit("Error: Map can't be separated by a newline.");
+        }
         i++;
     }
+}
+
+static void check_player()
+{
+    int i;
+    int flag;
+
+    i = 0;
+    flag = 0;
+    while(getb()->map_string[i] != '\0')
+    {
+        if (getb()->map_string[i] == 'N' || getb()->map_string[i] == 'S' || getb()->map_string[i] == 'E' || getb()->map_string[i] == 'W')
+        {
+            if (flag == 1)
+                free_and_exit("Error: Map has more than one player.");
+            flag = 1;
+        }
+        i++;
+    }
+    if (!flag)
+        free_and_exit("Error: Map doesn't have a player.");
 }
 
 void check_map()
@@ -98,4 +127,5 @@ void check_map()
     check_newlines();
     check_wrong_char();
     check_walls();
+    check_player();
 }

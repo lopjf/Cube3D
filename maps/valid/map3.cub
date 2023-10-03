@@ -1,5 +1,3 @@
-R 1500 1500
-
 EA assets/textures/walls/stone_bricks/1.xpm
 
 SO assets/textures/walls/stone_bricks/2.xpm
@@ -8,11 +6,10 @@ NO assets/textures/walls/stone_bricks/3.xpm
 
 WE assets/textures/walls/stone_bricks/4.xpm
 
-S assets/sprites/barrel-w-shadow.xpm
 
-C assets/sky/mountains/mountains.xpm
+C 0,25,30
 
-F assets/textures/floor/sand.xpm
+F 0,25,30
 
       111
      14S41
