@@ -10,7 +10,7 @@
 // 	printf("\nCpath:\n%s\n", getb()->data.Cpath);
 
 // 	printf("\nmap_string:\n%s\n", getb()->map_string);
-	
+
 // 	printf("\nmap:\n");
 // 	int i = 0;
 // 	while (getb()->map[i] != NULL)

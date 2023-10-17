@@ -15,7 +15,7 @@ int	close_win()
 	mlx_destroy_display(getb()->libx.mlx);
 	free(getb()->libx.mlx);
 	free_data();
-    exit(0);
+	exit(0);
 }
 
 int	fetch_key(int keycode)
@@ -25,7 +25,7 @@ int	fetch_key(int keycode)
 	if (keycode == KEY_W || keycode == KEY_D || \
 	keycode == KEY_S || keycode == KEY_A || keycode == KEY_RA || keycode == KEY_LA)
 	{
-        printf("key pressed\n");
+		printf("key pressed\n");
 	}
-    return (0);
+	return (0);
 }

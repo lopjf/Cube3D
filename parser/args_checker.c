@@ -25,7 +25,7 @@ static int	check_ext(char *s1)
 
 void	check_arg(int ac, char *av[])
 {
-	int		fd;
+	int	fd;
 
 	if (ac != 2)
 	{

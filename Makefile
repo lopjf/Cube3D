@@ -1,6 +1,7 @@
 NAME = cube
 
-SRCS = cube.c args_checker.c init.c parser.c free.c utils.c check_map.c window.c check_rgb.c
+SRCS =	cube.c parser/args_checker.c data/init.c parser/parser.c data/free.c \
+		parser/parser_utils.c parser/check_map.c window/window.c parser/check_rgb.c
 
 LIBFT_A = libft.a
 LIBFT_DIR = utils/libft/
@@ -9,13 +10,13 @@ LIBFT  = $(addprefix $(LIBFT_DIR), $(LIBFT_A))
 LIBX = ./utils/minilibx-linux/libmlx.a
 
 OBJS = $(SRCS:.c=.o)
-	
+
 RM				= rm -f
 FLAGS			= -Wall -Wextra -Werror -I.
-INCLUDE			= -Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -fsanitize=address
+INCLUDE			= -Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz #-fsanitize=address
 
 %.o: %.c
-	gcc $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
+	gcc $(FLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
 
 all: $(NAME)
 
@@ -23,8 +24,8 @@ $(NAME): $(OBJS)
 	$(MAKE) -C $(LIBFT_DIR)
 	gcc $(FLAGS) $(OBJS) $(LIBFT) $(LIBX) $(INCLUDE) -o $(NAME)
 
-$(OBJS): $(SRCS)
-	gcc $(FLAGS) -c $(SRCS)
+#$(OBJS): $(SRCS)
+#	gcc $(FLAGS) -c $< -o $@
 
 clean:
 	$(MAKE) clean -C $(LIBFT_DIR)
