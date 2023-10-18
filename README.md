@@ -25,7 +25,6 @@
 ![Rotation Matrix](assets/image/rotation_matrix.png)
 ]
 
-
 Next step:
 
 - [] init dda_struct with start pos, dir, and plane
