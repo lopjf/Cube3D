@@ -28,6 +28,20 @@ typedef struct s_data {
 	char	*Cpath;
 }				t_data;
 
+/*
+pos: X and Y starting position
+dir: direction and length of view
+plane: surface of camera screen amnd vision length
+*/
+typedef struct s_dda {
+	int posX;
+	int	posY;
+	int	dirX;
+	int	dirY;
+	int planeX;
+	int planeY;
+}				t_dda;
+
 typedef struct s_libx {
 	// libx management
 	void	*mlx;
