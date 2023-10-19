@@ -1,6 +1,6 @@
 NAME = cube
 
-SRCS =	cube.c parser/args_checker.c data/init.c parser/parser.c data/free.c \
+SRCS =	cube.c parser/args_checker.c data/init_baser.c parser/parser.c data/free.c \
 		parser/parser_utils.c parser/check_map.c window/window.c parser/check_rgb.c
 
 LIBFT_A = libft.a
