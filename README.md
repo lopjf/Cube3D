@@ -23,7 +23,7 @@
 - **Player rotation**: When the player rotates, the dir and the plane have to rotate as well, the rays will automatically rotate as well. For the rotation the vector needs to be multiplied with the rotation matrix
 
 ![Rotation Matrix](assets/image/rotation_matrix.png)
-]
+
 
 
 Next step:
