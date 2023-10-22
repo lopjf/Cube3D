@@ -1,7 +1,8 @@
 NAME = cube
 
 SRCS =	cube.c parser/args_checker.c data/init_base.c parser/parser.c data/free.c \
-		parser/parser_utils.c parser/check_map.c parser/check_map2.c window/window.c parser/check_rgb.c
+		parser/parser_utils.c parser/check_map.c parser/check_map2.c window/window.c \
+		parser/check_rgb.c data/init_dda.c
 
 LIBFT_A = libft.a
 LIBFT_DIR = utils/libft/
@@ -13,7 +14,7 @@ OBJS = $(SRCS:.c=.o)
 
 RM				= rm -f
 FLAGS			= -Wall -Wextra -Werror -I.
-INCLUDE			= -Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz #-fsanitize=address
+INCLUDE			= -Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -fsanitize=address
 
 %.o: %.c
 	gcc $(FLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
@@ -29,7 +30,7 @@ $(NAME): $(OBJS)
 
 clean:
 	$(MAKE) clean -C $(LIBFT_DIR)
-	$(RM) $(NAME) $(OBJS)
+	$(RM) $(OBJS)
 
 fclean:
 	$(MAKE) fclean -C $(LIBFT_DIR)

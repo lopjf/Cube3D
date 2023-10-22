@@ -71,4 +71,5 @@ void	init_libx(void)
 void	init_all(void)
 {
 	init_data();
+	init_dda();
 }

@@ -74,9 +74,12 @@ void	free_and_exit(char *str);
 
 // init.c
 t_base	*getb(void);
+t_dda	*get_dda(void);
 void	init_all(void);
 void	init_map_depth(void);
 void	init_libx(void);
+void	init_dda();
+
 
 // utils.c
 int		skip_spaces(char *buf, int i);
