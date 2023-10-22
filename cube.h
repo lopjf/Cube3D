@@ -34,12 +34,12 @@ dir: direction and length of view
 plane: surface of camera screen amnd vision length
 */
 typedef struct s_dda {
-	int posX;
-	int	posY;
-	int	dirX;
-	int	dirY;
-	int planeX;
-	int planeY;
+	int	pos_x;
+	int	pos_y;
+	int	dir_x;
+	int	dir_y;
+	int	plane_x;
+	int	plane_y;
 }				t_dda;
 
 	// libx management & elements textures and colors
@@ -80,8 +80,7 @@ t_dda	*get_dda(void);
 void	init_all(void);
 void	init_map_depth(void);
 void	init_libx(void);
-void	init_dda();
-
+void	init_dda(void);
 
 // utils.c
 int		skip_spaces(char *buf, int i);
