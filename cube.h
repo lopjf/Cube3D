@@ -31,7 +31,7 @@ typedef struct s_data {
 /*
 pos: X and Y starting position
 dir: direction and length of view
-plane: surface of camera screen amnd vision length
+plane: surface of camera screen and vision length
 */
 typedef struct s_dda {
 	int	pos_x;
@@ -56,12 +56,14 @@ typedef struct s_libx {
 	int		img_height;
 }				t_libx;
 
+//map_depth: y-achsis
 typedef struct s_base {
 	char	*map_string;
 	char	**map;
 	int		map_depth;
 	t_data	data;
 	t_libx	libx;
+	t_dda	*dda;
 }				t_base;
 
 int		main(int ac, char *av[]);
@@ -77,7 +79,8 @@ void	free_and_exit(char *str);
 // init.c
 t_base	*getb(void);
 t_dda	*get_dda(void);
-void	init_all(void);
+void	init_before(void);
+void	init_after(void);
 void	init_map_depth(void);
 void	init_libx(void);
 void	init_dda(void);

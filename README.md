@@ -28,4 +28,4 @@
 
 Next step:
 
-- [] init dda_struct with start pos, dir, and plane
+- [X] init dda_struct with start pos, dir, and plane

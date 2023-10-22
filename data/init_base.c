@@ -41,6 +41,7 @@ void	init_data(void)
 	getb()->data.ea_path = ft_strdup("\0");
 	getb()->data.f_path = ft_strdup("\0");
 	getb()->data.c_path = ft_strdup("\0");
+	getb()->dda = get_dda();
 }
 
 void	init_libx(void)
@@ -68,8 +69,14 @@ void	init_libx(void)
 		free_and_exit("Error: Invalid ea path.");
 }
 
-void	init_all(void)
+void	init_before(void)
 {
 	init_data();
-	init_dda();
 }
+
+void	init_after(void)
+{
+	init_dda();
+	init_libx();
+}
+

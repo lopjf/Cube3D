@@ -1,6 +1,6 @@
 #include "cube.h"
 
-// static void print_map()
+//static void print_map()
 // {
 // 	printf("\nNOpath:\n%s\n", getb()->data.no_path);
 // 	printf("\nSOpath:\n%s\n", getb()->data.so_path);
@@ -25,15 +25,15 @@
 int	main(int ac, char *av[])
 {
 	check_arg(ac, av);
-	init_all();
+	init_before();
 	parse(av[1], getb(), 0, "\0");
 
-	// print_map();
+	//print_map();
 
 	check_rgb();
 	check_map();
 
-	init_libx();
+	init_after();
 	display_win();
 	mlx_key_hook(getb()->libx.win, fetch_key, getb());
 	mlx_hook (getb()->libx.win, 17, (1L << 2), close_win, getb());
