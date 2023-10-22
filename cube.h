@@ -42,10 +42,10 @@ step_ : direction of next step, always 1 or -1 (if negative or positive)
 typedef struct s_dda {
 	double		pos_x;
 	double		pos_y;
-	int		dir_x;
-	int		dir_y;
-	int		plane_x;
-	int		plane_y;
+	double		dir_x;
+	double		dir_y;
+	double		plane_x;
+	double		plane_y;
 	int		nr_rays;
 	double	ray_dir_x;
 	double	ray_dir_y;

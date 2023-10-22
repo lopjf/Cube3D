@@ -13,10 +13,10 @@ void	init_dir_plane(int dir_x, int dir_y, int plane_x, int plane_y)
 	t_dda	*dda;
 
 	dda = get_dda();
-	dda->dir_x = dir_x;
-	dda->dir_y = dir_y;
-	dda->plane_x = plane_x;
-	dda->plane_y = plane_y;
+	dda->dir_x = (double) dir_x;
+	dda->dir_y = (double) dir_y;
+	dda->plane_x = (double) plane_x;
+	dda->plane_y = (double) plane_y;
 	dda->nr_rays = 10;
 	dda->map_x = dda->pos_x;
 	dda->map_y = dda->pos_y;
@@ -52,8 +52,8 @@ void	init_dda(void)
 			if (map[i][j] != '0' && map[i][j] != '1' && map[i][j] != ' ')
 			{
 				dir = map[i][j];
-				get_dda()->pos_x = i;
-				get_dda()->pos_y = j;
+				get_dda()->pos_x = (double) i;
+				get_dda()->pos_y = (double) j;
 				break ;
 			}
 			j++;
