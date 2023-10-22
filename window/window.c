@@ -19,14 +19,14 @@ int	close_win(void)
 	exit(0);
 }
 
-static void print_s_dda() {
-    printf("pos_x: %d\n", get_dda()->pos_x);
-    printf("pos_y: %d\n", get_dda()->pos_y);
-    printf("dir_x: %d\n", get_dda()->dir_x);
-    printf("dir_y: %d\n", get_dda()->dir_y);
-    printf("plane_x: %d\n", get_dda()->plane_x);
-    printf("plane_y: %d\n", get_dda()->plane_y);
-}
+// static void print_s_dda() {
+//     printf("pos_x: %f\n", get_dda()->pos_x);
+//     printf("pos_y: %f\n", get_dda()->pos_y);
+//     printf("dir_x: %f\n", get_dda()->dir_x);
+//     printf("dir_y: %f\n", get_dda()->dir_y);
+//     printf("plane_x: %f\n", get_dda()->plane_x);
+//     printf("plane_y: %f\n", get_dda()->plane_y);
+// }
 
 int	fetch_key(int keycode)
 {
@@ -35,16 +35,14 @@ int	fetch_key(int keycode)
 		close_win();
 	else if (keycode == KEY_RA || keycode == KEY_LA)
     {
-		printf("Moving vision\n");
         update_dir(keycode);
-        // update_plane(keycode);
+        update_plane(keycode);
     }
 	else if (keycode == KEY_W || keycode == KEY_D || \
 	keycode == KEY_S || keycode == KEY_A)
     {
-		printf("Moving POV\n");
         update_pos(keycode);
     }
-	print_s_dda();
+	// print_s_dda();
 	return (0);
 }
