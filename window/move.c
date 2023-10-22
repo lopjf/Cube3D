@@ -26,7 +26,7 @@ void update_pos(int keycode)
 
 void update_dir(int keycode)
 {
-	double old_dir_x;
+	double	old_dir_x;
 
 	if (keycode == KEY_RA)
 	{
