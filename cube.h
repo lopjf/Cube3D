@@ -18,14 +18,14 @@
 # define KEY_A 97
 # define KEY_ESC 65307
 
-typedef struct s_data {
 	// map elements
-	char	*NOpath;
-	char	*SOpath;
-	char	*WEpath;
-	char	*EApath;
-	char	*Fpath;
-	char	*Cpath;
+typedef struct s_data {
+	char	*no_path;
+	char	*so_path;
+	char	*we_path;
+	char	*ea_path;
+	char	*f_path;
+	char	*c_path;
 }				t_data;
 
 /*
@@ -42,17 +42,16 @@ typedef struct s_dda {
 	int planeY;
 }				t_dda;
 
+	// libx management & elements textures and colors
 typedef struct s_libx {
-	// libx management
 	void	*mlx;
 	void	*win;
-	// elements textures and colors
-	void	*NO;
-	void	*SO;
-	void	*WE;
-	void	*EA;
-	void	*F;
-	void 	*C;
+	void	*no;
+	void	*so;
+	void	*we;
+	void	*ea;
+	void	*f;
+	void	*c;
 	int		img_width;
 	int		img_height;
 }				t_libx;
@@ -67,31 +66,33 @@ typedef struct s_base {
 
 int		main(int ac, char *av[]);
 void	check_arg(int ac, char *av[]);
-void 	parse(char *map_name);
+void	parse(char *map_name);
 
-// free
-void 	free_data();
-void free_and_exit(char *str);
+// free.c
+void	free_data(void);
+void	free_and_exit(char *str);
 
-// init
-t_base *getb(void);
-void init_all();
-void init_map_depth();
-void init_libx();
+// init.c
+t_base	*getb(void);
+void	init_all(void);
+void	init_map_depth(void);
+void	init_libx(void);
 
-// utils
-int skip_spaces(char *buf, int i);
+// utils.c
+int		skip_spaces(char *buf, int i);
 
-// check_map
-void check_map();
+// check_map.c & check_map2.c
+void	check_map(void);
+void	check_first_last_lines(void);
+int		is_player_or_zero(int i, int j);
+int		v(int i, int j);
 
 // window.c
-void	display_win();
-int	close_win();
-int	fetch_key(int keycode);
+void	display_win(void);
+int		close_win(void);
+int		fetch_key(int keycode);
 
 // check_elements.c
-void check_rgb();
-
+void	check_rgb(void);
 
 #endif

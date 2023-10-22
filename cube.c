@@ -2,12 +2,12 @@
 
 // static void print_map()
 // {
-// 	printf("\nNOpath:\n%s\n", getb()->data.NOpath);
-// 	printf("\nSOpath:\n%s\n", getb()->data.SOpath);
-// 	printf("\nWEpath:\n%s\n", getb()->data.WEpath);
-// 	printf("\nEApath:\n%s\n", getb()->data.EApath);
-// 	printf("\nFpath:\n%s\n", getb()->data.Fpath);
-// 	printf("\nCpath:\n%s\n", getb()->data.Cpath);
+// 	printf("\nNOpath:\n%s\n", getb()->data.no_path);
+// 	printf("\nSOpath:\n%s\n", getb()->data.so_path);
+// 	printf("\nWEpath:\n%s\n", getb()->data.we_path);
+// 	printf("\nEApath:\n%s\n", getb()->data.ea_path);
+// 	printf("\nFpath:\n%s\n", getb()->data.f_path);
+// 	printf("\nCpath:\n%s\n", getb()->data.c_path);
 
 // 	printf("\nmap_string:\n%s\n", getb()->map_string);
 

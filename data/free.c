@@ -1,12 +1,12 @@
 #include "cube.h"
 
-void free_and_exit(char *str)
+void	free_and_exit(char *str)
 {
 	free_data();
 	exit(printf("%s\n", str));
 }
 
-void free_data()
+void	free_data(void)
 {
 	int	i;
 
@@ -18,19 +18,18 @@ void free_data()
 	}
 	if (getb()->map != NULL)
 		free(getb()->map);
-
 	if (getb()->map_string != NULL)
 		free(getb()->map_string);
-	if (getb()->data.NOpath != NULL)
-		free(getb()->data.NOpath);
-	if (getb()->data.SOpath != NULL)
-		free(getb()->data.SOpath);
-	if (getb()->data.WEpath != NULL)
-		free(getb()->data.WEpath);
-	if (getb()->data.EApath != NULL)
-		free(getb()->data.EApath);
-	if (getb()->data.Fpath != NULL)
-		free(getb()->data.Fpath);
-	if (getb()->data.Cpath != NULL)
-		free(getb()->data.Cpath);
+	if (getb()->data.no_path != NULL)
+		free(getb()->data.no_path);
+	if (getb()->data.so_path != NULL)
+		free(getb()->data.so_path);
+	if (getb()->data.we_path != NULL)
+		free(getb()->data.we_path);
+	if (getb()->data.ea_path != NULL)
+		free(getb()->data.ea_path);
+	if (getb()->data.f_path != NULL)
+		free(getb()->data.f_path);
+	if (getb()->data.c_path != NULL)
+		free(getb()->data.c_path);
 }

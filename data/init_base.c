@@ -1,13 +1,13 @@
 #include "cube.h"
 
-t_base *getb(void)
+t_base	*getb(void)
 {
-	static t_base base;
+	static t_base	base;
 
 	return (&base);
 }
 
-void init_map_depth()
+void	init_map_depth(void)
 {
 	int	i;
 	int	j;
@@ -21,7 +21,7 @@ void init_map_depth()
 			while (getb()->map_string[i] == '\n')
 				i++;
 			if (getb()->map_string[i] != '\0')
-				break;
+				break ;
 			j++;
 		}
 		i++;
@@ -29,39 +29,46 @@ void init_map_depth()
 	getb()->map_depth = j;
 }
 
-void init_data()
+void	init_data(void)
 {
 	getb()->map = malloc(sizeof(char *) * 1);
 	getb()->map[0] = NULL;
 	getb()->map_string = ft_strdup("\0");
 	getb()->map_depth = 0;
-	getb()->data.NOpath = ft_strdup("\0");
-	getb()->data.SOpath = ft_strdup("\0");
-	getb()->data.WEpath = ft_strdup("\0");
-	getb()->data.EApath = ft_strdup("\0");
-	getb()->data.Fpath = ft_strdup("\0");
-	getb()->data.Cpath = ft_strdup("\0");
+	getb()->data.no_path = ft_strdup("\0");
+	getb()->data.so_path = ft_strdup("\0");
+	getb()->data.we_path = ft_strdup("\0");
+	getb()->data.ea_path = ft_strdup("\0");
+	getb()->data.f_path = ft_strdup("\0");
+	getb()->data.c_path = ft_strdup("\0");
 }
 
-void init_libx()
+void	init_libx(void)
 {
+	t_base	*b;
+
+	b = getb();
 	getb()->libx.mlx = mlx_init();
-	getb()->libx.win = mlx_new_window(getb()->libx.mlx, 640, 480, "Cube 3d");
-	getb()->libx.NO = mlx_xpm_file_to_image(getb()->libx.mlx, getb()->data.NOpath, &getb()->libx.img_width, &getb()->libx.img_height);
-	if (getb()->libx.NO == NULL)
-		free_and_exit("Error: Invalid NO path.");
-	getb()->libx.SO = mlx_xpm_file_to_image(getb()->libx.mlx, getb()->data.SOpath, &getb()->libx.img_width, &getb()->libx.img_height);
-	if (getb()->libx.SO == NULL)
-		free_and_exit("Error: Invalid SO path.");
-	getb()->libx.WE = mlx_xpm_file_to_image(getb()->libx.mlx, getb()->data.WEpath, &getb()->libx.img_width, &getb()->libx.img_height);
-	if (getb()->libx.WE == NULL)
-		free_and_exit("Error: Invalid WE path.");
-	getb()->libx.EA = mlx_xpm_file_to_image(getb()->libx.mlx, getb()->data.EApath, &getb()->libx.img_width, &getb()->libx.img_height);
-	if (getb()->libx.EA == NULL)
-		free_and_exit("Error: Invalid EA path.");
+	b->libx.win = mlx_new_window(b->libx.mlx, 640, 480, "Cube 3d");
+	b->libx.no = mlx_xpm_file_to_image(b->libx.mlx, b->data.no_path, \
+&b->libx.img_width, &b->libx.img_height);
+	if (getb()->libx.no == NULL)
+		free_and_exit("Error: Invalid no path.");
+	b->libx.so = mlx_xpm_file_to_image(b->libx.mlx, b->data.so_path, \
+&b->libx.img_width, &b->libx.img_height);
+	if (getb()->libx.so == NULL)
+		free_and_exit("Error: Invalid so path.");
+	b->libx.we = mlx_xpm_file_to_image(b->libx.mlx, b->data.we_path, \
+&b->libx.img_width, &b->libx.img_height);
+	if (getb()->libx.we == NULL)
+		free_and_exit("Error: Invalid we path.");
+	b->libx.ea = mlx_xpm_file_to_image(b->libx.mlx, b->data.ea_path, \
+&b->libx.img_width, &b->libx.img_height);
+	if (getb()->libx.ea == NULL)
+		free_and_exit("Error: Invalid ea path.");
 }
 
-void init_all()
+void	init_all(void)
 {
 	init_data();
 }
