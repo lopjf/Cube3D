@@ -28,41 +28,49 @@ static void	insert(char **str, char *buf, int i, int skip)
 
 static int	map_bool(char *buf)
 {
-	if (ft_strncmp(getb()->data.no_path, "\0", 1) != 0 && ft_strncmp(getb()->data.so_path, "\0", 1) != 0 && ft_strncmp(getb()->data.we_path, "\0", 1) != 0 && ft_strncmp(getb()->data.ea_path, "\0", 1) != 0 && ft_strncmp(getb()->data.f_path, "\0", 1) != 0 && ft_strncmp(getb()->data.c_path, "\0", 1) != 0)
-	if (buf[0] == ' ' || buf[0] == '1')
-		return 0;
-	return 1;
+	if (ft_strncmp(getb()->data.no_path, "\0", 1) != 0 && \
+ft_strncmp(getb()->data.so_path, "\0", 1) != 0 && \
+ft_strncmp(getb()->data.we_path, "\0", 1) != 0 && \
+ft_strncmp(getb()->data.ea_path, "\0", 1) != 0 && \
+ft_strncmp(getb()->data.f_path, "\0", 1) != 0 && \
+ft_strncmp(getb()->data.c_path, "\0", 1) != 0)
+		if (buf[0] == ' ' || buf[0] == '1')
+			return (0);
+	return (1);
 }
 
 // the || matters here to get a more precise error message when no_path is input
-static void	get_elements(char *buf)
+// else if (ft_strncmp((buf + i), "\n\0", 2) != 0) act like an else.
+// But if (ft_strncmp((buf + i), "\n\0", 2) == 0), then do nothing.
+static void	get_elements(char *buf, int i)
 {
-	int	i;
-
 	i = skip_spaces(buf, 0);
-	if (ft_strncmp((buf + i), "NO ", 3) == 0 || ft_strncmp((buf + i), "NO\n", 3) == 0)
+	if (ft_strncmp((buf + i), "NO ", 3) == 0 || \
+ft_strncmp((buf + i), "NO\n", 3) == 0)
 		insert(&getb()->data.no_path, buf, i, 2);
-	else if (ft_strncmp((buf + i), "SO ", 3) == 0 || ft_strncmp((buf + i), "SO\n", 3) == 0)
+	else if (ft_strncmp((buf + i), "SO ", 3) == 0 || \
+ft_strncmp((buf + i), "SO\n", 3) == 0)
 		insert(&getb()->data.so_path, buf, i, 2);
-	else if (ft_strncmp((buf + i), "WE ", 3) == 0 || ft_strncmp((buf + i), "WE\n", 3) == 0)
+	else if (ft_strncmp((buf + i), "WE ", 3) == 0 || \
+ft_strncmp((buf + i), "WE\n", 3) == 0)
 		insert(&getb()->data.we_path, buf, i, 2);
-	else if (ft_strncmp((buf + i), "EA ", 3) == 0 || ft_strncmp((buf + i), "EA\n", 3) == 0)
+	else if (ft_strncmp((buf + i), "EA ", 3) == 0 || \
+ft_strncmp((buf + i), "EA\n", 3) == 0)
 		insert(&getb()->data.ea_path, buf, i, 2);
-	else if (ft_strncmp((buf + i), "F ", 2) == 0 || ft_strncmp((buf + i), "F\n", 3) == 0)
+	else if (ft_strncmp((buf + i), "F ", 2) == 0 || \
+ft_strncmp((buf + i), "F\n", 3) == 0)
 		insert(&getb()->data.f_path, buf, i, 1);
-	else if (ft_strncmp((buf + i), "C ", 2) == 0 || ft_strncmp((buf + i), "C\n", 3) == 0)
+	else if (ft_strncmp((buf + i), "C ", 2) == 0 || \
+ft_strncmp((buf + i), "C\n", 3) == 0)
 		insert(&getb()->data.c_path, buf, i, 1);
-	else if (ft_strncmp((buf + i), "\n\0", 2) == 0)
-	{
-	}
-	else
+	else if (ft_strncmp((buf + i), "\n\0", 2) != 0)
 	{
 		free(buf);
 		free_and_exit("Error: Invalid element.");
 	}
 }
 
-char	*get_map_string(char *buf, int fd)
+static char	*get_map_string(char *buf, int fd)
 {
 	char	*ret;
 	char	*map;
@@ -89,24 +97,18 @@ char	*get_map_string(char *buf, int fd)
 	return (ret);
 }
 
-void	parse(char *map_name)
+void	parse(char *map_name, t_base *b, int fd, char *buf)
 {
-	t_base	*b;
-	int		fd;
-	char	*buf;
-
-	b = getb();
 	fd = open(map_name, O_RDONLY);
 	if (fd == -1)
 		return ;
-	buf = "\0";
 	while (buf != NULL)
 	{
 		buf = get_next_line(fd);
 		if (buf == NULL)
 			break ;
 		if (map_bool(buf) != 0)
-			get_elements(buf);
+			get_elements(buf, 0);
 		else
 		{
 			free(getb()->map_string);

@@ -26,7 +26,7 @@ int	main(int ac, char *av[])
 {
 	check_arg(ac, av);
 	init_all();
-	parse(av[1]);
+	parse(av[1], getb(), 0, "\0");
 
 	// print_map();
 

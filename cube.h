@@ -66,7 +66,9 @@ typedef struct s_base {
 
 int		main(int ac, char *av[]);
 void	check_arg(int ac, char *av[]);
-void	parse(char *map_name);
+
+// parser.c
+void	parse(char *map_name, t_base *b, int fd, char *buf);
 
 // free.c
 void	free_data(void);
