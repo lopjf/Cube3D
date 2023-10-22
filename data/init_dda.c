@@ -27,7 +27,7 @@ void	get_dir_plane(char dir)
 		init_dir_plane(0, -1, -1, 0);
 	else if (dir == 'E')
 		init_dir_plane(1, 0, 0, 1);
-	else if (dir == 'N')
+	else if (dir == 'W')
 		init_dir_plane(-1, 0, 0, -1);
 }
 

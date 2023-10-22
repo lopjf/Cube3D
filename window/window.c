@@ -30,14 +30,21 @@ static void print_s_dda() {
 
 int	fetch_key(int keycode)
 {
-	print_s_dda();
     
     if (keycode == KEY_ESC)
 		close_win();
 	else if (keycode == KEY_RA || keycode == KEY_LA)
+    {
 		printf("Moving vision\n");
+        update_dir(keycode);
+        // update_plane(keycode);
+    }
 	else if (keycode == KEY_W || keycode == KEY_D || \
 	keycode == KEY_S || keycode == KEY_A)
+    {
 		printf("Moving POV\n");
+        update_pos(keycode);
+    }
+	print_s_dda();
 	return (0);
 }
