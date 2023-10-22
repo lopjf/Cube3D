@@ -17,6 +17,9 @@ void	init_dir_plane(int dir_x, int dir_y, int plane_x, int plane_y)
 	dda->dir_y = dir_y;
 	dda->plane_x = plane_x;
 	dda->plane_y = plane_y;
+	dda->nr_rays = 10;
+	dda->map_x = dda->pos_x;
+	dda->map_y = dda->pos_y;
 }
 
 void	get_dir_plane(char dir)

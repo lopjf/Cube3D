@@ -32,14 +32,31 @@ typedef struct s_data {
 pos: X and Y starting position
 dir: direction and length of view
 plane: surface of camera screen and vision length
+nr_rays: amount of rays
+ray_dir_ : x and y direction of ray
+map_ : the square the ray is currently inside (int coordniates)
+side_dist_ : distance of ray from first pos to nxt x and y-side
+delta_dist_ : distance to next x and y-side
+step_ : direction of next step, always 1 or -1 (if negative or positive)
 */
 typedef struct s_dda {
-	int	pos_x;
-	int	pos_y;
-	int	dir_x;
-	int	dir_y;
-	int	plane_x;
-	int	plane_y;
+	double		pos_x;
+	double		pos_y;
+	int		dir_x;
+	int		dir_y;
+	int		plane_x;
+	int		plane_y;
+	int		nr_rays;
+	double	ray_dir_x;
+	double	ray_dir_y;
+	int		map_x;
+	int		map_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	int		step_x;
+	int		step_y;
 }				t_dda;
 
 	// libx management & elements textures and colors

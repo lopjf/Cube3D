@@ -6,6 +6,8 @@
 </p>
 
 
+## DDA
+
 - **position**: Green dot in Image1
 - **Direction vector**: (black line) A vector showing the direction the player is looking to
 - **Camera plane vector**: (blue line) A vector, that represens the surface of the camera screen. ector, that is perpendicular (90 degrees) to the direction plane
@@ -14,6 +16,7 @@
 
 ![Image1](assets/image/pos_dir_plane.png)
 
+![delta_dist and side_dist](assets/image/delta_dist-side_dist.png)
 
 </p>
 
