@@ -19,9 +19,20 @@ int	close_win(void)
 	exit(0);
 }
 
+static void print_s_dda() {
+    printf("pos_x: %d\n", get_dda()->pos_x);
+    printf("pos_y: %d\n", get_dda()->pos_y);
+    printf("dir_x: %d\n", get_dda()->dir_x);
+    printf("dir_y: %d\n", get_dda()->dir_y);
+    printf("plane_x: %d\n", get_dda()->plane_x);
+    printf("plane_y: %d\n", get_dda()->plane_y);
+}
+
 int	fetch_key(int keycode)
 {
-	if (keycode == KEY_ESC)
+	print_s_dda();
+    
+    if (keycode == KEY_ESC)
 		close_win();
 	else if (keycode == KEY_RA || keycode == KEY_LA)
 		printf("Moving vision\n");
