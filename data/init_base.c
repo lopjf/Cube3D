@@ -50,7 +50,7 @@ void	init_libx(void)
 
 	b = getb();
 	getb()->libx.mlx = mlx_init();
-	b->libx.win = mlx_new_window(b->libx.mlx, 640, 480, "Cube 3d");
+	b->libx.win = mlx_new_window(b->libx.mlx, WIN_W, WIN_H, "Cube 3d");
 	b->libx.no = mlx_xpm_file_to_image(b->libx.mlx, b->data.no_path, \
 &b->libx.img_width, &b->libx.img_height);
 	if (getb()->libx.no == NULL)

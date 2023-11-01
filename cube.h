@@ -17,6 +17,8 @@
 # define KEY_A 97
 # define KEY_ESC 65307
 # define ROT_SPEED 0.1
+# define WIN_H 480
+# define WIN_W 640
 
 	// map elements
 typedef struct s_data {
@@ -38,14 +40,15 @@ map_ : the square the ray is currently inside (int coordniates)
 side_dist_ : distance of ray from first pos to nxt x and y-side
 delta_dist_ : distance to next x and y-side
 step_ : direction of next step, always 1 or -1 (if negative or positive)
+perp_wall_dist: distance wall_collision from camera plane
 */
 typedef struct s_dda {
-	double		pos_x;
-	double		pos_y;
-	double		dir_x;
-	double		dir_y;
-	double		plane_x;
-	double		plane_y;
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
 	int		nr_rays;
 	double	ray_dir_x;
 	double	ray_dir_y;
@@ -57,6 +60,7 @@ typedef struct s_dda {
 	double	delta_dist_y;
 	int		step_x;
 	int		step_y;
+	double	perp_wall_dist;
 }				t_dda;
 
 	// libx management & elements textures and colors
@@ -101,6 +105,7 @@ void	init_after(void);
 void	init_map_depth(void);
 void	init_libx(void);
 void	init_dda(void);
+void	start_dda(void);
 
 // utils.c
 int		skip_spaces(char *buf, int i);

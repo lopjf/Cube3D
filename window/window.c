@@ -2,6 +2,7 @@
 
 void	display_win(void)
 {
+	start_dda();
 	mlx_put_image_to_window(getb()->libx.mlx, \
 	getb()->libx.win, getb()->libx.no, 64, 64);
 }
@@ -30,20 +31,20 @@ int	close_win(void)
 
 int	fetch_key(int keycode)
 {
-    
-    if (keycode == KEY_ESC)
+
+	if (keycode == KEY_ESC)
 		close_win();
 	else if (keycode == KEY_RA || keycode == KEY_LA)
     {
         update_dir(keycode);
         update_plane(keycode);
-								display_win();
+		display_win();
     }
 	else if (keycode == KEY_W || keycode == KEY_D || \
 	keycode == KEY_S || keycode == KEY_A)
     {
         update_pos(keycode);
-								display_win();
+		display_win();
     }
 	// print_s_dda();
 	return (0);

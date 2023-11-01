@@ -18,8 +18,6 @@ void	init_dir_plane(int dir_x, int dir_y, int plane_x, int plane_y)
 	dda->plane_x = (double) plane_x;
 	dda->plane_y = (double) plane_y;
 	dda->nr_rays = 10;
-	dda->map_x = dda->pos_x;
-	dda->map_y = dda->pos_y;
 }
 
 void	get_dir_plane(char dir)
@@ -43,12 +41,15 @@ void	init_dda(void)
 
 	map = getb()->map;
 	i = 1;
-	j = 1;
 	dir = '0';
+
 	while (map[i])
 	{
-		while (map[i][j])
+		j = 1;
+		while (map[i][j] != '\0')
 		{
+			//if (write(1, "\n", 1)== -1) {}
+			//if (write(1, &map[i][j], 1)== -1) {}
 			if (map[i][j] != '0' && map[i][j] != '1' && map[i][j] != ' ')
 			{
 				dir = map[i][j];
