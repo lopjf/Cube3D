@@ -37,11 +37,13 @@ int	fetch_key(int keycode)
     {
         update_dir(keycode);
         update_plane(keycode);
+								display_win();
     }
 	else if (keycode == KEY_W || keycode == KEY_D || \
 	keycode == KEY_S || keycode == KEY_A)
     {
         update_pos(keycode);
+								display_win();
     }
 	// print_s_dda();
 	return (0);

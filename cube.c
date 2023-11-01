@@ -34,7 +34,7 @@ int	main(int ac, char *av[])
 	check_map();
 
 	init_after();
-	display_win();
+	 
 	mlx_key_hook(getb()->libx.win, fetch_key, getb());
 	mlx_hook (getb()->libx.win, 17, (1L << 2), close_win, getb());
 	mlx_loop(getb()->libx.mlx);
