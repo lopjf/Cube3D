@@ -60,7 +60,35 @@ void	dda(t_dda *dda, char **map)
 		dda->perp_wall_dist = dda->side_dist_x - dda->delta_dist_x;
 	else
 		dda->perp_wall_dist = dda->side_dist_y - dda->delta_dist_y;
-	printf("\nperp_wall_dist: %f", dda->perp_wall_dist);
+	printf("\nray_dir_x: %f, ray_dir_y: %f, cameraperp_wall_dist: %f",dda->ray_dir_x, dda->ray_dir_y, dda->perp_wall_dist);
+}
+
+//void	draw_ver_line(int x, int draw_start, int draw_end, int color)
+//{
+
+//}
+
+void	draw_line(t_base *base, int x)
+{
+	int	line_height;
+	int	draw_start;
+	int	draw_end;
+	int color;
+
+	line_height = (int)(WIN_H / base->dda->perp_wall_dist);
+	draw_start = -line_height / 2 + WIN_H / 2;
+	if (draw_start < 0)
+		draw_start = 0;
+	draw_end = line_height / 2 + WIN_H / 2;
+	if (draw_end < 0)
+		draw_end = WIN_H - 1;
+	printf("\ndraw_start: %i, draw_end: %i, line_height: %i", draw_start, draw_end, line_height);
+	color = create_trgb(0, 0, 254, 0);
+	while (draw_start < draw_end)
+	{
+		mlx_pixel_put(base->libx.mlx, base->libx.win, x, draw_start, color);
+		draw_start++;
+	}
 }
 
 /*
@@ -79,7 +107,7 @@ void	start_dda(void)
 	base = getb();
 	printf("\npos: %f %f", base->dda->pos_x, base->dda->pos_y);
 	x = 0;
-	while(x < base->dda->nr_rays)
+	while(x < base->map_depth)
 	{
 		//printf("\nray nr.: %i", x);
 		camera_x = (double)(2 * x) / base->dda->nr_rays - 1;
@@ -91,6 +119,7 @@ void	start_dda(void)
 		base->dda->map_y = base->dda->pos_y;
 		init_step_sidedist(base->dda);
 		dda(base->dda, base->map);
+		draw_line(base, x);
 		x++;
 	}
 }

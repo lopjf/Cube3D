@@ -2,7 +2,8 @@ NAME = cube
 
 SRCS =	cube.c parser/args_checker.c data/init_base.c parser/parser.c data/free.c \
 		parser/parser_utils.c parser/check_map.c parser/check_map2.c window/window.c \
-		parser/check_rgb.c data/init_dda.c window/move.c window/raycaster.c
+		parser/check_rgb.c data/init_dda.c window/move.c window/raycaster.c \
+		window/window_util.c
 
 LIBFT_A = libft.a
 LIBFT_DIR = utils/libft/

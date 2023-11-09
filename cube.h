@@ -49,7 +49,7 @@ typedef struct s_dda {
 	double	dir_y;
 	double	plane_x;
 	double	plane_y;
-	int		nr_rays;
+	int		nr_rays; //evtl not needed
 	double	ray_dir_x;
 	double	ray_dir_y;
 	int		map_x;
@@ -120,9 +120,10 @@ int		v(int i, int j);
 void	display_win(void);
 int		close_win(void);
 int		fetch_key(int keycode);
-void update_pos(int keycode);
-void update_dir(int keycode);
-void update_plane(int keycode);
+void	update_pos(int keycode);
+void	update_dir(int keycode);
+void	update_plane(int keycode);
+int		create_trgb(int t, int r, int g, int b);
 
 
 // check_elements.c
