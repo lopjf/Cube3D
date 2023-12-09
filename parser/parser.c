@@ -114,6 +114,7 @@ void	parse(char *map_name, t_base *b, int fd, char *buf)
 			free(getb()->map_string);
 			b->map_string = get_map_string(buf, fd);
 			init_map_depth();
+			init_map_width();
 			free(getb()->map);
 	b->map = ft_split(b->map_string, '\n');
 		}

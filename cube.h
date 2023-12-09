@@ -84,6 +84,7 @@ typedef struct s_base {
 	char	*map_string;
 	char	**map;
 	int		map_depth;
+	int		map_width;
 	t_data	data;
 	t_libx	libx;
 	t_dda	*dda;
@@ -105,6 +106,7 @@ t_dda	*get_dda(void);
 void	init_before(void);
 void	init_after(void);
 void	init_map_depth(void);
+void	init_map_width(void);
 void	init_libx(void);
 void	init_dda(void);
 void	start_dda(void);

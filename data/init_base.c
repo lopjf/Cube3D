@@ -7,6 +7,8 @@ t_base	*getb(void)
 	return (&base);
 }
 
+// depth start from index 0
+// depth is 2 when there is 3 lines
 void	init_map_depth(void)
 {
 	int	i;
@@ -27,6 +29,31 @@ void	init_map_depth(void)
 		i++;
 	}
 	getb()->map_depth = j;
+}
+
+// width start from index 1
+// width is 3 when there is 3 characters in a line
+void	init_map_width(void)
+{
+	int i;
+	int j;
+	int width;
+
+	i = 0;
+	j = 0;
+	width = 0;
+	while (getb()->map_string[i] != '\0')
+	{
+		if (getb()->map_string[i] == '\n')
+		{
+			if (width < j - 1)
+				width = j - 1;
+			j = 0;
+		}
+		i++;
+		j++;
+	}
+	getb()->map_width = width;
 }
 
 void	init_data(void)
