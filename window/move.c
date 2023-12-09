@@ -4,23 +4,23 @@ static int check_next_pos(int keycode, int x, int y)
 {
 	if (keycode == KEY_W)
 	{
-		x = get_dda()->pos_x + get_dda()->dir_x;
-		y = get_dda()->pos_y + get_dda()->dir_y;
+		x = (int) (get_dda()->pos_x + get_dda()->dir_x);
+		y = (int) (get_dda()->pos_y + get_dda()->dir_y);
 	}
 	else if (keycode == KEY_S)
 	{
-		x = get_dda()->pos_x - get_dda()->dir_x;
-		y = get_dda()->pos_y - get_dda()->dir_y;
+		x = (int) (get_dda()->pos_x - get_dda()->dir_x);
+		y = (int) (get_dda()->pos_y - get_dda()->dir_y);
 	}
 	else if (keycode == KEY_D)
 	{
-		x = get_dda()->pos_x + get_dda()->plane_x;
-		y = get_dda()->pos_y + get_dda()->plane_y;
+		x = (int) (get_dda()->pos_x + get_dda()->plane_x);
+		y = (int) (get_dda()->pos_y + get_dda()->plane_y);
 	}
 	else if (keycode == KEY_A)
 	{
-		x = get_dda()->pos_x - get_dda()->plane_x;
-		y = get_dda()->pos_y - get_dda()->plane_y;
+		x = (int) (get_dda()->pos_x - get_dda()->plane_x);
+		y = (int) (get_dda()->pos_y - get_dda()->plane_y);
 	}
 	// printf("get_dda()->pos_x: %f, get_dda()->pos_y: %f\n", get_dda()->pos_x, get_dda()->pos_y);
 	// printf("x: %d, y: %d\n", x, y);

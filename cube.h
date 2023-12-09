@@ -127,7 +127,7 @@ int		fetch_key(int keycode);
 void	update_pos(int keycode);
 void	update_dir(int keycode);
 void	update_plane(int keycode);
-int		create_trgb(int t, int r, int g, int b);
+int		get_rgb(char *rgb);
 
 
 // check_elements.c

@@ -3,8 +3,6 @@
 void	display_win(void)
 {
 	start_dda();
-	mlx_put_image_to_window(getb()->libx.mlx, \
-	getb()->libx.win, getb()->libx.no, 64, 64);
 }
 
 int	close_win(void)

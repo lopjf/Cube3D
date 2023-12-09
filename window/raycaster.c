@@ -55,7 +55,7 @@ void	draw_line(t_base *base, int x)
 	if (draw_end >= WIN_H)
 		draw_end = WIN_H - 1;
 	//printf("\ndraw_start: %i, draw_end: %i, line_height: %i", draw_start, draw_end, line_height);
-	color = create_trgb(0, 0, 254, 0);
+	color = get_rgb(getb()->data.f_path);
 	x = x * image_width;
 	i = x - image_width;
 	while (i < x)
