@@ -44,7 +44,9 @@ void	draw_line(t_base *base, int x)
 	int	draw_end;
 	int color;
 	int i; //printing image until width = 64
+	int image_width;
 
+	image_width = WIN_W / base->map_depth;
 	line_height = (int)(WIN_H / base->dda->perp_wall_dist);
 	draw_start = -line_height / 2 + WIN_H / 2;
 	if (draw_start < 0)
@@ -52,10 +54,10 @@ void	draw_line(t_base *base, int x)
 	draw_end = line_height / 2 + WIN_H / 2;
 	if (draw_end >= WIN_H)
 		draw_end = WIN_H - 1;
-	printf("\ndraw_start: %i, draw_end: %i, line_height: %i", draw_start, draw_end, line_height);
+	//printf("\ndraw_start: %i, draw_end: %i, line_height: %i", draw_start, draw_end, line_height);
 	color = create_trgb(0, 0, 254, 0);
-	x = x * 64;
-	i = x - 64;
+	x = x * image_width;
+	i = x - image_width;
 	while (i < x)
 	{
 		draw_start = -line_height / 2 + WIN_H / 2;
