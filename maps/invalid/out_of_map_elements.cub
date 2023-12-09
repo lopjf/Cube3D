@@ -1,7 +1,7 @@
-NO ./images/foo.xpm
-SO ./images/foo.xpm
-WE ./images/foo.xpm
-EA ./images/foo.xpm
+NO ./assets/carpet1.xpm
+EA ./assets/carpet2.xpm
+SO ./assets/carpet3.xpm
+WE ./assets/carpet4.xpm
 
 F 110,153,15 
 C 255,255,255

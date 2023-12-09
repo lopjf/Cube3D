@@ -1,12 +1,7 @@
-   EA    ./assets/collectible.xpm
-
-SO        ./assets/collectible.xpm
-
-
-NO ./assets/collectible.xpm
-
-
-   WE ./assets/collectible.xpm
+NO ./assets/carpet1.xpm
+EA ./assets/carpet2.xpm
+SO ./assets/carpet3.xpm
+WE ./assets/carpet4.xpm
 
 C 0,25,30
 F 0,25,30

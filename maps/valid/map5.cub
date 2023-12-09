@@ -1,7 +1,7 @@
-NO ./images/brick1.png
-SO ./images/brick2.png
-WE ./images/brick3.png
-EA ./images/brick4.png
+NO ./assets/carpet1.xpm
+EA ./assets/carpet2.xpm
+SO ./assets/carpet3.xpm
+WE ./assets/carpet4.xpm
 
 F 0,255,0
 C 0,0,255

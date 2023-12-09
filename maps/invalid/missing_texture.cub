@@ -1,6 +1,6 @@
-SO ./assets/goofy_aaa_cao.xpm
-WE ./assets/goofy_aaa_porta.xpm
-EA ./assets/foo.xpm
+EA ./assets/carpet2.xpm
+SO ./assets/carpet3.xpm
+WE ./assets/carpet4.xpm
 
 F 220,100,0
 C 0,30,4 
