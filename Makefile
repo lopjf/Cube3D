@@ -15,7 +15,7 @@ OBJS = $(SRCS:.c=.o)
 
 RM				= rm -f
 FLAGS			= -Wall -Wextra -Werror -I.
-INCLUDE			= -Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -fsanitize=address
+INCLUDE			= -Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -fsanitize=address -g
 
 %.o: %.c
 	gcc $(FLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@

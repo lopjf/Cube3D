@@ -1,46 +1,20 @@
 
 #include "../cube.h"
 
-/*
-side_dist_ : distance of ray from first pos to next x and y-side
-step_ : direction of next step, always 1 or -1 (if negative or positive)
-*/
-void	init_step_sidedist(t_dda *dda)
-{
-	if (dda->ray_dir_x < 0)
-	{
-		dda->step_x = -1;
-		dda->side_dist_x = (dda->pos_x - dda->map_x) * dda->delta_dist_x;
-	}
-	else
-	{
-		dda->step_x = 1;
-		dda->side_dist_x = (dda->map_x + 1.0 - dda->pos_x) * dda->delta_dist_x;
-	}
-	if (dda->ray_dir_y < 0)
-	{
-		dda->step_y = -1;
-		dda->side_dist_x = (dda->pos_y - dda->map_y) * dda->delta_dist_y;
-	}
-	else
-	{
-		dda->step_y = 1;
-		dda->side_dist_y = (dda->map_y + 1.0 - dda->pos_y) * dda->delta_dist_y;
-	}
-}
+
 
 /*
 map_ : the square the ray is currently inside (int coordniates)
 */
 void	dda(t_dda *dda, char **map)
 {
-	int	wall_hit;
 	int	side;
+	int	hit;
 
-	wall_hit = 0;
-	while(wall_hit == 0)
+	side = 0;
+	hit = 0;
+	while(hit == 0)
 	{
-		// if (write(1, "HEERREE\n", 8)){}
 		if (dda->side_dist_x < dda->side_dist_y)
 		{
 			dda->side_dist_x += dda->delta_dist_x;
@@ -54,19 +28,14 @@ void	dda(t_dda *dda, char **map)
 			side = 1;
 		}
 		if (map[dda->map_x][dda->map_y] == '1')
-			wall_hit = 1;
+			hit = 1;
 	}
 	if (side == 0)
 		dda->perp_wall_dist = dda->side_dist_x - dda->delta_dist_x;
 	else
 		dda->perp_wall_dist = dda->side_dist_y - dda->delta_dist_y;
-	printf("\nray_dir_x: %f, ray_dir_y: %f, cameraperp_wall_dist: %f",dda->ray_dir_x, dda->ray_dir_y, dda->perp_wall_dist);
+	//printf("\nray_dir_x: %f, ray_dir_y: %f, cameraperp_wall_dist: %f",dda->ray_dir_x, dda->ray_dir_y, dda->perp_wall_dist);
 }
-
-//void	draw_ver_line(int x, int draw_start, int draw_end, int color)
-//{
-
-//}
 
 void	draw_line(t_base *base, int x)
 {
@@ -74,20 +43,59 @@ void	draw_line(t_base *base, int x)
 	int	draw_start;
 	int	draw_end;
 	int color;
+	int i; //printing image until width = 64
 
 	line_height = (int)(WIN_H / base->dda->perp_wall_dist);
 	draw_start = -line_height / 2 + WIN_H / 2;
 	if (draw_start < 0)
 		draw_start = 0;
 	draw_end = line_height / 2 + WIN_H / 2;
-	if (draw_end < 0)
+	if (draw_end >= WIN_H)
 		draw_end = WIN_H - 1;
 	printf("\ndraw_start: %i, draw_end: %i, line_height: %i", draw_start, draw_end, line_height);
 	color = create_trgb(0, 0, 254, 0);
-	while (draw_start < draw_end)
+	x = x * 64;
+	i = x - 64;
+	while (i < x)
 	{
-		mlx_pixel_put(base->libx.mlx, base->libx.win, x, draw_start, color);
-		draw_start++;
+		draw_start = -line_height / 2 + WIN_H / 2;
+		if (draw_start < 0)
+			draw_start = 0;
+		while (draw_start < draw_end)
+		{
+			//printf("draw_start: %i, draw_end: %i", draw_start, draw_end);
+			mlx_pixel_put(base->libx.mlx, base->libx.win, i, draw_start, color);
+			draw_start++;
+		}
+		i++;
+	}
+}
+
+/*
+side_dist_ : distance of ray from first pos to next x and y-side
+step_ : direction of next step, always 1 or -1 (if negative or positive)
+*/
+void	init_step_sidedist(t_dda *dda)
+{
+	if (dda->ray_dir_x > 0)
+	{
+		dda->step_x = -1;
+		dda->side_dist_x = (dda->pos_x - dda->map_x) * dda->delta_dist_x;
+	}
+	else
+	{
+		dda->step_x = 1;
+		dda->side_dist_x = (dda->map_x + 1.0 - dda->pos_x) * dda->delta_dist_x;
+	}
+	if (dda->ray_dir_y > 0)
+	{
+		dda->step_y = -1;
+		dda->side_dist_x = (dda->pos_y - dda->map_y) * dda->delta_dist_y;
+	}
+	else
+	{
+		dda->step_y = 1;
+		dda->side_dist_y = (dda->map_y + 1.0 - dda->pos_y) * dda->delta_dist_y;
 	}
 }
 
@@ -95,28 +103,32 @@ void	draw_line(t_base *base, int x)
 camera_x : is the precentile on the x_achsis of the plane
 ray_dir_ : x and y direction of ray
 delta_dist_ : distance to next x and y-side
-nr_rays : amount of rays
 */
+void	init_rays(t_dda *dda, int x, int width)
+{
+		dda->camera_x = (double)(2 * x) / width - 1;
+		dda->ray_dir_x = dda->dir_x + dda->plane_x * dda->camera_x;
+		dda->ray_dir_y = dda->dir_y + dda->plane_y * dda->camera_x;
+		dda->delta_dist_x = sqrt(1 + (dda->ray_dir_y * dda->ray_dir_y) / (dda->ray_dir_x * dda->ray_dir_x));
+		dda->delta_dist_y = sqrt(1 + (dda->ray_dir_x * dda->ray_dir_x) / (dda->ray_dir_y * dda->ray_dir_y));
+		dda->hit = 0;
+		dda->map_x = (int) dda->pos_x;
+		dda->map_y = (int) dda->pos_y;
+}
+
+
 void	start_dda(void)
 {
 	t_base	*base;
 	int		x;
-	double	camera_x;
-
 
 	base = getb();
-	printf("\npos: %f %f", base->dda->pos_x, base->dda->pos_y);
+	// base->map_depth = 6;
+	//printf("\npos: %f %f", base->dda->pos_x, base->dda->pos_y);
 	x = 0;
 	while(x < base->map_depth)
 	{
-		//printf("\nray nr.: %i", x);
-		camera_x = (double)(2 * x) / base->dda->nr_rays - 1;
-		base->dda->ray_dir_x = base->dda->dir_x + base->dda->plane_x * camera_x;
-		base->dda->ray_dir_y = base->dda->dir_y + base->dda->plane_y * camera_x;
-		base->dda->delta_dist_x = fabs(1 / base->dda->ray_dir_x); // ex. absolut value of -5 is 5
-		base->dda->delta_dist_y = fabs(1 / base->dda->ray_dir_y);
-		base->dda->map_x = base->dda->pos_x;
-		base->dda->map_y = base->dda->pos_y;
+		init_rays(base->dda, x, base->map_depth);
 		init_step_sidedist(base->dda);
 		dda(base->dda, base->map);
 		draw_line(base, x);

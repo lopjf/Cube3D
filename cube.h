@@ -49,6 +49,7 @@ typedef struct s_dda {
 	double	dir_y;
 	double	plane_x;
 	double	plane_y;
+	double	camera_x;
 	int		nr_rays; //evtl not needed
 	double	ray_dir_x;
 	double	ray_dir_y;
@@ -61,6 +62,7 @@ typedef struct s_dda {
 	int		step_x;
 	int		step_y;
 	double	perp_wall_dist;
+	int		hit;
 }				t_dda;
 
 	// libx management & elements textures and colors
