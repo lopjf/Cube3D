@@ -43,6 +43,7 @@ int	fetch_key(int keycode)
 	else if (keycode == KEY_W || keycode == KEY_D || \
 	keycode == KEY_S || keycode == KEY_A)
     {
+
         update_pos(keycode);
 		display_win();
     }

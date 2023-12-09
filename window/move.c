@@ -1,7 +1,38 @@
 #include "cube.h"
 
+static int check_next_pos(int keycode, int x, int y)
+{
+	if (keycode == KEY_W)
+	{
+		x = get_dda()->pos_x + get_dda()->dir_x;
+		y = get_dda()->pos_y + get_dda()->dir_y;
+	}
+	else if (keycode == KEY_S)
+	{
+		x = get_dda()->pos_x - get_dda()->dir_x;
+		y = get_dda()->pos_y - get_dda()->dir_y;
+	}
+	else if (keycode == KEY_D)
+	{
+		x = get_dda()->pos_x + get_dda()->plane_x;
+		y = get_dda()->pos_y + get_dda()->plane_y;
+	}
+	else if (keycode == KEY_A)
+	{
+		x = get_dda()->pos_x - get_dda()->plane_x;
+		y = get_dda()->pos_y - get_dda()->plane_y;
+	}
+	// printf("get_dda()->pos_x: %f, get_dda()->pos_y: %f\n", get_dda()->pos_x, get_dda()->pos_y);
+	// printf("x: %d, y: %d\n", x, y);
+	if (getb()->map[x][y] == '1')
+		return (0);
+	return (1);
+}
+
 void update_pos(int keycode)
 {
+	if (check_next_pos(keycode, 0, 0) == 0)
+		return;
 	if (keycode == KEY_W)
 	{
 		get_dda()->pos_x += get_dda()->dir_x;
