@@ -34,17 +34,16 @@ void	dda(t_dda *dda, char **map)
 		dda->perp_wall_dist = dda->side_dist_x - dda->delta_dist_x;
 	else
 		dda->perp_wall_dist = dda->side_dist_y - dda->delta_dist_y;
-	//printf("\nray_dir_x: %f, ray_dir_y: %f, cameraperp_wall_dist: %f",dda->ray_dir_x, dda->ray_dir_y, dda->perp_wall_dist);
+	printf("\nray_dir_x: %f, ray_dir_y: %f, cameraperp_wall_dist: %f",dda->ray_dir_x, dda->ray_dir_y, dda->perp_wall_dist);
 }
 
-void	draw_line(t_base *base, int x)
+void	calc_line(t_base *base, int x)
 {
 	int	line_height;
 	int	draw_start;
 	int	draw_end;
-	int color;
 	int i; //printing image until width = 64
-	int image_width;
+	double image_width;
 
 	image_width = WIN_W / base->map_depth;
 	line_height = (int)(WIN_H / base->dda->perp_wall_dist);
@@ -54,23 +53,24 @@ void	draw_line(t_base *base, int x)
 	draw_end = line_height / 2 + WIN_H / 2;
 	if (draw_end >= WIN_H)
 		draw_end = WIN_H - 1;
-	//printf("\ndraw_start: %i, draw_end: %i, line_height: %i", draw_start, draw_end, line_height);
-	// color = get_rgb(getb()->data.f_path);
-	color = get_rgb("0,0,188");
 	x = x * image_width;
-	i = x - image_width;
-	while (i < x)
+	i = x + image_width;
+	printf("\nWIN_H: %i, line_heigth: %i, image width: %f, map_depth: %i", WIN_H, line_height, image_width, base->map_depth);
+	while (i > x)
 	{
+		printf("\ndraw_start: %i, draw_end: %i", draw_start, draw_end);
+		printf("\ni: %i, x: %i", i, x);
 		draw_start = -line_height / 2 + WIN_H / 2;
 		if (draw_start < 0)
 			draw_start = 0;
+		//draw_line(draw_start, draw_end, base, i);
 		while (draw_start < draw_end)
 		{
 			//printf("draw_start: %i, draw_end: %i", draw_start, draw_end);
-			mlx_pixel_put(base->libx.mlx, base->libx.win, i, draw_start, color);
+			mlx_pixel_put(base->libx.mlx, base->libx.win, i, draw_start, get_rgb("120,93,21"));
 			draw_start++;
 		}
-		i++;
+		i--;
 	}
 }
 
@@ -128,14 +128,14 @@ void	start_dda(void)
 	base = getb();
 	// base->map_depth = 6;
 	//printf("\npos: %f %f", base->dda->pos_x, base->dda->pos_y);
+	paint_black(base);
 	x = 0;
 	while(x < base->map_depth)
 	{
 		init_rays(base->dda, x, base->map_depth);
 		init_step_sidedist(base->dda);
 		dda(base->dda, base->map);
-		draw_line(base, x);
+		calc_line(base, x);
 		x++;
 	}
 }
-

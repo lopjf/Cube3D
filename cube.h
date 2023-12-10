@@ -109,7 +109,6 @@ void	init_map_depth(void);
 void	init_map_width(void);
 void	init_libx(void);
 void	init_dda(void);
-void	start_dda(void);
 
 // utils.c
 int		skip_spaces(char *buf, int i);
@@ -128,7 +127,10 @@ void	update_pos(int keycode);
 void	update_dir(int keycode);
 void	update_plane(int keycode);
 int		get_rgb(char *rgb);
-
+void	start_dda(void);
+void	calc_line(t_base *base, int x);
+void	draw_line(int draw_start, int draw_end, t_base *base, int x);
+void	paint_black(t_base *base);
 
 // check_elements.c
 void	check_rgb(void);
