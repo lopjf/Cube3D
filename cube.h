@@ -16,7 +16,7 @@
 # define KEY_S 115
 # define KEY_A 97
 # define KEY_ESC 65307
-# define ROT_SPEED 0.1
+# define ROT_SPEED 0.2
 # define WIN_H 480
 # define WIN_W 640
 

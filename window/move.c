@@ -27,6 +27,7 @@ static int check_next_pos(int keycode, int x, int y)
 	if (getb()->map[x][y] == '1')
 		return (0);
 	return (1);
+	// sometimes that still segfaults
 }
 
 void update_pos(int keycode)
