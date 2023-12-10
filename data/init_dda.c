@@ -62,8 +62,8 @@ void	init_dda(void)
 			if (map[i][j] != '0' && map[i][j] != '1' && map[i][j] != ' ')
 			{
 				dir = map[i][j];
-				get_dda()->pos_x = (double) i;
-				get_dda()->pos_y = (double) j;
+				get_dda()->pos_x = (double) i + 0.5;
+				get_dda()->pos_y = (double) j + 0.5;
 				break ;
 			}
 			j++;
