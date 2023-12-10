@@ -34,7 +34,7 @@ void	dda(t_dda *dda, char **map)
 		dda->perp_wall_dist = dda->side_dist_x - dda->delta_dist_x;
 	else
 		dda->perp_wall_dist = dda->side_dist_y - dda->delta_dist_y;
-	printf("\nray_dir_x: %f, ray_dir_y: %f, cameraperp_wall_dist: %f",dda->ray_dir_x, dda->ray_dir_y, dda->perp_wall_dist);
+	// printf("\nray_dir_x: %f, ray_dir_y: %f, cameraperp_wall_dist: %f",dda->ray_dir_x, dda->ray_dir_y, dda->perp_wall_dist);
 }
 
 void	calc_line(t_base *base, int x)
@@ -55,11 +55,11 @@ void	calc_line(t_base *base, int x)
 		draw_end = WIN_H - 1;
 	x = x * image_width;
 	i = x + image_width;
-	printf("\nWIN_H: %i, line_heigth: %i, image width: %f, map_depth: %i", WIN_H, line_height, image_width, base->map_depth);
+	// printf("\nWIN_H: %i, line_heigth: %i, image width: %f, map_depth: %i", WIN_H, line_height, image_width, base->map_depth);
 	while (i > x)
 	{
-		printf("\ndraw_start: %i, draw_end: %i", draw_start, draw_end);
-		printf("\ni: %i, x: %i", i, x);
+		// printf("\ndraw_start: %i, draw_end: %i", draw_start, draw_end);
+		// printf("\ni: %i, x: %i", i, x);
 		draw_start = -line_height / 2 + WIN_H / 2;
 		if (draw_start < 0)
 			draw_start = 0;
@@ -130,6 +130,7 @@ void	start_dda(void)
 	//printf("\npos: %f %f", base->dda->pos_x, base->dda->pos_y);
 	paint_black(base);
 	x = 0;
+	base->map_depth = 100;
 	while(x < base->map_depth)
 	{
 		init_rays(base->dda, x, base->map_depth);

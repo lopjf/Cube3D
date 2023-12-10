@@ -23,13 +23,22 @@ void	init_dir_plane(int dir_x, int dir_y, int plane_x, int plane_y)
 void	get_dir_plane(char dir)
 {
 	if (dir == 'N')
-		init_dir_plane(0, 1, 1, 0);
-	else if (dir == 'S')
-		init_dir_plane(0, -1, -1, 0);
-	else if (dir == 'E')
-		init_dir_plane(1, 0, 0, 1);
-	else if (dir == 'W')
 		init_dir_plane(-1, 0, 0, -1);
+	else if (dir == 'S')
+		init_dir_plane(1, 0, 0, 1);
+	else if (dir == 'E')
+		init_dir_plane(0, -1, -1, 0);
+	else if (dir == 'W')
+		init_dir_plane(0, 1, 1, 0);
+
+	// 	if (dir == 'N')
+	// 	init_dir_plane(0, 1, 1, 0);
+	// else if (dir == 'S')
+	// 	init_dir_plane(0, -1, -1, 0);
+	// else if (dir == 'E')
+	// 	init_dir_plane(1, 0, 0, 1);
+	// else if (dir == 'W')
+	// 	init_dir_plane(-1, 0, 0, -1);
 }
 
 void	init_dda(void)
