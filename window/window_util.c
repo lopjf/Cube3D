@@ -2,12 +2,20 @@
 
 int get_rgb(char *rgb)
 {
-	// int r;
-	// int g;
-	// int b;
-	(void)rgb;
+	int r;
+	int g;
+	int b;
+	int i;
 
-	return (0 << 24 | 0 << 16 | 0 << 8 | 180);
-	// return (t << 24 | r << 16 | g << 8 | b);
-	// return (create_trgb(0, 0, 0, 180));
+	i = 0;
+	r = ft_atoi(rgb + i);
+	while (rgb[i] != ',' && rgb[i] != '\0')
+		i++;
+	i++;
+	g = ft_atoi(rgb + i);
+	while (rgb[i] != ',' && rgb[i] != '\0')
+		i++;
+	i++;
+	b = ft_atoi(rgb + i);
+	return (0 << 24 | r << 16 | g << 8 | b);
 }
