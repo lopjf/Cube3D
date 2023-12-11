@@ -30,11 +30,6 @@ void	get_dir_plane()
 		init_dir_plane(0, -1, -1, 0);
 	else if (get_dda()->dir == 'W')
 		init_dir_plane(0, 1, 1, 0);
-
-		// When starting the game with N or S, the map is reversed, and the right and left arrow as well.
-		// We can never look west on the maps. Only east works.
-		// Moves are working fine for all directions.
-
 }
 
 void	init_dda(void)

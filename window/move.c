@@ -14,13 +14,29 @@ static int check_next_pos(int keycode, int x, int y)
 	}
 	else if (keycode == KEY_D)
 	{
-		x = (int) (get_dda()->pos_x - get_dda()->plane_x);
-		y = (int) (get_dda()->pos_y - get_dda()->plane_y);
+		if (get_dda()->dir == 'N' || get_dda()->dir == 'S')
+		{
+			x = (int) (get_dda()->pos_x + get_dda()->plane_x);
+			y = (int) (get_dda()->pos_y + get_dda()->plane_y);
+		}
+		else if (get_dda()->dir == 'E' || get_dda()->dir == 'W')
+		{
+			x = (int) (get_dda()->pos_x - get_dda()->plane_x);
+			y = (int) (get_dda()->pos_y - get_dda()->plane_y);
+		}
 	}
 	else if (keycode == KEY_A)
 	{
-		x = (int) (get_dda()->pos_x + get_dda()->plane_x);
-		y = (int) (get_dda()->pos_y + get_dda()->plane_y);
+		if (get_dda()->dir == 'N' || get_dda()->dir == 'S')
+		{
+			x = (int) (get_dda()->pos_x - get_dda()->plane_x);
+			y = (int) (get_dda()->pos_y - get_dda()->plane_y);
+		}
+		else if (get_dda()->dir == 'E' || get_dda()->dir == 'W')
+		{
+			x = (int) (get_dda()->pos_x + get_dda()->plane_x);
+			y = (int) (get_dda()->pos_y + get_dda()->plane_y);
+		}
 	}
 	// printf("get_dda()->pos_x: %f, get_dda()->pos_y: %f\n", get_dda()->pos_x, get_dda()->pos_y);
 	// printf("x: %d, y: %d\n", x, y);
@@ -46,13 +62,29 @@ void update_pos(int keycode)
 	}
 	else if (keycode == KEY_D)
 	{
-		get_dda()->pos_x -= get_dda()->plane_x;
-		get_dda()->pos_y -= get_dda()->plane_y;
+		if (get_dda()->dir == 'N' || get_dda()->dir == 'S')
+		{
+			get_dda()->pos_x += get_dda()->plane_x;
+			get_dda()->pos_y += get_dda()->plane_y;
+		}
+		else if (get_dda()->dir == 'E' || get_dda()->dir == 'W')
+		{
+			get_dda()->pos_x -= get_dda()->plane_x;
+			get_dda()->pos_y -= get_dda()->plane_y;
+		}
 	}
 	else if (keycode == KEY_A)
 	{
-		get_dda()->pos_x += get_dda()->plane_x;
-		get_dda()->pos_y += get_dda()->plane_y;
+		if (get_dda()->dir == 'N' || get_dda()->dir == 'S')
+		{
+			get_dda()->pos_x -= get_dda()->plane_x;
+			get_dda()->pos_y -= get_dda()->plane_y;
+		}
+		else if (get_dda()->dir == 'E' || get_dda()->dir == 'W')
+		{
+			get_dda()->pos_x += get_dda()->plane_x;
+			get_dda()->pos_y += get_dda()->plane_y;
+		}
 	}
 }
 
