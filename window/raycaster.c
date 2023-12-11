@@ -93,7 +93,7 @@ void	init_step_sidedist(t_dda *dda)
 	if (dda->ray_dir_y > 0)
 	{
 		dda->step_y = -1;
-		dda->side_dist_x = (dda->pos_y - dda->map_y) * dda->delta_dist_y;
+		dda->side_dist_y = (dda->pos_y - dda->map_y) * dda->delta_dist_y;
 	}
 	else
 	{
