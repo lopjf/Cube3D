@@ -19,6 +19,8 @@
 # define ROT_SPEED 0.2
 # define WIN_H 480
 # define WIN_W 640
+# define TEX_H 64
+# define TEX_W 64
 
 	// map elements
 typedef struct s_data {
