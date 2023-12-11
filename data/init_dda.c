@@ -20,15 +20,15 @@ void	init_dir_plane(int dir_x, int dir_y, int plane_x, int plane_y)
 	dda->nr_rays = 10;
 }
 
-void	get_dir_plane(char dir)
+void	get_dir_plane()
 {
-	if (dir == 'N')
-		init_dir_plane(-1, 0, 0, -1);
-	else if (dir == 'S')
+	if (get_dda()->dir == 'N')
 		init_dir_plane(1, 0, 0, 1);
-	else if (dir == 'E')
+	else if (get_dda()->dir == 'S')
+		init_dir_plane(-1, 0, 0, -1);
+	else if (get_dda()->dir == 'E')
 		init_dir_plane(0, -1, -1, 0);
-	else if (dir == 'W')
+	else if (get_dda()->dir == 'W')
 		init_dir_plane(0, 1, 1, 0);
 
 		// When starting the game with N or S, the map is reversed, and the right and left arrow as well.
@@ -42,11 +42,10 @@ void	init_dda(void)
 	char	**map;
 	int		i;
 	int		j;
-	char	dir;
 
 	map = getb()->map;
 	i = 1;
-	dir = '0';
+	get_dda()->dir = '0';
 
 	while (map[i])
 	{
@@ -57,7 +56,7 @@ void	init_dda(void)
 			//if (write(1, &map[i][j], 1)== -1) {}
 			if (map[i][j] != '0' && map[i][j] != '1' && map[i][j] != ' ')
 			{
-				dir = map[i][j];
+				get_dda()->dir = map[i][j];
 				get_dda()->pos_x = (double) i + 0.5;
 				get_dda()->pos_y = (double) j + 0.5;
 				break ;
@@ -66,5 +65,5 @@ void	init_dda(void)
 		}
 		i++;
 	}
-	get_dir_plane(dir);
+	get_dir_plane();
 }

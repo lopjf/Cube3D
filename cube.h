@@ -51,6 +51,7 @@ typedef struct s_dda {
 	double	dir_y;
 	double	plane_x;
 	double	plane_y;
+	char dir;
 	double	camera_x;
 	int		nr_rays; //evtl not needed
 	double	ray_dir_x;

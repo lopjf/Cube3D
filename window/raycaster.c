@@ -109,7 +109,10 @@ delta_dist_ : distance to next x and y-side
 */
 void	init_rays(t_dda *dda, int x, int width)
 {
-		dda->camera_x = (double)(2 * x) / width - 1;
+		if (get_dda()->dir == 'N' || get_dda()->dir == 'S')
+			dda->camera_x = 1.0 - (double)(2 * x) / width;
+		else if (get_dda()->dir == 'E' || get_dda()->dir == 'W')
+			dda->camera_x = (double)(2 * x) / width - 1;
 		dda->ray_dir_x = dda->dir_x + dda->plane_x * dda->camera_x;
 		dda->ray_dir_y = dda->dir_y + dda->plane_y * dda->camera_x;
 		dda->delta_dist_x = sqrt(1 + (dda->ray_dir_y * dda->ray_dir_y) / (dda->ray_dir_x * dda->ray_dir_x));
