@@ -133,7 +133,7 @@ void	start_dda(void)
 	//printf("\npos: %f %f", base->dda->pos_x, base->dda->pos_y);
 	paint_black(base);
 	x = 0;
-	base->map_depth = 100;
+	base->map_depth = 300;
 	while(x < base->map_depth)
 	{
 		init_rays(base->dda, x, base->map_depth);

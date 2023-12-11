@@ -40,7 +40,9 @@ static int check_next_pos(int keycode, int x, int y)
 	}
 	// printf("get_dda()->pos_x: %f, get_dda()->pos_y: %f\n", get_dda()->pos_x, get_dda()->pos_y);
 	// printf("x: %d, y: %d\n", x, y);
-	if (getb()->map[x][y] == '1')
+	// printf("getb()->map[x][y]: %i\n", getb()->map[x][y]);
+	// Problem: the getb()->map[x][y] == 0 is because the map is not always a square, so it checks unallocated memory
+	if (getb()->map[x][y] == '1' || getb()->map[x][y] == ' ' || getb()->map[x][y] == 0)
 		return (0);
 	return (1);
 	// sometimes that still segfaults
