@@ -35,9 +35,9 @@ void	init_map_depth(void)
 // width is 3 when there is 3 characters in a line
 void	init_map_width(void)
 {
-	int i;
-	int j;
-	int width;
+	int	i;
+	int	j;
+	int	width;
 
 	i = 0;
 	j = 0;
@@ -95,15 +95,3 @@ void	init_libx(void)
 	if (getb()->libx.ea == NULL)
 		free_and_exit("Error: Invalid ea path.");
 }
-
-void	init_before(void)
-{
-	init_data();
-}
-
-void	init_after(void)
-{
-	init_dda();
-	init_libx();
-}
-

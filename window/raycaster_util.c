@@ -1,4 +1,3 @@
-
 #include "../cube.h"
 
 void	ft_swap_nr(int *a, int *b)
@@ -9,7 +8,6 @@ void	ft_swap_nr(int *a, int *b)
 	tmp = *a;
 	*a = *b;
 	*b = tmp;
-
 }
 
 void	paint_black(t_base *base)
@@ -23,13 +21,13 @@ void	paint_black(t_base *base)
 		x = 0;
 		while (x <= WIN_W)
 		{
-			mlx_pixel_put(base->libx.mlx, base->libx.win, x, y, get_rgb("0,0,0"));
+			mlx_pixel_put(base->libx.mlx, base->libx.win, \
+			x, y, get_rgb("0,0,0"));
 			x++;
 		}
 		y++;
 	}
 }
-
 
 // not working
 void	draw_line(int draw_start, int draw_end, t_base *base, int x)

@@ -1,11 +1,11 @@
 #include "../cube.h"
 
-int get_rgb(char *rgb)
+int	get_rgb(char *rgb)
 {
-	int r;
-	int g;
-	int b;
-	int i;
+	int	r;
+	int	g;
+	int	b;
+	int	i;
 
 	i = 0;
 	r = ft_atoi(rgb + i);

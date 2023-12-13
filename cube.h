@@ -51,9 +51,9 @@ typedef struct s_dda {
 	double	dir_y;
 	double	plane_x;
 	double	plane_y;
-	char dir;
+	char			dir;
 	double	camera_x;
-	int		nr_rays; //evtl not needed
+	int				nr_rays; //evtl not needed
 	double	ray_dir_x;
 	double	ray_dir_y;
 	int		map_x;
@@ -106,10 +106,9 @@ void	free_and_exit(char *str);
 // init.c
 t_base	*getb(void);
 t_dda	*get_dda(void);
-void	init_before(void);
-void	init_after(void);
 void	init_map_depth(void);
 void	init_map_width(void);
+void	init_data(void);
 void	init_libx(void);
 void	init_dda(void);
 

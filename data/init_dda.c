@@ -1,4 +1,3 @@
-
 #include "cube.h"
 
 t_dda	*get_dda(void)
@@ -8,7 +7,7 @@ t_dda	*get_dda(void)
 	return (&dda);
 }
 
-void	init_dir_plane(int dir_x, int dir_y, int plane_x, int plane_y)
+static void	init_dir_plane(int dir_x, int dir_y, int plane_x, int plane_y)
 {
 	t_dda	*dda;
 
@@ -20,7 +19,7 @@ void	init_dir_plane(int dir_x, int dir_y, int plane_x, int plane_y)
 	dda->nr_rays = 10;
 }
 
-void	get_dir_plane()
+static void	get_dir_plane(void)
 {
 	if (get_dda()->dir == 'N')
 		init_dir_plane(1, 0, 0, 1);
@@ -41,14 +40,11 @@ void	init_dda(void)
 	map = getb()->map;
 	i = 1;
 	get_dda()->dir = '0';
-
 	while (map[i])
 	{
 		j = 1;
 		while (map[i][j] != '\0')
 		{
-			//if (write(1, "\n", 1)== -1) {}
-			//if (write(1, &map[i][j], 1)== -1) {}
 			if (map[i][j] != '0' && map[i][j] != '1' && map[i][j] != ' ')
 			{
 				get_dda()->dir = map[i][j];
