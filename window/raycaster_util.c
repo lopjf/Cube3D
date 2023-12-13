@@ -12,7 +12,7 @@ void	ft_swap_nr(int *a, int *b)
 
 void	paint_background(t_base *base)
 {
-	mlx_clear_window(base->libx.mlx, base->libx.win);
+	// mlx_clear_window(base->libx.mlx, base->libx.win);
 	int	x;
 	int	y;
 
