@@ -67,7 +67,7 @@ void	calc_line(t_base *base, int x)
 		while (draw_start < draw_end)
 		{
 			//printf("draw_start: %i, draw_end: %i", draw_start, draw_end);
-			mlx_pixel_put(base->libx.mlx, base->libx.win, i, draw_start, get_rgb("120,93,21"));
+			mlx_pixel_put(base->libx.mlx, base->libx.win, i, draw_start, get_rgb("255,255,255"));
 			draw_start++;
 		}
 		i--;
@@ -131,9 +131,9 @@ void	start_dda(void)
 	base = getb();
 	// base->map_depth = 6;
 	//printf("\npos: %f %f", base->dda->pos_x, base->dda->pos_y);
-	paint_black(base);
+	paint_background(base);
 	x = 0;
-	base->map_depth = 300;
+	base->map_depth = 100;
 	while(x < base->map_depth)
 	{
 		init_rays(base->dda, x, base->map_depth);

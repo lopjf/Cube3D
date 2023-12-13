@@ -7,9 +7,9 @@ NO assets/carpet3.xpm
 WE assets/carpet4.xpm
 
 
-C 0,05,30
+C 255,128,0
 
-F 0,05,30
+F 51,51,255
 
       111
      10001

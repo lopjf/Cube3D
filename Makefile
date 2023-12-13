@@ -41,7 +41,7 @@ re: fclean all
 
 # Leak checker without leaks from libx :D / not working
 VALGRIND_CMD = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes
-PROGRAM = ./cube maps/valid/map2.cub
+PROGRAM = ./cube maps/valid/map3.cub
 VALGRIND_LOG = valgrind.txt
 l: $(NAME)
 	$(VALGRIND_CMD) --log-file=$(VALGRIND_LOG) $(PROGRAM) 2>&1 | grep -v 'libx'

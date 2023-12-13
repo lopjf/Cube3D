@@ -10,19 +10,31 @@ void	ft_swap_nr(int *a, int *b)
 	*b = tmp;
 }
 
-void	paint_black(t_base *base)
+void	paint_background(t_base *base)
 {
+	mlx_clear_window(base->libx.mlx, base->libx.win);
 	int	x;
 	int	y;
 
 	y = 0;
+	while (y <= WIN_H / 2)
+	{
+		x = 0;
+		while (x <= WIN_W)
+		{
+			mlx_pixel_put(base->libx.mlx, base->libx.win,
+			x, y, get_rgb(getb()->data.c_path));
+			x++;
+		}
+		y++;
+	}
 	while (y <= WIN_H)
 	{
 		x = 0;
 		while (x <= WIN_W)
 		{
-			mlx_pixel_put(base->libx.mlx, base->libx.win, \
-			x, y, get_rgb("0,0,0"));
+			mlx_pixel_put(base->libx.mlx, base->libx.win,
+			x, y, get_rgb(getb()->data.f_path));
 			x++;
 		}
 		y++;
