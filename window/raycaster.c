@@ -37,15 +37,16 @@ void	dda(t_dda *dda, char **map)
 	// printf("\nray_dir_x: %f, ray_dir_y: %f, cameraperp_wall_dist: %f",dda->ray_dir_x, dda->ray_dir_y, dda->perp_wall_dist);
 }
 
-void	calc_line(t_base *base, int x)
+void	calc_line(t_base *base, int nr_ray)
 {
 	int	line_height;
 	int	draw_start;
 	int	draw_end;
-	int i; //printing image until width = 64
+	double x_start; //printing image until width = 64
+	double x_end;
 	double image_width;
 
-	image_width = WIN_W / base->map_depth;
+	image_width = (double) WIN_W / (double) base->map_depth;
 	line_height = (int)(WIN_H / base->dda->perp_wall_dist);
 	draw_start = -line_height / 2 + WIN_H / 2;
 	if (draw_start < 0)
@@ -53,10 +54,10 @@ void	calc_line(t_base *base, int x)
 	draw_end = line_height / 2 + WIN_H / 2;
 	if (draw_end >= WIN_H)
 		draw_end = WIN_H - 1;
-	x = x * image_width;
-	i = x + image_width;
+	x_end = (double) nr_ray * image_width;
+	x_start = x_end + image_width;
 	// printf("\nWIN_H: %i, line_heigth: %i, image width: %f, map_depth: %i", WIN_H, line_height, image_width, base->map_depth);
-	while (i > x)
+	while (x_start > x_end)
 	{
 		// printf("\ndraw_start: %i, draw_end: %i", draw_start, draw_end);
 		// printf("\ni: %i, x: %i", i, x);
@@ -67,10 +68,10 @@ void	calc_line(t_base *base, int x)
 		while (draw_start < draw_end)
 		{
 			//printf("draw_start: %i, draw_end: %i", draw_start, draw_end);
-			mlx_pixel_put(base->libx.mlx, base->libx.win, i, draw_start, get_rgb("255,255,255"));
+			mlx_pixel_put(base->libx.mlx, base->libx.win, x_start, draw_start, get_rgb("255,255,255"));
 			draw_start++;
 		}
-		i--;
+		x_start--;
 	}
 }
 
