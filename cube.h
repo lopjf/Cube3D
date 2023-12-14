@@ -129,7 +129,6 @@ int		fetch_key(int keycode);
 void	update_pos(int keycode);
 void	update_dir(int keycode);
 void	update_plane(int keycode);
-int		get_rgb(char *rgb);
 void	start_dda(void);
 void	calc_line(t_base *base, int x);
 void	draw_line(double y_end, double x_start, double line_height, t_base *base);
@@ -139,7 +138,8 @@ void	draw_wall(t_base *base, int x);
 // check_elements.c
 void	check_rgb(void);
 
-// texture.c
+// colorhandler.c
 int get_color_tex(char wall_side, int x, int y);
+int	get_rgb(char *rgb);
 
 #endif
