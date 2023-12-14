@@ -87,7 +87,8 @@ void	draw_wall(t_base *base, int x)
 	{
 		tex_y = (int) tex_pos & ( TEX_H - 1 );
 		tex_pos += step;
-		mlx_pixel_put(base->libx.mlx, base->libx.win, x, y_start, get_rgb(get_color_tex(base->dda->wall_tex, tex_x, tex_y)));
+		get_wall_side(base->dda);
+		mlx_pixel_put(base->libx.mlx, base->libx.win, x, y_start, get_color_tex(base->dda->wall_tex, tex_x, tex_y));
 		y_start++;
 	}
 }
