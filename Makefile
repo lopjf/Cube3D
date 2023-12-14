@@ -47,6 +47,7 @@ l: $(NAME)
 	$(VALGRIND_CMD) --log-file=$(VALGRIND_LOG) $(PROGRAM) 2>&1 | grep -v 'libx'
 
 invalid: $(NAME)
+	./cube maps/invalid/double_element.cub || true
 	./cube maps/invalid/duplicate_player.cub || true
 	./cube maps/invalid/empty_line.cub || true
 	./cube maps/invalid/empty.cub || true
