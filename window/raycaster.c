@@ -30,11 +30,10 @@ void	dda(t_dda *dda, char **map)
 			hit = 1;
 	}
 	if (dda->wall == 0)
-		dda->perp_wall_dist = dda->side_dist_x - dda->delta_dist_x;
+		dda->perp_wall_dist = fabs((dda->map_x - dda->pos_x + (1 - dda->step_x) / 2) / dda->ray_dir_x);
 	else
-		dda->perp_wall_dist = dda->side_dist_y - dda->delta_dist_y;
-	// printf("\nray_dir_x: %f, ray_dir_y: %f, cameraperp_wall_dist: %f",dda->ray_dir_x, dda->ray_dir_y, dda->perp_wall_dist);
-}
+		dda->perp_wall_dist = fabs((dda->map_y - dda->pos_y + (1 - dda->step_y) / 2) / dda->ray_dir_y);
+
 
 
 void	calc_line(t_base *base, int nr_ray)
