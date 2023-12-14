@@ -116,7 +116,6 @@ void	start_dda(void)
 	base = getb();
 	// base->map_depth = 6;
 	//printf("\npos: %f %f", base->dda->pos_x, base->dda->pos_y);
-	paint_background(base);
 	x = 0;
 	base->map_depth = 100;
 	while(x < base->map_depth)
