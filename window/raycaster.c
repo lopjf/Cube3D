@@ -8,10 +8,9 @@ map_ : the square the ray is currently inside (int coordniates)
 */
 void	dda(t_dda *dda, char **map)
 {
-	int	side;
 	int	hit;
 
-	side = 0;
+	dda->wall = 0;
 	hit = 0;
 	while(hit == 0)
 	{
@@ -19,18 +18,18 @@ void	dda(t_dda *dda, char **map)
 		{
 			dda->side_dist_x += dda->delta_dist_x;
 			dda->map_x += dda->step_x;
-			side = 0;
+			dda->wall = 0;
 		}
 		else
 		{
 			dda->side_dist_y += dda->delta_dist_y;
 			dda->map_y += dda->step_y;
-			side = 1;
+			dda->wall = 1;
 		}
 		if (map[dda->map_x][dda->map_y] == '1')
 			hit = 1;
 	}
-	if (side == 0)
+	if (dda->wall == 0)
 		dda->perp_wall_dist = dda->side_dist_x - dda->delta_dist_x;
 	else
 		dda->perp_wall_dist = dda->side_dist_y - dda->delta_dist_y;
@@ -102,7 +101,6 @@ void	init_rays(t_dda *dda, int x, int width)
 		dda->ray_dir_y = dda->dir_y + dda->plane_y * dda->camera_x;
 		dda->delta_dist_x = sqrt(1 + (dda->ray_dir_y * dda->ray_dir_y) / (dda->ray_dir_x * dda->ray_dir_x));
 		dda->delta_dist_y = sqrt(1 + (dda->ray_dir_x * dda->ray_dir_x) / (dda->ray_dir_y * dda->ray_dir_y));
-		dda->hit = 0;
 		dda->map_x = (int) dda->pos_x;
 		dda->map_y = (int) dda->pos_y;
 }
@@ -114,8 +112,6 @@ void	start_dda(void)
 	int		x;
 
 	base = getb();
-	// base->map_depth = 6;
-	//printf("\npos: %f %f", base->dda->pos_x, base->dda->pos_y);
 	x = 0;
 	base->map_depth = 100;
 	while(x < base->map_depth)
