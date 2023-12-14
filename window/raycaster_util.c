@@ -41,28 +41,17 @@ void	paint_background(t_base *base)
 	}
 }
 
-// not working
-void	draw_line(int draw_start, int draw_end, t_base *base, int x)
-{
-	int	y;
 
-	printf("\ndrawstart: %i, draw_end: %i", draw_start, draw_end);
-	//if (draw_start > draw_end)
-	//	ft_swap_nr(&draw_start, &draw_end);
-	y = 0;
-	while (y < draw_start)
+void	draw_line(double y_end, double x_start, double line_height, t_base *base)
+{
+	double y_start;
+
+	y_start = -line_height / 2 + WIN_H / 2;
+	if (y_start < 0)
+		y_start = 0;
+	while (y_start < y_end)
 	{
-		mlx_pixel_put(base->libx.mlx, base->libx.win, x, y, get_rgb("0,0,0"));
-		y++;
-	}
-	while (y < draw_end)
-	{
-		mlx_pixel_put(base->libx.mlx, base->libx.win, x, y, get_rgb("120,93,21"));
-		y++;
-	}
-	while (y < WIN_H)
-	{
-		mlx_pixel_put(base->libx.mlx, base->libx.win, x, y, get_rgb("120,120,120"));
-		y++;
+		mlx_pixel_put(base->libx.mlx, base->libx.win, x_start, y_start, get_rgb("255,255,255"));
+		y_start++;
 	}
 }
