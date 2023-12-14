@@ -138,4 +138,7 @@ void	get_wall_side(t_dda *dda);
 // check_elements.c
 void	check_rgb(void);
 
+// texture.c
+char *get_color_tex(char wall_side, int x, int y);
+
 #endif

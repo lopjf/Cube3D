@@ -17,6 +17,7 @@ void	draw_line(double y_end, double x_start, double line_height, t_base *base)
 	while (y_start < y_end)
 	{
 		mlx_pixel_put(base->libx.mlx, base->libx.win, x_start, y_start, get_rgb("255,255,255"));
+		// get_color_tex('N', 0, 0);
 		y_start++;
 	}
 	while (y_start < WIN_H)
