@@ -33,7 +33,7 @@ void	dda(t_dda *dda, char **map)
 		dda->perp_wall_dist = fabs((dda->map_x - dda->pos_x + (1 - dda->step_x) / 2) / dda->ray_dir_x);
 	else
 		dda->perp_wall_dist = fabs((dda->map_y - dda->pos_y + (1 - dda->step_y) / 2) / dda->ray_dir_y);
-
+}
 
 
 void	calc_line(t_base *base, int nr_ray)
