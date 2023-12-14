@@ -140,6 +140,6 @@ void	draw_wall(t_base *base, int x);
 void	check_rgb(void);
 
 // texture.c
-char *get_color_tex(char wall_side, int x, int y);
+int get_color_tex(char wall_side, int x, int y);
 
 #endif
