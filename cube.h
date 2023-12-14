@@ -134,6 +134,7 @@ void	start_dda(void);
 void	calc_line(t_base *base, int x);
 void	draw_line(double y_end, double x_start, double line_height, t_base *base);
 void	get_wall_side(t_dda *dda);
+void	draw_wall(t_base *base, int x);
 
 // check_elements.c
 void	check_rgb(void);

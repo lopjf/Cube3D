@@ -55,6 +55,7 @@ void	calc_line(t_base *base, int nr_ray)
 	while (x_start > x_end)
 	{
 		draw_line(y_end, x_start, line_height, base);
+		draw_wall(base, nr_ray);
 		x_start--;
 	}
 }
@@ -114,7 +115,7 @@ void	start_dda(void)
 
 	base = getb();
 	x = 0;
-	base->map_depth = 100;
+	base->map_depth = WIN_W ;
 	while(x < base->map_depth)
 	{
 		init_rays(base->dda, x, base->map_depth);
