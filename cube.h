@@ -17,8 +17,9 @@
 # define KEY_A 97
 # define KEY_ESC 65307
 # define ROT_SPEED 0.2
-# define WIN_H 480
-# define WIN_W 640
+// minimum ratio window size is 1.4
+# define WIN_H 500
+# define WIN_W 700
 # define TEX_H 64
 # define TEX_W 64
 
