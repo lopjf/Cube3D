@@ -36,6 +36,7 @@ void	dda(t_dda *dda, char **map)
 	// printf("\nray_dir_x: %f, ray_dir_y: %f, cameraperp_wall_dist: %f",dda->ray_dir_x, dda->ray_dir_y, dda->perp_wall_dist);
 }
 
+
 void	calc_line(t_base *base, int nr_ray)
 {
 	double	line_height;
@@ -123,3 +124,4 @@ void	start_dda(void)
 		x++;
 	}
 }
+
