@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cube.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: loris <loris@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/15 19:24:27 by loris             #+#    #+#             */
+/*   Updated: 2023/12/15 19:24:51 by loris            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUBE_H
 # define CUBE_H
 
@@ -53,7 +65,7 @@ typedef struct s_dda {
 	double	plane_y;
 	char	dir;
 	double	camera_x;
-	int				nr_rays; //evtl not needed
+	int		nr_rays;
 	double	ray_dir_x;
 	double	ray_dir_y;
 	int		map_x;
@@ -131,7 +143,7 @@ void	update_dir(int keycode);
 void	update_plane(int keycode);
 void	start_dda(void);
 void	calc_line(t_base *base, int x);
-void	draw_line(double y_end, double x_start, double line_height, t_base *base);
+void	draw_line(double y_end, double x_start, double line_h, t_base *base);
 void	get_wall_side(t_dda *dda);
 void	draw_wall(t_base *base, int x);
 
@@ -139,7 +151,7 @@ void	draw_wall(t_base *base, int x);
 void	check_rgb(void);
 
 // colorhandler.c
-int get_color_tex(char wall_side, int x, int y);
-int	get_rgb(char *rgb);
+int		get_color_tex(char wall_side, int x, int y);
+int		get_rgb(char *rgb);
 
 #endif

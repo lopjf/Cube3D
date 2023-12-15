@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   move.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: loris <loris@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/15 19:20:17 by loris             #+#    #+#             */
+/*   Updated: 2023/12/15 19:20:50 by loris            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cube.h"
 
 static int	check_next_pos(int keycode, int x, int y)
@@ -46,7 +58,7 @@ static int	check_next_pos(int keycode, int x, int y)
 void	update_pos(int keycode)
 {
 	if (check_next_pos(keycode, 0, 0) == 0)
-		return;
+		return ;
 	if (keycode == KEY_W)
 	{
 		get_dda()->pos_x -= get_dda()->dir_x;
@@ -92,31 +104,39 @@ void	update_dir(int keycode)
 	if (keycode == KEY_RA)
 	{
 		old_dir_x = get_dda()->dir_x;
-		get_dda()->dir_x = get_dda()->dir_x * cos(-ROT_SPEED) - get_dda()->dir_y * sin(-ROT_SPEED);
-		get_dda()->dir_y = old_dir_x * sin(-ROT_SPEED) + get_dda()->dir_y * cos(-ROT_SPEED);
+		get_dda()->dir_x = get_dda()->dir_x * cos(-ROT_SPEED) - \
+		get_dda()->dir_y * sin(-ROT_SPEED);
+		get_dda()->dir_y = old_dir_x * sin(-ROT_SPEED) + \
+		get_dda()->dir_y * cos(-ROT_SPEED);
 	}
 	else if (keycode == KEY_LA)
 	{
 		old_dir_x = get_dda()->dir_x;
-		get_dda()->dir_x = get_dda()->dir_x * cos(ROT_SPEED) - get_dda()->dir_y * sin(ROT_SPEED);
-		get_dda()->dir_y = old_dir_x * sin(ROT_SPEED) + get_dda()->dir_y * cos(ROT_SPEED);
+		get_dda()->dir_x = get_dda()->dir_x * cos(ROT_SPEED) - \
+		get_dda()->dir_y * sin(ROT_SPEED);
+		get_dda()->dir_y = old_dir_x * sin(ROT_SPEED) + \
+		get_dda()->dir_y * cos(ROT_SPEED);
 	}
 }
 
 void	update_plane(int keycode)
 {
-	double old_plane_x;
+	double	old_plane_x;
 
 	if (keycode == KEY_RA)
 	{
 		old_plane_x = get_dda()->plane_x;
-		get_dda()->plane_x = get_dda()->plane_x * cos(-ROT_SPEED) - get_dda()->plane_y * sin(-ROT_SPEED);
-		get_dda()->plane_y = old_plane_x * sin(-ROT_SPEED) + get_dda()->plane_y * cos(-ROT_SPEED);
+		get_dda()->plane_x = get_dda()->plane_x * cos(-ROT_SPEED) - \
+		get_dda()->plane_y * sin(-ROT_SPEED);
+		get_dda()->plane_y = old_plane_x * sin(-ROT_SPEED) + \
+		get_dda()->plane_y * cos(-ROT_SPEED);
 	}
 	else if (keycode == KEY_LA)
 	{
 		old_plane_x = get_dda()->plane_x;
-		get_dda()->plane_x = get_dda()->plane_x * cos(ROT_SPEED) - get_dda()->plane_y * sin(ROT_SPEED);
-		get_dda()->plane_y = old_plane_x * sin(ROT_SPEED) + get_dda()->plane_y * cos(ROT_SPEED);
+		get_dda()->plane_x = get_dda()->plane_x * cos(ROT_SPEED) - \
+		get_dda()->plane_y * sin(ROT_SPEED);
+		get_dda()->plane_y = old_plane_x * sin(ROT_SPEED) + \
+		get_dda()->plane_y * cos(ROT_SPEED);
 	}
 }

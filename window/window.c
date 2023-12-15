@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   window.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: loris <loris@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/15 19:23:44 by loris             #+#    #+#             */
+/*   Updated: 2023/12/15 19:23:52 by loris            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cube.h"
 
 void	display_win(void)
@@ -18,15 +30,6 @@ int	close_win(void)
 	exit(0);
 }
 
-// static void print_s_dda() {
-//	 printf("pos_x: %f\n", get_dda()->pos_x);
-//	 printf("pos_y: %f\n", get_dda()->pos_y);
-//	 printf("dir_x: %f\n", get_dda()->dir_x);
-//	 printf("dir_y: %f\n", get_dda()->dir_y);
-//	 printf("plane_x: %f\n", get_dda()->plane_x);
-//	 printf("plane_y: %f\n", get_dda()->plane_y);
-// }
-
 int	fetch_key(int keycode)
 {
 	if (keycode == KEY_ESC)
@@ -43,6 +46,5 @@ int	fetch_key(int keycode)
 		update_pos(keycode);
 		display_win();
 	}
-	// print_s_dda();
 	return (0);
 }
