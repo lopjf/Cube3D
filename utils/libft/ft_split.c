@@ -24,7 +24,7 @@ static size_t	count_malloc(char const *s, char c)
 	while (s[i])
 	{
 		while (s[i] == c && s[i])
-		{	
+		{
 			flag = 1;
 			i++;
 		}
