@@ -35,7 +35,8 @@
 # define TEX_W 64
 
 	// map elements
-typedef struct s_data {
+typedef struct s_data
+{
 	char	*no_path;
 	char	*so_path;
 	char	*we_path;
@@ -56,7 +57,8 @@ delta_dist_ : distance to next x and y-side
 step_ : direction of next step, always 1 or -1 (if negative or positive)
 perp_wall_dist: distance wall_collision from camera plane
 */
-typedef struct s_dda {
+typedef struct s_dda
+{
 	double	pos_x;
 	double	pos_y;
 	double	dir_x;
@@ -83,7 +85,8 @@ typedef struct s_dda {
 }				t_dda;
 
 	// libx management & elements textures and colors
-typedef struct s_libx {
+typedef struct s_libx
+{
 	void	*mlx;
 	void	*win;
 	void	*no;
@@ -97,7 +100,8 @@ typedef struct s_libx {
 }				t_libx;
 
 //map_depth: y-achsis
-typedef struct s_base {
+typedef struct s_base
+{
 	char	*map_string;
 	char	**map;
 	int		map_depth;
@@ -135,7 +139,7 @@ void	check_first_last_lines(void);
 int		is_player_or_zero(int i, int j);
 int		v(int i, int j);
 
-// window.c
+// window
 void	display_win(void);
 int		close_win(void);
 int		fetch_key(int keycode);
@@ -147,7 +151,6 @@ void	calc_line(t_base *base, int x);
 void	draw_ceil_floor(double y_end, double x, double line_h, t_base *base);
 void	get_wall_side(t_dda *dda);
 void	draw_wall(t_base *base, int x, double y_start, double y_end);
-
 
 // check_elements.c
 void	check_rgb(void);
