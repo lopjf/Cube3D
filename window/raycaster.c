@@ -6,7 +6,7 @@
 /*   By: loris <loris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 19:22:44 by loris             #+#    #+#             */
-/*   Updated: 2023/12/15 19:23:33 by loris            ###   ########.fr       */
+/*   Updated: 2023/12/16 19:54:47 by loris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ void	dda(t_dda *dda, char **map)
 			dda->hit = 1;
 	}
 	if (dda->wall == 0)
-		dda->perp_wall_dist = fabs((dda->map_x - dda->pos_x + \
+		dda->perp_wall_dist = fabs((dda->map_x - dda->posx + \
 		(1 - dda->step_x) / 2) / dda->ray_dir_x);
 	else
-		dda->perp_wall_dist = fabs((dda->map_y - dda->pos_y + \
+		dda->perp_wall_dist = fabs((dda->map_y - dda->posy + \
 		(1 - dda->step_y) / 2) / dda->ray_dir_y);
 }
 
@@ -68,22 +68,22 @@ void	init_step_sidedist(t_dda *dda)
 	if (dda->ray_dir_x > 0)
 	{
 		dda->step_x = -1;
-		dda->side_dist_x = (dda->pos_x - dda->map_x) * dda->delta_dist_x;
+		dda->side_dist_x = (dda->posx - dda->map_x) * dda->delta_dist_x;
 	}
 	else
 	{
 		dda->step_x = 1;
-		dda->side_dist_x = (dda->map_x + 1.0 - dda->pos_x) * dda->delta_dist_x;
+		dda->side_dist_x = (dda->map_x + 1.0 - dda->posx) * dda->delta_dist_x;
 	}
 	if (dda->ray_dir_y > 0)
 	{
 		dda->step_y = -1;
-		dda->side_dist_y = (dda->pos_y - dda->map_y) * dda->delta_dist_y;
+		dda->side_dist_y = (dda->posy - dda->map_y) * dda->delta_dist_y;
 	}
 	else
 	{
 		dda->step_y = 1;
-		dda->side_dist_y = (dda->map_y + 1.0 - dda->pos_y) * dda->delta_dist_y;
+		dda->side_dist_y = (dda->map_y + 1.0 - dda->posy) * dda->delta_dist_y;
 	}
 }
 
@@ -98,14 +98,14 @@ void	init_rays(t_dda *dda, int x, int width)
 		dda->camera_x = 1.0 - (double)(2 * x) / width;
 	else if (get_dda()->dir == 'E' || get_dda()->dir == 'W')
 		dda->camera_x = (double)(2 * x) / width - 1;
-	dda->ray_dir_x = dda->dir_x + dda->plane_x * dda->camera_x;
-	dda->ray_dir_y = dda->dir_y + dda->plane_y * dda->camera_x;
+	dda->ray_dir_x = dda->dir_x + dda->planex * dda->camera_x;
+	dda->ray_dir_y = dda->dir_y + dda->planey * dda->camera_x;
 	dda->delta_dist_x = sqrt(1 + (dda->ray_dir_y * dda->ray_dir_y) / \
 	(dda->ray_dir_x * dda->ray_dir_x));
 	dda->delta_dist_y = sqrt(1 + (dda->ray_dir_x * dda->ray_dir_x) / \
 	(dda->ray_dir_y * dda->ray_dir_y));
-	dda->map_x = (int) dda->pos_x;
-	dda->map_y = (int) dda->pos_y;
+	dda->map_x = (int) dda->posx;
+	dda->map_y = (int) dda->posy;
 	dda->wall = 0;
 	dda->hit = 0;
 }

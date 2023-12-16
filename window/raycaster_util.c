@@ -6,7 +6,7 @@
 /*   By: loris <loris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 19:21:03 by loris             #+#    #+#             */
-/*   Updated: 2023/12/15 19:22:40 by loris            ###   ########.fr       */
+/*   Updated: 2023/12/16 19:54:32 by loris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,16 @@ void	get_wall_side(t_dda *dda)
 {
 	if (dda->wall == 0)
 	{
-		if (dda->step_x > 0 && dda->map_x > dda->pos_x)
+		if (dda->step_x > 0 && dda->map_x > dda->posx)
 			dda->wall_tex = 'S';
-		else if (dda->step_x < 0 && dda->map_x < dda->pos_x)
+		else if (dda->step_x < 0 && dda->map_x < dda->posx)
 			dda->wall_tex = 'N';
 	}
 	else
 	{
-		if (dda->step_y > 0 && dda->map_y > dda->pos_y)
+		if (dda->step_y > 0 && dda->map_y > dda->posy)
 			dda->wall_tex = 'E';
-		if (dda->step_y < 0 && dda->map_y < dda->pos_y)
+		if (dda->step_y < 0 && dda->map_y < dda->posy)
 			dda->wall_tex = 'W';
 	}
 }
@@ -63,9 +63,9 @@ int	calc_wall_pos(t_dda *dda)
 	int		tex_x;
 
 	if (dda->wall == 0)
-		wall_x = dda->pos_y + dda->perp_wall_dist * dda->ray_dir_y;
+		wall_x = dda->posy + dda->perp_wall_dist * dda->ray_dir_y;
 	else
-		wall_x = dda->pos_x + dda->perp_wall_dist * dda->ray_dir_x;
+		wall_x = dda->posx + dda->perp_wall_dist * dda->ray_dir_x;
 	wall_x -= floor(wall_x);
 	tex_x = (int)(wall_x * (double) TEX_W);
 	if ((dda->wall == 0 && dda->ray_dir_x > 0) || \

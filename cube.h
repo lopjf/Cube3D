@@ -6,7 +6,7 @@
 /*   By: loris <loris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 19:24:27 by loris             #+#    #+#             */
-/*   Updated: 2023/12/15 19:24:51 by loris            ###   ########.fr       */
+/*   Updated: 2023/12/16 19:57:37 by loris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,12 @@ perp_wall_dist: distance wall_collision from camera plane
 */
 typedef struct s_dda
 {
-	double	pos_x;
-	double	pos_y;
+	double	posx;
+	double	posy;
 	double	dir_x;
 	double	dir_y;
-	double	plane_x;
-	double	plane_y;
+	double	planex;
+	double	planey;
 	char	dir;
 	double	camera_x;
 	int		nr_rays;
@@ -158,5 +158,9 @@ void	check_rgb(void);
 // colorhandler.c
 int		get_color_tex(char wall_side, int x, int y);
 int		get_rgb(char *rgb);
+
+// move_utils.c
+void	xy(int *x, int *y, int x_value, int y_value);
+void	a(double *x, double *y, double x_value, double y_value);
 
 #endif

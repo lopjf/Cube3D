@@ -6,7 +6,7 @@
 /*   By: loris <loris@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 19:18:47 by loris             #+#    #+#             */
-/*   Updated: 2023/12/15 19:18:48 by loris            ###   ########.fr       */
+/*   Updated: 2023/12/16 19:54:47 by loris            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@ t_dda	*get_dda(void)
 	return (&dda);
 }
 
-static void	init_dir_plane(int dir_x, int dir_y, int plane_x, int plane_y)
+static void	init_dir_plane(int dir_x, int dir_y, int planex, int planey)
 {
 	t_dda	*dda;
 
 	dda = get_dda();
 	dda->dir_x = (double) dir_x;
 	dda->dir_y = (double) dir_y;
-	dda->plane_x = (double) plane_x;
-	dda->plane_y = (double) plane_y;
+	dda->planex = (double) planex;
+	dda->planey = (double) planey;
 	dda->nr_rays = 10;
 }
 
@@ -60,8 +60,8 @@ void	init_dda(void)
 			if (map[i][j] != '0' && map[i][j] != '1' && map[i][j] != ' ')
 			{
 				get_dda()->dir = map[i][j];
-				get_dda()->pos_x = (double) i + 0.5;
-				get_dda()->pos_y = (double) j + 0.5;
+				get_dda()->posx = (double) i + 0.5;
+				get_dda()->posy = (double) j + 0.5;
 				break ;
 			}
 			j++;
