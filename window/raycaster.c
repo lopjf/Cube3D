@@ -17,11 +17,7 @@ map_ : the square the ray is currently inside (int coordniates)
 */
 void	dda(t_dda *dda, char **map)
 {
-	int	hit;
-
-	dda->wall = 0;
-	hit = 0;
-	while (hit == 0)
+	while (dda->hit == 0)
 	{
 		if (dda->side_dist_x < dda->side_dist_y)
 		{
@@ -36,35 +32,31 @@ void	dda(t_dda *dda, char **map)
 			dda->wall = 1;
 		}
 		if (map[dda->map_x][dda->map_y] == '1')
-			hit = 1;
+			dda->hit = 1;
 	}
 	if (dda->wall == 0)
-		dda->perp_wall_dist = fabs((dda->map_x - dda->pos_x + (1 - dda->step_x) / 2) / dda->ray_dir_x);
+		dda->perp_wall_dist = fabs((dda->map_x - dda->pos_x + \
+		(1 - dda->step_x) / 2) / dda->ray_dir_x);
 	else
-		dda->perp_wall_dist = fabs((dda->map_y - dda->pos_y + (1 - dda->step_y) / 2) / dda->ray_dir_y);
+		dda->perp_wall_dist = fabs((dda->map_y - dda->pos_y + \
+		(1 - dda->step_y) / 2) / dda->ray_dir_y);
 }
 
-void	calc_line(t_base *base, int nr_ray)
+void	calc_line(t_base *base, int x)
 {
 	double	line_height;
 	double	y_end;
-	double	x_start;
-	double	x_end;
-	double	image_width;
+	double	y_start;
 
-	image_width = (double) WIN_W / (double) base->map_depth;
 	line_height = (int)(WIN_H / base->dda->perp_wall_dist);
 	y_end = line_height / 2 + WIN_H / 2;
 	if (y_end >= WIN_H)
 		y_end = WIN_H - 1;
-	x_end = (double) nr_ray * image_width;
-	x_start = x_end + image_width;
-	while (x_start > x_end)
-	{
-		draw_line(y_end, x_start, line_height, base);
-		draw_wall(base, nr_ray);
-		x_start--;
-	}
+	y_start = -line_height / 2 + WIN_H / 2;
+	if (y_start < 0)
+		y_start = 0;
+	draw_ceil_floor(y_end, x, line_height, base);
+	draw_wall(base, x, y_start, y_end);
 }
 
 /*
@@ -114,6 +106,8 @@ void	init_rays(t_dda *dda, int x, int width)
 	(dda->ray_dir_y * dda->ray_dir_y));
 	dda->map_x = (int) dda->pos_x;
 	dda->map_y = (int) dda->pos_y;
+	dda->wall = 0;
+	dda->hit = 0;
 }
 
 void	start_dda(void)

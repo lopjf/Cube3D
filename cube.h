@@ -78,6 +78,7 @@ typedef struct s_dda {
 	int		step_y;
 	double	perp_wall_dist;
 	int		wall;
+	int		hit;
 	char	wall_tex;
 }				t_dda;
 
@@ -143,9 +144,10 @@ void	update_dir(int keycode);
 void	update_plane(int keycode);
 void	start_dda(void);
 void	calc_line(t_base *base, int x);
-void	draw_line(double y_end, double x_start, double line_h, t_base *base);
+void	draw_ceil_floor(double y_end, double x, double line_h, t_base *base);
 void	get_wall_side(t_dda *dda);
-void	draw_wall(t_base *base, int x);
+void	draw_wall(t_base *base, int x, double y_start, double y_end);
+
 
 // check_elements.c
 void	check_rgb(void);
