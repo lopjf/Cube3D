@@ -35,7 +35,7 @@ Check List submission:
 - [] memory leaks
 	- [] fsanitize
 	- [] valgrind
-- [] check direction of textures
+- [x] check direction of textures
 - [] texture files
 	- [] not 64 x 64
 	- [] character inside that is not a defined colour
@@ -47,4 +47,3 @@ Check List submission:
 	- [] invalid character
 	- [] no player
 	- [] only wall and player (no 0s)
-
