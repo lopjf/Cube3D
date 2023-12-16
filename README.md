@@ -29,6 +29,22 @@
 
 
 
-Next step:
+Check List submission:
 
-- [X] init dda_struct with start pos, dir, and plane
+- [] norminette
+- [] memory leaks
+	- [] fsanitize
+	- [] valgrind
+- [] check direction of textures
+- [] texture files
+	- [] not 64 x 64
+	- [] character inside that is not a defined colour
+	- [] missing characters
+	- [] no content in file
+	- [] wrong file type (not xpm etc)
+- [] maps
+	- [] walls  ot completely surrounding
+	- [] invalid character
+	- [] no player
+	- [] only wall and player (no 0s)
+
