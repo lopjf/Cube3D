@@ -43,16 +43,16 @@ void	get_wall_side(t_dda *dda)
 	if (dda->wall == 0)
 	{
 		if (dda->step_x > 0 && dda->map_x > dda->pos_x)
-			dda->wall_tex = 'W';
+			dda->wall_tex = 'S';
 		else if (dda->step_x < 0 && dda->map_x < dda->pos_x)
-			dda->wall_tex = 'E';
+			dda->wall_tex = 'N';
 	}
 	else
 	{
 		if (dda->step_y > 0 && dda->map_y > dda->pos_y)
-			dda->wall_tex = 'S';
+			dda->wall_tex = 'E';
 		if (dda->step_y < 0 && dda->map_y < dda->pos_y)
-			dda->wall_tex = 'N';
+			dda->wall_tex = 'W';
 	}
 }
 
