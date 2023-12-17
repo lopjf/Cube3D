@@ -32,9 +32,9 @@
 Check List submission:
 
 - [x] norminette
-- [] memory leaks
-	- [] fsanitize
-	- [] valgrind
+- [x] memory leaks
+	- [x] fsanitize
+	- [x] valgrind
 - [x] check direction of textures
 - [x] texture files
 	- [x] not 64 x 64
