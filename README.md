@@ -31,7 +31,7 @@
 
 Check List submission:
 
-- [] norminette
+- [x] norminette
 - [] memory leaks
 	- [] fsanitize
 	- [] valgrind
