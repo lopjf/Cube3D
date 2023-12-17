@@ -36,14 +36,14 @@ Check List submission:
 	- [] fsanitize
 	- [] valgrind
 - [x] check direction of textures
-- [] texture files
-	- [] not 64 x 64
-	- [] character inside that is not a defined colour
-	- [] missing characters
-	- [] no content in file
-	- [] wrong file type (not xpm etc)
-- [] maps
-	- [] walls  ot completely surrounding
-	- [] invalid character
-	- [] no player
-	- [] only wall and player (no 0s)
+- [x] texture files
+	- [x] not 64 x 64
+	- [x] character inside that is not a defined colour
+	- [x] missing characters
+	- [x] no content in file
+	- [x] wrong file type (not xpm etc)
+- [x] maps
+	- [x] walls  ot completely surrounding
+	- [x] invalid character
+	- [x] no player
+	- [x] only wall and player (no 0s)

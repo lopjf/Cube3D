@@ -3,7 +3,7 @@ EA ./assets/carpet2.xpm
 SO ./assets/carpet3.xpm
 WE ./assets/carpet4.xpm
 F 255,,,255,,,255
-C 255, ,255, ,,255
+C 255,,255,,,255
 
         1111111111111111111111111
         1000000000000000000000001
